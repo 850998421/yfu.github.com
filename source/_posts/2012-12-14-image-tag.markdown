@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Image Tag"
+date: 2012-12-14 00:24
+comments: true
+categories: 
+---
+
+I really love the simplicity of the Octopress image tag.
+
+Let me give it a try.
+
+{% img /images/posts/candycane.jpg 'A candy cane!' %}
