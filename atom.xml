@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Yu Fu]]></title>
-  <link href="http://yfu.me/atom.xml" rel="self"/>
-  <link href="http://yfu.me/"/>
-  <updated>2012-12-25T15:02:58-05:00</updated>
-  <id>http://yfu.me/</id>
+  <link href="http://yfu.github.com/atom.xml" rel="self"/>
+  <link href="http://yfu.github.com/"/>
+  <updated>2012-12-25T15:09:58-05:00</updated>
+  <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[笑话两则]]></title>
-    <link href="http://yfu.me/two-jokes/"/>
+    <link href="http://yfu.github.com/two-jokes/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.me/two-jokes</id>
+    <id>http://yfu.github.com/two-jokes</id>
     <content type="html"><![CDATA[<p>今天看到了两则笑话很好笑，来源不详。</p>
 
 <p>（一）</p>
@@ -34,20 +34,20 @@
   
   <entry>
     <title type="html"><![CDATA[HIDPI Mode]]></title>
-    <link href="http://yfu.me/hidpi-mode/"/>
+    <link href="http://yfu.github.com/hidpi-mode/"/>
     <updated>2012-12-17T02:17:00-05:00</updated>
-    <id>http://yfu.me/hidpi-mode</id>
+    <id>http://yfu.github.com/hidpi-mode</id>
     <content type="html"><![CDATA[<p>I just managed to enbale HIDPI Mode on my MacBook Pro. Though the built-in display of my MacBook Pro cannot make use of that, the iPad 4 can!</p>
 
 <p>I use AirDisplay to make my iPad the 2nd display.</p>
 
 <p>A snapshot:</p>
 
-<p><img src="http://yfu.me/images/hidpi.png" title="'HIDPI Mode'" ></p>
+<p><img src="http://yfu.github.com/images/hidpi.png" title="'HIDPI Mode'" ></p>
 
 <p>If you look at it more closely, you can see:</p>
 
-<p><img src="http://yfu.me/images/hidpi_small.png" title="'HIDPI Mode'" ></p>
+<p><img src="http://yfu.github.com/images/hidpi_small.png" title="'HIDPI Mode'" ></p>
 
 <p>Isn&#8217;t it gorgeous? :-)</p>
 ]]></content>
@@ -55,22 +55,22 @@
   
   <entry>
     <title type="html"><![CDATA[Image Tag]]></title>
-    <link href="http://yfu.me/image-tag/"/>
+    <link href="http://yfu.github.com/image-tag/"/>
     <updated>2012-12-14T00:24:00-05:00</updated>
-    <id>http://yfu.me/image-tag</id>
+    <id>http://yfu.github.com/image-tag</id>
     <content type="html"><![CDATA[<p>I really love the simplicity of the Octopress image tag.</p>
 
 <p>Let me give it a try.</p>
 
-<p><img src="http://yfu.me/images/posts/candycane.jpg" title="'A candy cane!'" ></p>
+<p><img src="http://yfu.github.com/images/posts/candycane.jpg" title="'A candy cane!'" ></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Codeblock]]></title>
-    <link href="http://yfu.me/codeblock/"/>
+    <link href="http://yfu.github.com/codeblock/"/>
     <updated>2012-12-13T23:44:00-05:00</updated>
-    <id>http://yfu.me/codeblock</id>
+    <id>http://yfu.github.com/codeblock</id>
     <content type="html"><![CDATA[<p>This plugin seems to be very useful for sharing code, so let me test it.</p>
 
 <p>Example 1</p>
@@ -115,9 +115,9 @@
   
   <entry>
     <title type="html"><![CDATA[第一篇文章]]></title>
-    <link href="http://yfu.me/my-first-post/"/>
+    <link href="http://yfu.github.com/my-first-post/"/>
     <updated>2012-12-13T23:20:00-05:00</updated>
-    <id>http://yfu.me/my-first-post</id>
+    <id>http://yfu.github.com/my-first-post</id>
     <content type="html"><![CDATA[<p>这是我在新域名yfu.me上搭建的博客，也是我第一次使用github和octopress搭建的博客。</p>
 
 <p>不知道我能不能坚持写下去这个博客，现在开始写会不会太晚？</p>
