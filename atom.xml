@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Yu Fu]]></title>
+  <link href="http://yfu.me/atom.xml" rel="self"/>
+  <link href="http://yfu.me/"/>
+  <updated>2012-12-25T15:02:58-05:00</updated>
+  <id>http://yfu.me/</id>
+  <author>
+    <name><![CDATA[Yu Fu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[笑话两则]]></title>
+    <link href="http://yfu.me/two-jokes/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.me/two-jokes</id>
+    <content type="html"><![CDATA[<p>今天看到了两则笑话很好笑，来源不详。</p>
+
+<p>（一）</p>
+
+<p>前天在德胜门外，我支好相机坐在阶梯上，等待适合的光线。这时一个乞丐来到我身边乞讨，就给了他一块钱，然后继续调试相机，他可能生意不好，就无聊的看看我在干什么，然后过了一会，他幽幽的说:&#8221;用区域曝光好些”。我问他：“你是摄影师？”他无限悲情的望着天空：“我爷爷是”。</p>
+
+<p>（二）</p>
+
+<p>我是个程序猿，一天我坐在路边一边喝水一边苦苦检查bug。这时一个乞丐在我边上坐下了，开始要饭，我觉得可怜，就给了他1块钱，然后接着调试程序。他可能生意不好，就无聊的看看我在干什么，然后过了一会，他幽幽的说，这里少了个分号。</p>
+
+<p>这两则笑话教育我们，一不要当摄影师，二不要当程序员。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HIDPI Mode]]></title>
+    <link href="http://yfu.me/hidpi-mode/"/>
+    <updated>2012-12-17T02:17:00-05:00</updated>
+    <id>http://yfu.me/hidpi-mode</id>
+    <content type="html"><![CDATA[<p>I just managed to enbale HIDPI Mode on my MacBook Pro. Though the built-in display of my MacBook Pro cannot make use of that, the iPad 4 can!</p>
+
+<p>I use AirDisplay to make my iPad the 2nd display.</p>
+
+<p>A snapshot:</p>
+
+<p><img src="http://yfu.me/images/hidpi.png" title="'HIDPI Mode'" ></p>
+
+<p>If you look at it more closely, you can see:</p>
+
+<p><img src="http://yfu.me/images/hidpi_small.png" title="'HIDPI Mode'" ></p>
+
+<p>Isn&#8217;t it gorgeous? :-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Image Tag]]></title>
+    <link href="http://yfu.me/image-tag/"/>
+    <updated>2012-12-14T00:24:00-05:00</updated>
+    <id>http://yfu.me/image-tag</id>
+    <content type="html"><![CDATA[<p>I really love the simplicity of the Octopress image tag.</p>
+
+<p>Let me give it a try.</p>
+
+<p><img src="http://yfu.me/images/posts/candycane.jpg" title="'A candy cane!'" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Codeblock]]></title>
+    <link href="http://yfu.me/codeblock/"/>
+    <updated>2012-12-13T23:44:00-05:00</updated>
+    <id>http://yfu.me/codeblock</id>
+    <content type="html"><![CDATA[<p>This plugin seems to be very useful for sharing code, so let me test it.</p>
+
+<p>Example 1</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Super awesome code snippet</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Example 2</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--more-->
+
+
+<p>Example 3</p>
+
+<figure class='code'><figcaption><span>Time to be Awesome - awesome.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Awesome!&quot;</span> <span class="k">unless</span> <span class="n">lame</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Example 4 (Force Highlighting)</p>
+
+<figure class='code'><figcaption><span>Here&#8217;s an example .py file  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第一篇文章]]></title>
+    <link href="http://yfu.me/my-first-post/"/>
+    <updated>2012-12-13T23:20:00-05:00</updated>
+    <id>http://yfu.me/my-first-post</id>
+    <content type="html"><![CDATA[<p>这是我在新域名yfu.me上搭建的博客，也是我第一次使用github和octopress搭建的博客。</p>
+
+<p>不知道我能不能坚持写下去这个博客，现在开始写会不会太晚？</p>
+
+<p>最近各种reports和presentations，身心俱疲，想休息。在美国的第一个学期就要结束了。</p>
+
+<p>近期在学习R，被各种plot函数折磨。</p>
+
+<p>先写到这儿吧。</p>
+]]></content>
+  </entry>
+  
+</feed>
