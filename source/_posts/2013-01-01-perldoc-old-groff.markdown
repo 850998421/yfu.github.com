@@ -18,6 +18,7 @@ If you don't upgrade, wide characters may come out oddly.
 
   at /Users/yfu/perl5/perlbrew/perls/perl-5.16.2/lib/5.16.2/Pod/Perldoc.pm line 1346.
 {% endcodeblock %}
+<--! more -->
 
 Then I checked the version of groff:
 {% codeblock groff version lang:bash %}
