@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.github.com/atom.xml" rel="self"/>
   <link href="http://yfu.github.com/"/>
-  <updated>2013-01-01T23:57:40-05:00</updated>
+  <updated>2013-01-02T00:02:44-05:00</updated>
   <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -42,8 +42,6 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>&lt;&#8211;! more &#8211;></p>
-
 <p>Then I checked the version of groff:</p>
 
 <figure class='code'><figcaption><span>groff version  </span></figcaption>
@@ -75,6 +73,11 @@
 
 
 <p>Obviously, it is way too old. So I need to install a more recent version of groff. One of easiest ways to installing groff (and many other missing software programs on Mac OS) is having a package manager, for example, <a href="http://mxcl.github.com/homebrew/">homebrew</a>,  <a href="http://www.macports.org/">MacPorts</a> and <a href="http://www.finkproject.org/">Fink</a>. After trying MacPorts and Fink years ago, I realized that these two are a bit too complicated for me (though they seem to have more and newer versions of software). Hence, I am using homebrew as the package manager on my computer. If you haven&#8217;t tried it yet, I encourage you to give it a try! You can find installation details <a href="http://mxcl.github.com/homebrew/">here</a>. Below is how to install newer groff using homebrew:</p>
+
+<!--more-->
+
+
+
 
 <figure class='code'><figcaption><span>How to Install groff using homebrew  </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
