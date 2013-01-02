@@ -9,7 +9,17 @@
   <meta name="author" content="Yu Fu">
 
   
-  <meta name="description" content="今天看到了两则笑话很好笑，来源不详。 （一） 前天在德胜门外，我支好相机坐在阶梯上，等待适合的光线。这时一个乞丐来到我身边乞讨，就给了他一块钱，然后继续调试相机，他可能生意不好，就无聊的看看我在干什么，然后过了一会，他幽幽的说:&#8221;用区域曝光好些”。我问他：“你是摄影师？” &hellip;">
+  <meta name="description" content="Everytime I ran perldoc, I got the following error message: perldoc Complains 1
+2
+3
+4
+5
+6
+7
+8
+9
+➜ perl perldoc -f -X
+You have an old groff. Update to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +95,144 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/perldoc-old-groff/">Perldoc Complains About Groff</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-01T20:06:00-05:00" pubdate data-updated="true">Jan 1<span>st</span>, 2013</time>
+        
+         | <a href="/perldoc-old-groff/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everytime I ran perldoc, I got the following error message:</p>
+
+<figure class='code'><figcaption><span>perldoc Complains  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>➜  perl  perldoc -f -X
+</span><span class='line'>You have an old groff. Update to version 1.20.1 <span class="k">for </span>good Unicode support.
+</span><span class='line'>If you don<span class="s1">&#39;t upgrade, wide characters may come out oddly.</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1"> at /Users/yfu/perl5/perlbrew/perls/perl-5.16.2/lib/5.16.2/Pod/Perldoc.pm line 1346.</span>
+</span><span class='line'><span class="s1"> You have an old groff. Update to version 1.20.1 for good Unicode support.</span>
+</span><span class='line'><span class="s1"> If you don&#39;</span>t upgrade, wide characters may come out oddly.
+</span><span class='line'>
+</span><span class='line'>  at /Users/yfu/perl5/perlbrew/perls/perl-5.16.2/lib/5.16.2/Pod/Perldoc.pm line 1346.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then I checked the version of groff:</p>
+
+<figure class='code'><figcaption><span>groff version  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>➜  perl  groff -v
+</span><span class='line'>GNU groff version 1.19.2
+</span><span class='line'>Copyright <span class="o">(</span>C<span class="o">)</span> 2004 Free Software Foundation, Inc.
+</span><span class='line'>GNU groff comes with ABSOLUTELY NO WARRANTY.
+</span><span class='line'>You may redistribute copies of groff and its subprograms
+</span><span class='line'>under the terms of the GNU General Public License.
+</span><span class='line'>For more information about these matters, see the file named COPYING.
+</span><span class='line'>
+</span><span class='line'>called subprograms:
+</span><span class='line'>
+</span><span class='line'>GNU grops <span class="o">(</span>groff<span class="o">)</span> version 1.19.2
+</span><span class='line'>GNU troff <span class="o">(</span>groff<span class="o">)</span> version 1.19.2
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Obviously, it is way too old. So I need to install a more recent version of groff. One of easiest ways to installing groff (and many other missing software programs on Mac OS) is having a package manager, for example, <a href="http://mxcl.github.com/homebrew/">homebrew</a>,  <a href="http://www.macports.org/">MacPorts</a> and <a href="http://www.finkproject.org/">Fink</a>. After trying MacPorts and Fink years ago, I realized that these two are a bit too complicated for me (though they seem to have more and newer versions of software). Hence, I am using homebrew as the package manager on my computer. If you haven&#8217;t tried it yet, I encourage you to give it a try! You can find installation details <a href="http://mxcl.github.com/homebrew/">here</a>. Below is how to install newer groff using homebrew:</p>
+
+<figure class='code'><figcaption><span>How to Install groff using homebrew  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>➜  perl  brew search groff
+</span><span class='line'>homebrew/dupes/groff
+</span><span class='line'>
+</span><span class='line'>➜  ~  brew tap homebrew/dupes
+</span><span class='line'>Cloning into <span class="s1">&#39;/usr/local/Library/Taps/homebrew-dupes&#39;</span>...
+</span><span class='line'>remote: Counting objects: 660, <span class="k">done</span>.
+</span><span class='line'>remote: Compressing objects: 100% <span class="o">(</span>286/286<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>remote: Total 660 <span class="o">(</span>delta 415<span class="o">)</span>, reused 612 <span class="o">(</span>delta 374<span class="o">)</span>
+</span><span class='line'>Receiving objects: 100% <span class="o">(</span>660/660<span class="o">)</span>, 97.16 KiB | 157 KiB/s, <span class="k">done</span>.
+</span><span class='line'>Resolving deltas: 100% <span class="o">(</span>415/415<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>Tapped 36 formula
+</span><span class='line'>
+</span><span class='line'>➜  ~  brew install <span class="nv">groff</span>
+</span><span class='line'><span class="o">==</span>&gt; Downloading http://ftpmirror.gnu.org/groff/groff-1.21.tar.gz
+</span><span class='line'><span class="c">######################################################################## 100.0%</span>
+</span><span class='line'><span class="o">==</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/groff/1.21 --without-x
+</span><span class='line'><span class="o">==</span>&gt; <span class="nv">make</span>
+</span><span class='line'><span class="o">==</span>&gt; make install
+</span><span class='line'>/usr/local/Cellar/groff/1.21: 554 files, 20M, built in 81 seconds
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the official homebrew does not have a formulea (which contains directions on where to download the source and how to compile) for groff. So I need to &#8220;tap&#8221; to import other formula from other people&#8217;s repositories. In my case, you can find it <a href="http://braumeister.org/repos/Homebrew/homebrew-dupes/formula/groff">here</a>. So after seconds, I have the newest groff installed and now perldoc no longer complains about the the older groff!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -355,6 +503,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/perldoc-old-groff/">Perldoc Complains about groff</a>
+      </li>
+    
+      <li class="post">
         <a href="/two-jokes/">笑话两则</a>
       </li>
     
@@ -368,10 +520,6 @@
     
       <li class="post">
         <a href="/codeblock/">Codeblock</a>
-      </li>
-    
-      <li class="post">
-        <a href="/my-first-post/">第一篇文章</a>
       </li>
     
   </ul>
@@ -388,7 +536,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Yu Fu -
+  Copyright &copy; 2013 - Yu Fu -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
