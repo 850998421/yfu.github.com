@@ -18,7 +18,6 @@ If you don't upgrade, wide characters may come out oddly.
 
   at /Users/yfu/perl5/perlbrew/perls/perl-5.16.2/lib/5.16.2/Pod/Perldoc.pm line 1346.
 {% endcodeblock %}
-<--! more -->
 
 Then I checked the version of groff:
 {% codeblock groff version lang:bash %}
@@ -37,6 +36,7 @@ GNU troff (groff) version 1.19.2
 {% endcodeblock %}
 
 Obviously, it is way too old. So I need to install a more recent version of groff. One of easiest ways to installing groff (and many other missing software programs on Mac OS) is having a package manager, for example, [homebrew](http://mxcl.github.com/homebrew/),  [MacPorts](http://www.macports.org/) and [Fink](http://www.finkproject.org/). After trying MacPorts and Fink years ago, I realized that these two are a bit too complicated for me (though they seem to have more and newer versions of software). Hence, I am using homebrew as the package manager on my computer. If you haven't tried it yet, I encourage you to give it a try! You can find installation details [here](http://mxcl.github.com/homebrew/). Below is how to install newer groff using homebrew:
+<!--more-->
 
 {% codeblock How to Install groff using homebrew lang:bash %}
 ➜  perl  brew search groff
