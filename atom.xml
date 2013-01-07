@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.github.com/atom.xml" rel="self"/>
   <link href="http://yfu.github.com/"/>
-  <updated>2013-01-07T13:51:36-05:00</updated>
+  <updated>2013-01-07T13:53:35-05:00</updated>
   <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -122,21 +122,6 @@
 
 
 <p>Note that the official homebrew does not have a formulea (which contains directions on where to download the source and how to compile) for groff. So I need to &#8220;tap&#8221; to import other formula from other people&#8217;s repositories. In my case, you can find it <a href="http://braumeister.org/repos/Homebrew/homebrew-dupes/formula/groff">here</a>. So after seconds, I have the newest groff installed and now perldoc no longer complains about the the older groff!</p>
-
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-1302974336237267";
-/* My ads */
-google_ad_slot = "1086970575";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-
-
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 ]]></content>
   </entry>
   
@@ -254,21 +239,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <p>近期在学习R，被各种plot函数折磨。</p>
 
 <p>先写到这儿吧。</p>
-
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-1302974336237267";
-/* My ads */
-google_ad_slot = "1086970575";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-
-
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 ]]></content>
   </entry>
   

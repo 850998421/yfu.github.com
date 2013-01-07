@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://yfu.github.com/my-first-post/</loc>
-        <lastmod>2013-01-07T13:51:27-05:00</lastmod>
+        <lastmod>2013-01-07T13:53:24-05:00</lastmod>
     </url>
     <url>
         <loc>http://yfu.github.com/codeblock/</loc>
@@ -22,14 +22,14 @@
     </url>
     <url>
         <loc>http://yfu.github.com/perldoc-old-groff/</loc>
-        <lastmod>2013-01-07T13:51:27-05:00</lastmod>
+        <lastmod>2013-01-07T13:53:03-05:00</lastmod>
     </url>
     <url>
         <loc>http://yfu.github.com/blog/archives/</loc>
-        <lastmod>2013-01-07T13:15:34-05:00</lastmod>
+        <lastmod>2013-01-07T13:53:24-05:00</lastmod>
     </url>
     <url>
         <loc>http://yfu.github.com/</loc>
-        <lastmod>2013-01-07T13:15:34-05:00</lastmod>
+        <lastmod>2013-01-07T13:53:24-05:00</lastmod>
     </url>
 </urlset>
