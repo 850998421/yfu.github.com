@@ -9,17 +9,7 @@
   <meta name="author" content="Yu Fu">
 
   
-  <meta name="description" content="Everytime I ran perldoc, I got the following error message: perldoc Complains 1
-2
-3
-4
-5
-6
-7
-8
-9
-➜ perl perldoc -f -X
-You have an old groff. Update to &hellip;">
+  <meta name="description" content="IDO is short for &#8220;Interactively Do Things&#8221;, which is a nice minor mode helping you find the files/directories you want. I just checked &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +85,99 @@ You have an old groff. Update to &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/ido-mode/">IDO-mode in Emacs</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-08T03:03:00-05:00" pubdate data-updated="true">Jan 8<span>th</span>, 2013</time>
+        
+         | <a href="/ido-mode/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>IDO is short for &#8220;Interactively Do Things&#8221;, which is a nice minor mode helping you find the files/directories you want. I just checked the <a href="http://emacswiki.org/emacs/InteractivelyDoThings">emacswiki</a> and pasted the main key bindings here:</p>
+
+<p>To switch between buffers, press “C-x b”, then:</p>
+
+<ol>
+<li>type some characters appearing in the buffer name, RET to visit the buffer in the front the list.</li>
+<li>use C-s (next) or C-r (previous) to move through the list.</li>
+<li>[Tab] display possible completion in a buffer (or visit the buffer if there is only one possible completion).</li>
+<li>use C-f to fall back to find file (without ido-mode) or C-b to fall back to switch to buffer (without ido-mode).</li>
+</ol>
+
+
+<p>To find a file, press “C-x C-f”.</p>
+
+<ol>
+<li>type some characters appearing in the file name, RET to choose the file or directory in the front of the list.</li>
+<li>C-s (next) or C-r (previous) to move through the list.</li>
+<li>[Tab] - display possible completion in a buffer (or open the file or go down the directory if there is only one possible completion).</li>
+<li>RET - type to go down inside the directory in front of the list.</li>
+<li>[backspace] - go up to the parent directory.</li>
+<li>// - go to the root directory.</li>
+<li>~/ - go to the home directory.</li>
+<li>C-f - to go back temporarily to the normal find-file.</li>
+<li>C-d - enter Dired for this directory (used to be C-x C-d in older versions)</li>
+<li>C-j - create a new file named with the text you entered (note: this is needed if the text you entered matches an existing file, because RET would open the existing one)</li>
+</ol>
+
+
+<p>To restrict the list after a first filtering:</p>
+
+<ol>
+<li>type some characters appearing in the buffer/file name(say .cpp)</li>
+<li>type C-SPC (C-@)</li>
+<li>continue as normal with a list containing only the filtered names</li>
+</ol>
+
+
+<p>Recently visited directories:</p>
+
+<ol>
+<li>type M-p and M-n to change to previous/next directories from the history</li>
+<li>M-s to search for a file matching your input</li>
+<li>M-k to remove the current directory from the history</li>
+<li>directories are added to the history by navigating inside them via RET</li>
+</ol>
+
+
+<p>The documentation for these keys is available via</p>
+
+<ol>
+<li>M-x describe-function RET ido-find-file RET</li>
+<li>C-h f ido-find-file RET</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -464,6 +547,10 @@ You have an old groff. Update to &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/ido-mode/">IDO-mode in Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/perldoc-old-groff/">Perldoc Complains about groff</a>
       </li>
     
@@ -477,10 +564,6 @@ You have an old groff. Update to &hellip;">
     
       <li class="post">
         <a href="/image-tag/">Image Tag</a>
-      </li>
-    
-      <li class="post">
-        <a href="/codeblock/">Codeblock</a>
       </li>
     
   </ul>
