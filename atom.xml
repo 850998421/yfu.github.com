@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.github.com/atom.xml" rel="self"/>
   <link href="http://yfu.github.com/"/>
-  <updated>2013-01-08T03:11:19-05:00</updated>
+  <updated>2013-01-08T03:13:08-05:00</updated>
   <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -28,6 +28,9 @@
 <li>[Tab] display possible completion in a buffer (or visit the buffer if there is only one possible completion).</li>
 <li>use C-f to fall back to find file (without ido-mode) or C-b to fall back to switch to buffer (without ido-mode).</li>
 </ol>
+
+
+<!-- more -->
 
 
 <p>To find a file, press “C-x C-f”.</p>
