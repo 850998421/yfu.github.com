@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.github.com/atom.xml" rel="self"/>
   <link href="http://yfu.github.com/"/>
-  <updated>2013-01-12T17:23:18-05:00</updated>
+  <updated>2013-01-12T17:24:23-05:00</updated>
   <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Running Emacs Daeomon on Boot]]></title>
+    <title type="html"><![CDATA[Running Emacs Daemon on Boot]]></title>
     <link href="http://yfu.github.com/running-emacs-daeomon-on-boot/"/>
     <updated>2013-01-12T16:48:00-05:00</updated>
     <id>http://yfu.github.com/running-emacs-daeomon-on-boot</id>
