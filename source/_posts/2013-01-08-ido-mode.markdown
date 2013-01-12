@@ -1,0 +1,48 @@
+---
+layout: post
+title: IDO-mode in Emacs
+date: 2013-01-08 03:03
+comments: true
+categories: 
+---
+
+IDO is short for "Interactively Do Things", which is a nice minor mode helping you find the files/directories you want. I just checked the [emacswiki](http://emacswiki.org/emacs/InteractivelyDoThings) and pasted the main key bindings here:
+
+To switch between buffers, press “C-x b”, then:
+
+1. type some characters appearing in the buffer name, RET to visit the buffer in the front the list.
+2. use C-s (next) or C-r (previous) to move through the list.
+3. [Tab] display possible completion in a buffer (or visit the buffer if there is only one possible completion).
+4. use C-f to fall back to find file (without ido-mode) or C-b to fall back to switch to buffer (without ido-mode).
+
+<!-- more -->
+To find a file, press “C-x C-f”.
+
+1. type some characters appearing in the file name, RET to choose the file or directory in the front of the list.
+2. C-s (next) or C-r (previous) to move through the list.
+3. [Tab] - display possible completion in a buffer (or open the file or go down the directory if there is only one possible completion).
+4. RET - type to go down inside the directory in front of the list.
+5. [backspace] - go up to the parent directory.
+6. // - go to the root directory.
+7. ~/ - go to the home directory.
+8. C-f - to go back temporarily to the normal find-file.
+9. C-d - enter Dired for this directory (used to be C-x C-d in older versions)
+10. C-j - create a new file named with the text you entered (note: this is needed if the text you entered matches an existing file, because RET would open the existing one)
+
+To restrict the list after a first filtering:
+
+1. type some characters appearing in the buffer/file name(say .cpp)
+2. type C-SPC (C-@)
+3. continue as normal with a list containing only the filtered names
+
+Recently visited directories:
+
+1. type M-p and M-n to change to previous/next directories from the history
+2. M-s to search for a file matching your input
+3. M-k to remove the current directory from the history
+4. directories are added to the history by navigating inside them via RET
+
+The documentation for these keys is available via
+
+1. M-x describe-function RET ido-find-file RET
+2. C-h f ido-find-file RET

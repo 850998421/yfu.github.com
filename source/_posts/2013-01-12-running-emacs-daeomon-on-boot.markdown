@@ -1,0 +1,38 @@
+---
+layout: post
+title: "Running Emacs Daemon on Boot"
+date: 2013-01-12 16:48
+comments: true
+categories: 
+---
+
+Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several methods found online, but it seems that they only care about running it under the condition of booting machine (not loging out and in). Maybe the script itself should be able to determine if emacs daemon is already running. 
+
+If, for some reason, like logging out and then logging in, this Apple Script (as a login item) will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:
+
+{% img /images/posts/emacs-daemon-complaining.jpg %}
+<!-- more -->
+
+So I tweaked a little and added this apple script to the login items and everything looks super now:
+
+{% codeblock lang: AppleScript %}
+tell application "Terminal"
+     try
+	-- we look for <= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn't
+	do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(<= 2 (length (visible-frame-list)))'"
+     on error
+     	-- daemon is not running, start the daemon and open a frame		
+	do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+     end try
+end tell
+{% endcodeblock %}
+
+So now, even if I log out and then back in, emacs daemon will no longer complain.
+
+I have also added the following alias in .bash.profile so I can call it with less typing:
+
+{% codeblock lang:bash %}
+alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw -c'
+{% endcodeblock %}
+
+Have fun with Emacs!
