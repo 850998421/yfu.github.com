@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.github.com/atom.xml" rel="self"/>
   <link href="http://yfu.github.com/"/>
-  <updated>2013-01-12T17:24:23-05:00</updated>
+  <updated>2013-01-12T17:28:35-05:00</updated>
   <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -18,9 +18,9 @@
     <link href="http://yfu.github.com/running-emacs-daeomon-on-boot/"/>
     <updated>2013-01-12T16:48:00-05:00</updated>
     <id>http://yfu.github.com/running-emacs-daeomon-on-boot</id>
-    <content type="html"><![CDATA[<p>Since I knew that emacs 23.1 introduces a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several method found on line, but it seems that they only care about running it under the condition of booting machine.</p>
+    <content type="html"><![CDATA[<p>Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several methods found on line, but it seems that they only care about running it under the condition of booting machine (not loging out and in). Maybe the script itself should be able to determine if emacs daemon is already running.</p>
 
-<p>If, for some reason, like logging out and then logging in, this Apple Script will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:</p>
+<p>If, for some reason, like logging out and then logging in, this Apple Script (as a login item) will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:</p>
 
 <p><img src="http://yfu.github.com/images/posts/emacs-daemon-complaining.jpg"></p>
 
@@ -39,7 +39,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>tell application "Terminal"
 </span><span class='line'>     try
 </span><span class='line'>  -- we look for &lt;= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn't
-</span><span class='line'>     set frameVisible to do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
+</span><span class='line'>     do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
 </span><span class='line'>     on error
 </span><span class='line'>            -- daemon is not running, start the daemon and open a frame       
 </span><span class='line'>           do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
