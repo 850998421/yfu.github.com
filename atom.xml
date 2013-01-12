@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.github.com/atom.xml" rel="self"/>
   <link href="http://yfu.github.com/"/>
-  <updated>2013-01-10T23:43:27-05:00</updated>
+  <updated>2013-01-12T17:23:18-05:00</updated>
   <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Running Emacs Daeomon on Boot]]></title>
+    <link href="http://yfu.github.com/running-emacs-daeomon-on-boot/"/>
+    <updated>2013-01-12T16:48:00-05:00</updated>
+    <id>http://yfu.github.com/running-emacs-daeomon-on-boot</id>
+    <content type="html"><![CDATA[<p>Since I knew that emacs 23.1 introduces a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several method found on line, but it seems that they only care about running it under the condition of booting machine.</p>
+
+<p>If, for some reason, like logging out and then logging in, this Apple Script will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:</p>
+
+<p><img src="http://yfu.github.com/images/posts/emacs-daemon-complaining.jpg"></p>
+
+<p>So I tweaked a little and added this apple script to the login items and everything looks super now:</p>
+
+<figure class='code'><figcaption><span>lang: AppleScript </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tell application "Terminal"
+</span><span class='line'>     try
+</span><span class='line'>  -- we look for &lt;= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn't
+</span><span class='line'>     set frameVisible to do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
+</span><span class='line'>     on error
+</span><span class='line'>            -- daemon is not running, start the daemon and open a frame       
+</span><span class='line'>           do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+</span><span class='line'>           end try
+</span><span class='line'>end tell</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So now, even if I log out and then in, emacs daemon will no longer complain.</p>
+
+<p>I have also added the following alias in .bash.profile so I can call it with less typing:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">ec</span><span class="o">=</span><span class="s1">&#39;/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw -c&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Have fun with Emacs!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[IDO-mode in Emacs]]></title>
@@ -210,2053 +257,13 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note99/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note99</id>
-    <content type="html"><![CDATA[<p>1. Are you going tailgating this evening? 
-你今晚要不要来 tailgate 派对啊?</p>
-
-
-<p>想要了解 tailgate party 是什么，首先必须了解什么是 tailgate。有些五门的车
-子除了正常的四个车门之外，车后 (tail) 还有一个可以可以掀开的门 (gate)，这
-个门就叫 tailgate。有时 tailgate 也可以当动词用，指开车时在后面紧咬不放。
-例如我们可以这样说，&#8221;The police car is tailgating the stolen car.&#8221; (警车
-紧咬著那辆赃车不放)。</p>
-
-<p>那什么是 tailgate party 呢？tailgate party 就是在车上准备好了各种食物、饮
-料等等，等车子开到了目的地之后，后门一掀，就成了现成的野餐桌，再摆上几张
-椅子，大夥就可以开动了！算是一种很有「效率」的野餐方式，机动性也很高，不
-必提著大包小包的东西找地点，只要车子开到哪，party 就可以开到哪，老美享受
-生活的方式可真有一套，其实这就是很典型的「美式生活」啦！</p>
-
-
-<p>那 tailgate party 跟美式足球又有什么关系？关系可大了，tailgate party 的文
-化已经变成了美式足球文化的一部分了！每次有足球赛时，老美就会把车开到附近
-开起露天的 tailgate party，比赛还没开打就先庆祝一番。这样子久而久之，不管
-你有没有开车，只要是在足球赛前开的 party 就通称为 tailgate party 了，像我
-们系上每次赛前一定都会举办 tailgate party，提供一些免费的食物和饮料让大家
-吃吃喝喝，等吃饱喝足了之后再一起去给我们学校的足球队摇旗呐喊。老美也常把
- tailgate 单独当动词用，意思是「开  tailgate party」，例如你可以说，&#8221;We plan
-to tailgate before the game.&#8221; (我们计划在比赛前开 tailgate party。)</p>
-
-<p>2. Who are we playing today? 
-今天我们的对手是谁？</p>
-
-
-<p>讲到这句 &#8220;Who are we playing today?&#8221; 就让我想到一个乌龙小故事，话说我刚到
-美国，有一次老美就问我 &#8220;Who are we playing today?&#8221; 我十分纳闷，「今天我们
-要玩谁？」一时之间我就楞在哪里不知有谁是我们可以「玩」的，后来他看我大概
-是听不懂，才又用另一种方式说，&#8221;Who&#8217;s the opponent for today&#8217;s game?&#8221; 这时
-我才明白，原来 &#8220;Who are we playing?&#8221; 就是问对方，「我们的对手是谁。」学会
-了这种用法之后，以后要提到比赛的对手是谁就会变得容易些。例如今天我们跟 UCLA
-有比赛，你就可以说，&#8221;We are playing UCLA this evening.&#8221;</p>
-
-<p>注: 依照正确的文法应该是用 &#8220;Whom are we playing?&#8221; 才对，但你听老美口语上
-说的都是 &#8220;Who are we playing?&#8221; 基于这种误用成俗的理由，我想大家应该可以放
-心地讲 &#8220;Who are you playing?&#8221; 才是。</p>
-
-
-<ol>
-<li>Florida State will be taking on Clemson next week.
-佛州州立大学下周将会面对克莱门森大学.</li>
-</ol>
-
-
-<p>美语提到比赛的对手是谁讲法除了 play someone 之外还有许多种，例如 take on 
-someone 就是一个不错的用法，例如我们下周和 Florida State 比赛，就可以说 
-&#8220;We will be taking on Florida State next week.&#8221;  但 take on 一般来讲算是
-比较正式一点的讲法，报章杂志或电视上常会用到。</p>
-
-
-<p>除此之外，我们还可以用 against 这个字，例如，&#8221;The next game is against Florida
-State.&#8221; 但因为 against 是一个介系词，所以使用上会比较灵活一点，例如你要说，
-「下一场对野猫队的比赛将会非常精采」，在这里如果你用 play 或是 take on 就
-会有点小小的困难，因为这个句子将会有二个动词，这时如果你说，&#8221;The next game
-against the Wildcats will be a very good one.&#8221; 就可以省去不少麻烦。</p>
-
-<p>归纳起来，A 跟 B 有比赛, 可以说 &#8220;A is playing B&#8221;, &#8220;A is taking on B&#8221; 或是
- &#8220;A is against B&#8221;。但如果我要说跟 B 的比赛如何如何，则可以说 &#8220;The game against 
-B is&#8230;&#8221; </p>
-
-
-<ol>
-<li>What are the other teams in the ACC conference?
-在 ACC 联盟里的其它队伍是什么？</li>
-</ol>
-
-
-<p>美国的幅员广大，所以在赛球时有必要把队伍依照地理位置分组，以免比起赛来舟
-车往返，浪费时间。而这每一个分组就是一个联盟 (conference)，例如 Michigan, 
-Michigan State, Perdue 是属于 Big Ten 这个联盟，而 Stanford, USC, UCLA 等
-则属于 Pac-10，还有 Georgia Tech, Florida State, UNC 等所属的 ACC (Atlantic 
-Coast Conference) 等等。每一个联盟大约是八到十二只球队，在季赛时会跟同一
-联盟内的队伍比赛一场，但也有几场比赛是跟其它联盟的队伍较量。另外也有几支
-球队是独立球队 (Independent)，不属于 NCAA 内的任何一个联盟，还有些学校是
-篮球有加盟但足球却没有。</p>
-
-
-<p>不过这里所讲的 conference 只包含了 NCAA (National Collegiate Athletic Association)
- 的大学球队，在美国还有一个职业的美式足球联盟 NFL (National Football League)，
-两者受欢迎的程度因地而异，像我处的亚特兰大似乎大家比较钟情于 NCAA，观众的
-热情让我的纽约室友觉得有点不可思议，他说他家那里大家比较重视 NFL，NCAA 反
-而不是特别受重视。</p>
-
-<p>5. If we win, we&#8217;ll have a bowl game this season. 
-如果我们赢的话，我们就可以去打季后赛。</p>
-
-
-<p>以前我常听老美讲 bowl game 但我一直误认为他们是在讲 ball game，所以常会有
-一些牛头不对马嘴的对话，例如，老美: &#8220;Do you want to watch the bowl game with
-us?&#8221; 笨霖: &#8220;What kind of ball?&#8221; 想想当时还真是丢脸，几次耍宝下来，老美简直
-把我当成外星人看了。</p>
-
-<p>其实 bowl game 就是美式足球里的季后赛 (playoffs)，他们会从全国的球队中选
-出战绩较好的队伍两两捉对厮杀，而这种比赛只打一场，赢的一队可以得到奖杯。
-例如 Rose Bowl (玫瑰杯), Orange Bowl (橘子杯), Cotton Bowl (棉花杯) 等等，
-比赛的时间多在圣诞节前后，大家到时可以多注意一下电视。</p>
-
-
-<p>还有各位一定也很好奇，学校常会号称自己拿到了哪几年的全国冠军 (National Champion
-Title)，但是如果每队只打一场 bowl game ，怎么决定谁是全国冠军呢？是这样的，
-在季赛当中 NCAA 会依照各队的战绩、各队经理人 的投票和体育记者们的投票来决
-定季赛总排名，在 bowl game 分组时，同一组内会有一队较强但另一队较弱，例如
-第一名和第四名打 Orange Bowl，第二名和第五名打 Rose Bowl，以此类推。如果
-第一名的球队赢得了 Orange Bowl，那它自然是全国冠军，但如果第四名的球队赢
-了 Orange Bowl，那就还要参考第二名的球队在 Rose Bowl 的输赢来决定谁是年度
-总冠军，所以不是说赢了 Orange Bowl 的球队就是全国冠军，有时候第一名的球队
-虽然输了 bowl game，但却还是拿到年度总冠军，这种情形不是没发生过。</p>
-
-<p>讲到 bowl game，就不能不提一下超级杯 Super Bowl 这个号称全世界最多人收看
-的电视转播，Super Bowl 是不属于 NCAA 的大学足球 bowl game 系统，而是职业
-美式足球 NFL 的总冠军赛，由 NFL 里战绩最好的球队争夺年度总冠军。</p>
-
-
-<ol>
-<li>We should have applied for block seating before it is sold out.
-我们当时在门票卖完前应该申请团体座位才对。</li>
-</ol>
-
-
-<p>学校通常会保留一定的免费球票给学生，用以鼓励大家多到场替校队加油。除此之
-外，他们还会在观众席上保留一区一区的团体座位  (block seating)，专门给学生
-团体例如像是兄弟会 (fraternity) 姐妹会 (sorority) 等申请，这样有一个好处，
-认识的人坐在一起可以玩一些花样，例如可以穿同样颜色的衣服，或是可以排字，
-远远看去真的是非常壮观。</p>
-
-
-<p>为什么我觉得 block seating 这个字值得学呢？因为我自己有好长的一段时间也搞
-不清楚什么是 block seating，结果有一次学校在发球票， 但窗口上写著 &#8220;Block
-Seating Tickets Only&#8221;，我也不管三七二十一就跑去跟人家领票，结果轮到我时那
-个小姐问我，&#8221;Which block?&#8221; 我以为她是问我想要坐那一区，所以就告诉她，&#8221;Whatever,
- I don&#8217;t care.&#8221; (随便都可以啦！)，她又耐著性子告诉我，&#8221;You must tell me
-which block.&#8221; 我就说，&#8221;I really don&#8217;t care.&#8221; (我真的不介意。) 她实在是拿
-我没办法，只好告诉我，&#8221;There is no ticket for you.&#8221; 我只好自己摸摸鼻子走开，
-但心中却留下一大团疑惑，为什么别人都领到票就我没有？真是太不公平了！后来
-当我知道 block seating 指的是什么之后，才知道自己当时有多么地丢脸。</p>
-
-<p>7. I guess all of those people are coming for the home game. 
-我猜想所有的人都是来看主场赛的吧！</p>
-
-
-<p>当一个球队在自己的主场上比赛通常就称为 home game，像这种比赛观众当然都是
-一面倒地为自己的球队加油，所以我们常说一个队伍在自己的主场上打球有所谓的
-「主场优势」，主场优势在英文里就是 home advantage。例如，&#8221;We have home advantage
-against Duke tomorrow.&#8221; (明天我们对 Duke 的比赛有主场优势。)</p>
-
-<p>另外还有所谓的 home opening game，也就是在主场的开幕战，那更是不得了，门
-票一张叫价美金二三十块照样还是可以让四五万人的场地座无虚席。甚至像在密西
-根大学一场比赛居然可以吸引十万以上的观众，看来在美国办大学真是好赚。</p>
-
-
-<p>有时我们还会听到老美说 homecoming football game，这又是什么东西呢？homecoming
-day 就是校友的返校日，以前毕业的校友可以利用这一天回到母校看一看，而校方
-呢有时也会特意安排一些球赛让这些校友们回想一下当年的学生生涯。当然啦，为
-了让这些校友们高兴，(这样子等下捐款才会多捐一点！) homecoming football game
-所安排的对手通常都是十分肉脚，这样子才容易把它们拿来痛扁祭旗让校友开心。</p>
-
-<p>8. We are 4-2 at this point, but I think we&#8217;re getting better and better. 
-
-现在的战绩是四胜二负，但我想我们会越来越好。</p>
-
-
-<p>一个球队的战绩通常是讲几胜几负，例如四胜二负的话就可以说 Four wins and two
-loses。但在口语上一般都力求精简，老美一般只讲 four and two，例如，&#8221;We are
-four and two after this win.&#8221; 这句话的意思是说，在这场胜利之后，我们的战
-绩成了四胜二负。但这么精简的结果常常苦了我们这些外国学生，搞不清楚这个 four
-and two 是什么东西，其实就是报战绩的一种讲法而已。</p>
-
-<p>另外在棒球比赛里也常听到类似 two and three 这样的讲法，什么意思呢？就是 
-two strikes and three balls，也就是「二好球三坏球」的意思啦！</p>
-
-
-<ol>
-<li>We lost by only three points.
-我们小输三分。</li>
-</ol>
-
-
-<p>在英文里要讲赢了几分或是输了几分非常简单，用 win by 和 lose by (通常是用
-的过去式) 这两个片语就成了，例如我们赢了七分，你可以说，&#8221;We won by seven.&#8221; 
-或是在数字后加上 points 代表赢或输了几「分」，例如:  &#8220;We won by seven points.
-&#8221; 输了几分则把 won 改成 lost，例如 &#8220;We lost by seven.&#8221; 或是 &#8220;We lost by 
-seven points.&#8221; </p>
-
-
-<p>如果要讲说是因为什么原因才赢球或输球的，也可以用同样类似的讲法。例如 &#8220;We
-lost the game by fumbling the ball.&#8221; (今天的球赛都是因为失球才输掉的。) 用
-的也是 lost + by 这种用法。</p>
-
-<p>10. Our quarterback is one of the candidates for the Heisman Trophy this 
-year. 
-我们的四分卫是今年 Heisman Trophy 的候选人之一。</p>
-
-
-<p>Heisman 原来是 NCAA 里一个非常有名的教练，他曾在纽约市及我们学校 Georgia
-Tech 担任教练一职 (我们的校园里还有这位先生的铜像喔！)，他辉煌的战绩让人
-们在他死后用他的名字设立了一个奖项，也就是 Heisman Trophy，这是 NCAA 的最
-高荣誉之一，每年颁给一位最有价值的球员，所以今年的 Heisman Trophy 会奖落
-谁家也是老美茶余饭后非常热门的话题，想看看这尊代表至高无上荣誉的 Heisman
-Trophy 到底长什么样的读者，不妨看看: http://heismanmemorialtrophy.com/</p>
-
-<p>生活小故事</p>
-
-
-<p>今天去看我们学校大战马里兰大学 (Maryland) 的美式足球赛，全场从第一分钟到
-最后一秒钟可说是绝无冷场 (never a dull moment)，双方互有领先 (exchange leads)
-，但到最后六秒钟 Maryland 居然以一个三分的 field goal 先追平我们，最后在
-加时赛又因为我们的一次致命失误而战胜我们。坐我隔壁的老美气得跟正要离场的
-球员大喊， &#8220;What&#8217;ve you done today?&#8221; &#8220;I can do better than that!&#8221; 意思就是，</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note98/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note98</id>
-    <content type="html"><![CDATA[<p>奢求，到处天灾人祸不断，让我一时之间颇有世界如此之
-大，居然找不到一个能让人有免于恐惧的地方的感叹，不知各位身处世界各地的华人
-们，是否跟我有著同样的无力感呢？</p>
-
-<p>1. I can&#8217;t feel my hands. 
-我的手麻了. </p>
-
-
-<p>笨霖我在英语笔记里不只强调过一次，美国口语的趋势是用两三个比较常用的字来
-代替一个比较少见的字。例如这个句子就是最好的例子之一。手麻掉了，这个「麻」
-字毫无疑问的可以用numb，所以你可以把这句话说成，&#8221;My hands are numb.&#8221; 但是
-因为前面提到的这个口语简单化驱势，老美们会用 can&#8217;t feel 这两个比较常用的
-字来代替 numb。也就是说老美通常是讲，&#8221;I can&#8217;t feel my hands.&#8221;</p>
-
-<p>同样的道理，当你因为蹲太久而脚麻了，就可以说，&#8221;I can&#8217;t feel my legs.&#8221; 或
-是 &#8220;My legs fell asleep.&#8221; 当你吃的东西太辣了，以致于整个嘴巴都麻掉了，这时
-你可以说，&#8221;I can&#8217;t feel my tongue/ mouth.  It&#8217;s too hot.&#8221;  大家有没有觉得
-学美语是不是真的很简单？只要记一些简单的字就能变化出许多不同的用法。</p>
-
-
-<ol>
-<li>We shook hands after I recognized that he is a big movie star.
-当我认出他是电影明星之后他还跟我握手。</li>
-</ol>
-
-
-<p>受到中文母语干扰的影响，许多人会把「握手」讲成 hold hands，这其实是不对的。
-英文里的握手应该是 shake hands 才对。例如，&#8221;We shook hands after we finalized 
-the deal.&#8221; (当我们完成了这笔交易之后互相握手。) 而 hold hands 呢则是中文
-里「牵手」的意思，例如，&#8221;I like my boyfriend to hold my hands.&#8221; (我喜欢我
-男朋友牵我的手。) Shake hands 引申的用法则是指「和…携手合作」或是「和…达
-成协议」，例如 &#8220;United States shake hands with Pakistan to capture terrorists.
-&#8221; (美国和巴基斯坦合作逮捕恐怖份子) </p>
-
-
-<p>除了直接讲 hold hands 之外，我们还可以用 hand in hand 这个片语，也是手牵
-着手，同样也有携手合作的意思。例如 &#8220;They look so made for each other when
-they walk hand in hand.&#8221; (当他们手牵手走在路上时看起来好速配喔！) 或是 &#8220;Two
-companies are hand in hand to develop new drugs.&#8221; (两家公司现在携手合作开
-发新药。)</p>
-
-<p>3. I saw them walk arm in arm last weekend. 
-我上周末看到他们手勾着手走着。</p>
-
-
-<p>上面提到手牵手是 hold hands，但是如果不但是牵著，而是手勾着手呢？则我们可
-以用 arm in arm 这种说法。例如，&#8221;They were arm in arm walking down the street.
-&#8221; (他们手勾着手沿著街道走下去。) 还有你可以说两个人 &#8220;Walk side by side.&#8221;，
-这句话是强调肩并著肩走着的意思，另外如果是男生用手搂著女生的肩膀，这种情况
-你可以说，&#8221;They walked together and he put his arm around her shoulder.&#8221;</p>
-
-<p>有趣的一点是，在美国的校园里 (至少在我住的这个地方)，是不常看到情侣们 arm 
-in arm 或是 hand in hand 的，这跟台湾校园里常见的二人一体，走在路上都可以
-大方的搂搂抱抱实在是大相径庭，我的结论是？台湾太小了，以致于情侣们约会都没
-地方去，又不敢把女朋友大大方方地带回家，自然就会流落在街头供游人观赏。但
-在美国呢？大学生几乎都自己住外面，大家都很重视隐私权，所以宁愿带回自己的住
-处。只不过像我住的宿舍「隔音」效果不是很好，常常造成一些小小的困扰。:D</p>
-
-
-<ol>
-<li>Hand it to me right now.
-现在就把它交给我。</li>
-</ol>
-
-
-<p>我有时会注意到老美的一些用字，虽然我能了解，但自已从来不会去用的。例如老
-美讲 head home，也就是 go home 的意思。像这种用法当然我一听就能懂，但要我
-自己用 head home 就比较难了。同样的例子也发生在 hand 这个字上，一般我们都
-喜□
-w讲 give it to me，但如果你注意一下老美的讲话习惯，他们也常讲 hand it to 
-me。像笨霖我最近迷上了老美的 Flag Football，打球时我的队友就常说，&#8221;Hand me 
-the ball.&#8221; </p>
-
-
-<p>不过以上所举出的例子，head/ go 和 give/ hand 其实跟个人习惯和地域有很大的
-关系。像我一些从南方各州来的同学，我就听他们常用 head 或 hand 当动词，但是
-我今年的新室友是从纽约来的，他看到我笔记上写 head home 还问我这是什么东西
-,他说他向来只会用 go / give，但很少用 head / hand，特别是像 &#8220;Where are you
-heading?&#8221; 这种话他是从来不会讲的。</p>
-
-<p>5. Does knuckle cracking bother anybody? 
-折手指会让任何人觉得困扰吗？</p>
-
-
-<p>&#8220;Does knuckle cracking bother anybody?&#8221; 这句话是 Friends (六人行) 里的 Joey
-的台词，我也是看 Friends 才知道，原来把手指关节 (knuckle) 折著喀喀作响就叫
- knuckle cracking 喔！真好玩。但是听说常折手指手指会变粗，所以下次看到□
-O人在 knuckle cracking 时不妨警告他一下，&#8221;I warn you that knuckle cracking
-will give you big knuckles!&#8221; (折手指关节会变粗喔！)</p>
-
-<p>不过大家知道折手指头为什么会发出声音吗？我原来都以为是骨头相互摩擦时产生
-的声音，后来一个学医的老美告诉我，那个声音其实是关节里的少量空气 (关节里居
-然还有空气？真是匪夷所思)，因受到挤压而爆裂的声音，很神奇吧！</p>
-
-
-<ol>
-<li>They&#8217;ve done a good job.  Let&#8217;s give them a big hand.
-他们真是干得不错，让我们给他们掌声鼓励鼓励吧！</li>
-</ol>
-
-
-<p>Give someone a hand 有两个常用的意思，一个是指「助别人一臂之力」，例如你
-看到别人正在搬重的东西，就可以问问他，&#8221;Do you need a hand?&#8221; (需不需要帮忙
-呢？) 来关心别人一下。Give someone a hand 另一个则是指「掌声鼓励」，例如 
-&#8220;Let&#8217;s give them a hand.&#8221; 就是给别人掌声鼓励的意思。</p>
-
-
-<p>鼓掌还有很多其它的讲法，例如像 clap your hands, give someone a round of
-applause 都是，唯一的区别 clap your hands 是比较口语化的讲法，跟 give someone
-a hand 差不多。而是 applause 这个字算是比较正式的讲法，比方说有来宾演讲，
-演讲结束后主持人可以说，&#8221;Let&#8217;s give him a round of applause.&#8221; (让我们给他
-一轮掌声。) 如果有时候演讲实在是太精采了，你还可以再说，&#8221;Let&#8217;s give him another
-round of applause.&#8221; 也就是让我们再一次掌声鼓励的意思。</p>
-
-<p>7. If you have any questions, please raise your hand now. 
-如果你有任何问题，请现在举手。</p>
-
-
-<p>举手这个动作在英文里用的是 raise your hand，例如我们在征询别人的意见时，
-可以这样问，&#8221;Anybody with me? Raise your hand.&#8221;  (谁同意我的提议的，请举手
-)。而把手放下的话则是用 lower your hand，或是 put your hand down。例如，&#8221;If
-your name is called, please put your hand down.&#8221; (如果你的名字被点到的话，
-请把手放下。)</p>
-
-<P>举手除了平铺直述地说 raise your hand 之外，我还听老美讲过 &#8220;Hands in the 
-air.&#8221; 或是 &#8220;Raise your hand in the air.&#8221; 我觉得这种讲法也是简单明了，值得
-一学。</p>
-
-
-<ol>
-<li>I think we should grab a guy and ask him for help.
-我想我们应该抓一个人请他帮我们。</li>
-</ol>
-
-
-<p>讲到手的动作，就不能不提一下 grab 这个万用动词。Grab 就是中文里「抓」的意
-思，例如我说，我们随便抓一点东西吃吧，就是 &#8220;Let&#8217;s grab something to eat.&#8221; 
-随便抓一个人嫁了吧，&#8221;Just grab a guy and marry him.&#8221;  这种话当拿来刺激那些
-想结婚又找不到男朋友的女生时非常有用，但请小心自己的生命安全。</p>
-
-
-<p>但是 grab 也常指抓住无形的东西，例如像是注意 (attention)，机会 (chance,
-opportunity) 啦！比方说演讲的人想要抓住听众的注意力，就是 &#8220;The speaker wants
-to grab the audience&#8217;s attention.&#8221; 或是你应该抓住这个机会，&#8221;You should grab
-this chance.&#8221;</p>
-
-<p>9. I cannot believe all the stuff you want to pull (off). 
-我真不敢相信全部这些你想作的坏事。</p>
-
-
-<p>Pull 是用手「拉」的意思，跟 Push 「推」这个字刚好是天生的一对，所以在门上
-常常可以看到一边写 Pull，而另一边写  Push。不过在口语上 Pull 有另外的解释，
-就是指干坏事，或是你想作一些不想让别人知道的勾当。例如 pull off a robbery
-(抢劫), pull a prank (恶作剧) 和 pull an all-nighter (开夜车) 等都是常用的
-例子。例如，&#8221;We laughed so hard by all the pranks he tried to pull.&#8221; (我们
-对他想开的这些玩笑狂笑不止。)</p>
-
-<p>10. You&#8217;d better keep your baby within arm&#8217;s reach. 
-你最好把小孩放在伸手可及的地方。</p>
-
-
-<p>Within arm&#8217;s reach 是一个很常用的片语，意指伸手可及的地方，也就是说把它放
-在你身边以方便取用。比如说以前我的室友他很会煮菜，每次看他煮菜时都一定先把
-东西拿出来洗好切好，再把东西下锅，他就说过，&#8221;It&#8217;s easier to cook if you put
-everything within arm&#8217;s reach.&#8221; (如果你把东西都放在伸手可及的地方的话，煮
-起饭来就会容易的多。</p>
-
-<p>Reach 这个字也可以当动词和手合用，就是伸出手去，看能不能碰到某样东西。例
-如，&#8221;Could you reach that box? It&#8217;s too high for me.&#8221; (你能不能构得到那个
-箱子，太高了我碰不到。) 或是比方说我要伸手去口袋里拿东西，这里用 reach into 
-my pocket 比 put my hand in my pocket 来得好。整句话就是，&#8221;I reached into 
-my pocket to get some stuff.&#8221;  </p>
-
-
-<p>生活小故事</p>
-
-<p>自从 911 惨剧发生以来，美国的航空检查简直就是完全变了一个样。以前标榜个人
-自由的美国，任何人都可以大摇大摆地进候机室，不管你是乘客或不是乘客都一样。
-个人的手提行李也几乎都是放在萤幕没有人监看的 X 光扫描带上晃一下就进去了，
-从来也没有人会来翻你的行李，更别说金属探测器，它连我口袋里的钥匙铜板都侦测
-不出，所以我想小刀大刀大概也侦测不到吧！所以说这些仪器都是防居子不防小人，
-一旦被有心人士利用，后果就不堪设想。所以我说美国会在一天内同时有四架民航机
-被劫，我实在一点都不意外。不过美国现在似乎要洗心革面从心作人了，不但机场
-的候机室只准登机旅客进去，手提行李的检查也是超严格。那天我同学带了一瓶水去
-坐飞机，检查行李的那个人问她，&#8221;What&#8217;s this?&#8221; 她说 &#8220;Water.&#8221; 那人还不放心，
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note97/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note97</id>
-    <content type="html"><![CDATA[<p>正好是怎么样骂男人，我想这样子你们就不会说小笨霖太偏心了吧！</p>
-
-<p>1. That woman is robbing the cradle! 
-那个女人居然老牛吃嫩草！</p>
-
-
-<p>记得之前「老少配」在台湾风行时，我在美国也跟着热了起来，每次看到我的老美
-朋友，我就会跟他们谈谈台湾老少配的新闻，但是叙述了半天，就是少一句「俗够
-有力」(台语) 的结论。后来我好不容易才发现了这句瑰宝 &#8220;She is robbing the
-cradle.&#8221; 这里的 rob 是抢劫的意思，而 cradle 则是指婴儿摇篮，整句话翻成
-「她抢劫了摇篮」，也就是说她所找的对象比她年纪小很多，好像是硬把别人的婴
-儿从摇篮中抱走一样，讲得白话一点就是「老牛吃嫩草」啦！当我学会这句话之后
-大喜过望，正想去逢人就讲的时候，很不幸的(或是说不幸中的大幸)，老少配居然
-分手了，所以这句话我也就从没派上用场过，只好在这里把它分享给大家。</p>
-
-<p>不过通常老美都是老男人在吃嫩草，所以一般听到的都是，&#8221;He is robbing the cradle.
-&#8221; 所以当你跟老美说 &#8220;She is robbing the cradle.&#8221; 时，他们可能会怀疑地问 &#8220;She?&#8221;
- 毕竟这种老娘吃嫩草的情形实在是不多见。</p>
-
-
-<ol>
-<li>My best friend is going to die a virgin.
-我最好的朋友注定要当一辈子处女了。</li>
-</ol>
-
-
-<p>中文里用「老处女」来形容年纪很大但还没有性经验的女生，但是这句话到了美国
-可别直接翻成 old virgin，这样子别人是听不懂的。英文里的老处女叫 old maid，
-或是 spinster，但老美有一个片语更生活化的用法，但也更恶毒叫  die a virgin，
-(注意：die 后面直接加 a virgin 就行了，不要画蛇添足写成 die as a virgin。
-) 也就是诅咒人家到死前都还是处女。例如你今年都三十好几了，却连个男朋友都
-没交过，这时你的损友可能就会笑你，&#8221;I think you are going to die a virgin!&#8221; 
-像这种损友真是不交也罢！</p>
-
-
-<p>注意在英文里 virgin 这个字可以同时指处女和处男。所以男生没事也可以嚷嚷，
-&#8220;I don&#8217;t want to die a virgin!&#8221; 看看老天爷会不会听见你的呼唤，赏一个好女
-孩给你。</p>
-
-<p>My girlfriend is so neurotic.  
-我的女友非常神经质。</p>
-
-
-<p>常看到有人把「神经质」翻成 sensitive (敏感的)，或是 emotional (情绪化的)，
-或是 on edge (紧张兮兮的)。这几个字的用法其实意思都很接近啦，反正女生给人
-家的刻板印象都差不多，只不过提醒大家一下，neurotic 这个从 neuron (神经原
-) 衍生出来的字才是正牌的「神经质」喔！不过一般来说诸位都很会用 sensitive
-和 emotional，但比较不知道也可以用 on edge 和 neurotic。所以我分别用 on
-edge 和 neurotic 造个句子来加深大家的印象，&#8221;We don&#8217;t get along too well
-&#8216;coz she is always on edge.&#8221; (我们处得并不是很好，因为她凡事都紧张兮兮的。
-)  &#8220;He wants to divorce her because she is so neurotic.&#8221; (因为她太神经质
-了，所以他要跟她离婚。)</p>
-
-<p>4. You are a disgrace of a woman. 
-你真是女人的耻辱。</p>
-
-
-<p>大家知不知道在美国想学骂人的话要看哪一个节目？没错啦！就是 Jerry Springer
-Show。在这个 show 里面你可以学到各式各样骂人的话，只可惜每次有一些比较低
-俗的话都被消音消掉了！不过这个 disgrace 的用法就是我在 Jerry Springer Show
-里面学到的喔！例如 &#8220;Is it a disgrace for a woman having too many boyfriends?&#8221;
- (对女人来说，交太多男朋友算是件耻辱的事吗？) 如果我们要说一个女生是女人
-的耻辱，或是女人中的败类呢？(就像 Jerry Springer Show 里观众常常在骂台上
-的来宾一样) 就是 &#8220;You are a disgrace of a woman.&#8221; 我还听老美骂过更夸张的，
-他说，&#8221;You are a disgrace of a human being.&#8221; (你真是人类的耻辱。) 但除非
-是特别强调是女人的耻辱或是人类的耻辱，不然通常只要说 &#8220;You are a disgrace.&#8221;
-就可以了！</p>
-
-<p>5. Are you trying to get me in my bitch mode or what? 
-你是要让我抓狂还是怎么样？</p>
-
-
-<p>Bitch 这个字算是最常被拿来骂女人的一个字吧！凡是任何「坏女人」，我们都可
-以称之为 bitch。但是现在 bitch 已经不算是女人的专用字了，有些「坏男人」我
-们也可以骂他是 bitch，但比较少见就是了。像是在电影 Legally Blonde 法庭上那
-一幕，一位在旁听席上的男子骂正坐在证人席上的男子，&#8221;You bitch.&#8221; 就是一个很
-好的例子。甚至有时候 bitch 也不单指人，像是如果要抱怨人生事事不如意的话，
-我们也可以说，&#8221;Life is a bitch.&#8221;</p>
-
-<p>但一般我听人家在骂人都是，&#8221;You are a bitch.&#8221; &#8220;She is a bitch.&#8221;，好像 bitch 
-就只能这么用。但有一次我听到人家讲 bitch mode (坏女人模式)，觉得十分有趣，
-这就好比说一个人可以有正常模式 normal mode 跟坏女人模式 bitch mode。当她
-生气时，就会从正常模式切换成坏女人模式，所以例句中说，&#8221;Are you trying to 
-get me in my bitch mode or what?&#8221; 就是这个道理。又比方说吧，有一个女生平
-常看起来乖乖的，从来也没发过太大的脾气，但有一天突然吃错药火山爆发了，像
-这种情况你就可以说，&#8221;I&#8217;ve never seen her in the bitch mode.  Today is my 
-first time.&#8221; (我从来没见她发脾气，今天还是头一糟呢！)</p>
-
-
-<ol>
-<li>She is a whore.
-她是一个妓女。</li>
-</ol>
-
-
-<p>Bitch 还不算是真正恶毒的，whore 这个字才是真正用来对付你真的很讨厌的女人。
-所以女人有时会自豪地说，&#8221;I&#8217;m a bitch.&#8221; 但绝不会说，&#8221;I&#8217;m a whore.&#8221; 因为 whore 
-这个字是妓女的意思，非常难听，当然不会有女生说自己是妓女吧？</p>
-
-
-<p>妓女在英语中的讲法非常多，不过比较常见的大概有三个 prostitute, hooker 跟
- whore。但口语上多半是用 hooker 和 whore，所以有些人(通常是黑人) 把这两个
-字的共同部分 &#8220;ho&#8221; 拿出来作成一个新字，同样也是指妓女的意思。所以下次当你
-听到黑人说，&#8221;She is a ho.&#8221; 不要太惊讶！他不是说 &#8220;She is a hole.&#8221; (她就是一
-个洞？害我开始想入非非了！) 而是 &#8220;She is a whore.&#8221; 这是我之前常误解的地方，
-跟各位读者分享一下。</p>
-
-<p>虽然 whore 的意思是妓女，但这只是一种恶毒的形容词，并没有真正强调对方性生
-活很淫乱的意思，如果是要强调对方到处跟男人发生关系，老美用的是 slut (野女
-人) 这个字，指的是 sleep around 的女人。当然各位没把握的话不要乱用，不然
-你的下场可是会很凄惨的。</p>
-
-
-<ol>
-<li>I can&#8217;t stand her because she is a high-maintenance woman. <br/>
-她太难养了，我再也不能忍受她。</li>
-</ol>
-
-
-<p>Maintenance 这个字指的是维修、保养。像汽车不是都有什么 5000 公里保养吗？
-这个保养在英文里就是 maintenance 这个字。而所谓的 high maintenance 指的就
-是保养维修的费用很高，通常被用来形容女人很爱花钱，对自己很好，她们像一部设
-计精密、需要时时维修的机器。各位如果有读过王文华写的「蛋白质女孩」，其中
-有一段写到高维修女子，就是从英语的 high maintenance 直接翻译过来的，很多人
-可能不知道吧！用法上很简单，把 high-maintenance 当成一个形容词用就行啦！所
-以可以说，&#8221;She is high-maintenance.&#8221; 或是  &#8220;My mom is a high-maintenance 
-woman.&#8221; 诸如此类的。</p>
-
-
-<p>还有如果我们要形容一个女孩子很难侍候，有大小姐脾气要怎么说？很简单，就说
- &#8220;She is a princess.&#8221; (她是一个公主)，各位想想公主会是怎么样子？当然是很难
-养的啦！不过如果老美跟你说，&#8221;She is a princess.&#8221; 时，你要注意听他的语气，
-如果是讽刺挖苦的话当然就是指这个女孩子很难伺候，不过有时 &#8220;She is a princess.&#8221;
- 也可以用来形容一个女孩子很高贵，气质出众。所以不同的语气可以代表不同的意
-思，请注意。</p>
-
-<p>8. She&#8217;s got him wrapped around her fingers. 
-她要他作任何事他都会乖乖听话。</p>
-
-
-<p>用来形容女生把她的另一半管得死死的最好用的就是 whip 这个字，例如我们可以
-说，&#8221;She&#8217;s got him whipped.&#8221; 或是 &#8220;He is whipped.&#8221; 都是指同样的事情。但老
-美还有许多句生动的成语可以用来形容这个残酷的事实。例如 &#8220;She wears the pants
-in their relationship.&#8221; 或是 &#8220;She&#8217;s got him wrapped around her fingers.&#8221;
-都是同样指她要他往东，他绝对不敢往西。我的老美朋友告诉我还有一句，&#8221;She&#8217;s
-got him eating out of her hands.&#8221; 意思差不多但比较不常用，各位看看就算了。</p>
-
-<p>Get someone wrapped around one&#8217;s fingers 的用法不限于在男女关系中，平常我
-们要说某人对我「言听计从」或是「百依百顺」时用的也是这句成语。像前几天我才
-去看了由劳勃迪尼洛主演的 &#8220;The Score&#8221; 这部电影。片中那个装疯卖傻的年轻人提
-到另外那个扫地的老头时就说，&#8221;I&#8217;ve got him wrapped around my fingers.&#8221; 他的
-意思就是说那个老头对我是「言听计从」，想训练自己听力的朋友不妨等 HBO 播放
-时或租录影带回来看！</p>
-
-
-<ol>
-<li>She is a shrew.
-她是一个泼妇。</li>
-</ol>
-
-
-<p>在英文里也有形容女人为 tigress (母老虎) 这么生动有趣的用法，但是英文里的
- tigress 指的是一个女人很性感 (sexy)，而非很凶悍 (tough) 的意思，这跟中文
-里对「母老虎」的解释相差十万八千里。如果你是要形容泼妇，英文只有 shrew, virago,
- vixen 这几个字，但 shrew 大概算是比较常用的一个。要是各位对莎士比亚小有研
-究的话，就应该知道莎翁有一篇名著就叫 The Taming of the Shrew，中文翻成「驯
-悍记」。这篇剧本还在 60 年代改拍成电影，当时由银色夫妻李察波顿和伊莉莎白
-泰勒分饰男女主角，讲得是一位凶悍的丈夫采取「以暴制暴」的手段花了好大的功夫
-最后好不容易才驯服他的悍妇，我相信女性主义者大概对这种电影没什么兴趣。</p>
-
-
-<p>英文里还有一个字 shrewd 意指精明能干的，也是从 shrew 泼妇这个字演变过来的。
-或许老美也是觉得，女生太精明能干 (shrewd) 通常也会是一个泼妇 (shrew)，看来
-他们也是蛮大男人的吧！</p>
-
-<p>10. She&#8217;s a ballbreaker.
-
-她真是一个烦人的女人。</p>
-
-
-<p>Ballbreaker 是一个给女生专用的字眼，意思就是她总是会有一些事情需要来烦你。
-女生嘛，今天是头发剪得不好看就一直念念念个不停。明天又说上次去买的皮包有点
-小瑕疵，你什么时候去帮我跟小姐理论，后天又说我今天心情不好，你到底什么时候可以陪我聊天。OK，像这种女人就可以被称之为 ballbreaker。你除了可以说，
-&#8220;She&#8217;s a ballbreaker.&#8221; 之外，也可以说 &#8220;She really busts my balls.&#8221;  大家应
-该知道这个 my balls 是指什么 ball 吧！所以这里才要加复数。如果你觉得讲 ballbreaker
-或 balls 不雅的话，还有一种用法， &#8220;She&#8217;s always on my case.&#8221; 意思也是一模
-一样的。</p>
-
-<p>生活小故事 </p>
-
-
-<p>不知各位去看过侏逻纪公园第三集 (Jurassic Park III) 了没？里面有一幕当大人
-都快被恐龙吃掉时打手机回家求救，结果不巧被他的小孩接到，原本他是要把电话拿
-给妈妈的，但他临时看到电视上正在拨放 Barney，就跟著音乐和 Barney 跳起舞来,当演到这一幕时，全场的观众都开心地大笑，但我就觉得似乎不怎么好笑，害我有
-些小小的沮丧。后来散场之后我朋友才跟我解释，那幕之所以好笑是因为 Barney 的
-关系。美国有一个 Barney show，是给大约二到六岁的小朋友看的电视节目。而这里
-的笑点在于，Barney 也是一只小恐龙！导演故意利用电视上可爱的小恐龙和侏逻纪
-公园里凶恶的吃人恐龙来形成一个非常讽刺的画面，所以会非常非常好笑。但对于我</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note96/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note96</id>
-    <content type="html"><![CDATA[<p>整理好了，这样各位就不用那样辛苦去慢慢摸索了！</p>
-
-<p>1.Your shoelace is untied.
-你的鞋带松了。</p>
-
-
-<p>记得第一年刚来时，每次我要提醒老美你的鞋带掉了，我都是这么说的，&#8221;Your shoelace
-loosened.&#8221; 当然这句话是错的, 因为 shoelace (鞋带) 是一个东西, 当然不会自
-己有松掉 (loosen) 的动作。但反正老美听到 shoelace 猜也知道我在讲什么, 所
-以大家相安无事。后来我受不了好奇心的趋使，跑去问老美「你的鞋带松了」的正
-确用法为何，这时我才知道原来正确的讲法是 &#8220;Your shoelace is untied.&#8221; 这里
-的 untied 是从 tie (v. 绑紧) 变化而来, untied 意思为没有绑紧的。所以在英
-语中他们不讲鞋带松了 (loosen), 而是讲没有绑紧 (untied) 的。</p>
-
-<p>有时候老美会偷懒一下, 只讲 &#8220;Your shoe is untied.&#8221; 这样子也是可以的。像三
-四岁的小孩子不是都要学如何绑鞋带吗？所以那个年纪的小孩子常会很自豪地讲，
-&#8220;I know how to tie my shoelaces.&#8221; 或是 &#8220;I know how to tie my shoe.&#8221; (我知
-道要怎么绑鞋带喔！) </p>
-
-
-<ol>
-<li>My legs are so sore.
-我的腿很酸痛。</li>
-</ol>
-
-
-<p>如果前一晚到舞厅跳了一整夜的舞，隔天早上起来会说的第一句话是什么？没错，
-就是 &#8220;My legs are so sore.&#8221; 或是 &#8220;My legs are aching.&#8221; 就是说我的腿很酸痛。
-我还听过有人讲 &#8220;My legs are painful.&#8221; 但是 painful (痛苦的) 程度上比较严
-重，除非你是腿真的受伤了，例如脚去扭到了 (twisted)，我们才讲 painful，如
-果只是单纯的酸痛的话，就用 sore 和 aching 就行了。但要是你比较喜欢口语的
-讲法，则我建议你说，&#8221;My legs are killing me.&#8221; 这是一种很通行的用法，当然
- kill 的用法不限于脚，你也可以说，&#8221;My head(ache) is killing me.&#8221; (我的头
-痛死了。)</p>
-
-
-<p>记得以前听老美说 &#8220;My legs are sore.&#8221; 又因为中文里是讲腿很「酸」，所以我误
-以为老美说的 sore 是 sour (酸) 这个字，刚好发音也差不多。所以我就常跟人家
-讲，&#8221;My legs are sour.&#8221; 其实这真是一个大乌龙，因为 sour 的酸可以指的是
-「臭酸」。所以这句话变成了，「我的腿臭酸了！」这还像话吗？</p>
-
-<p>3. Your feet stink.  I guess you have athlete&#8217;s foot. 
-你的脚好臭，我猜你一定是有香港脚。</p>
-
-
-<p>想到脚丫子通常会让人联想到什么？我想一定有人会说「很臭」吧！在英文里很臭
-是用动词 stink 或 smell 来表示。例如你说 &#8220;Your feet stink.&#8221; 或是 &#8220;Your feet
-smell.&#8221; 就是你的脚很臭的意思。因为脚的「臭」名远播，所有时候老美遇到食物
-味道很恶心他们会说，&#8221;Their food taste like feet.&#8221; (他们的食物吃起来跟脚的
-味道一样。) 多恶心啊！不过上次我跟一位老美介绍到我们民族美食时提到臭豆腐
-(stinking tofu)，我一时想不到比较贴切的形容词来形容臭豆腐的美味，我就跟他
-说, &#8220;It tastes like feet.&#8221; 只见他作出了一个捂著鼻子的动作说 &#8220;Yuck.&#8221;，我想
-他这辈子大概是不会去尝试臭豆腐的美味了吧！呵呵。</p>
-
-<p>另外提到脚臭很多人会联想到香港脚，这个字在英文里就是 athlete&#8217;s foot，我想
-是因为香港脚多半出现在运动员身上才会被称之为 athlete&#8217;s foot 吧！但在中文
-里为何称作「香港脚」，听来有点匪夷所思。不过据说是因为曾在香港大规模流行
-而得名的。 </p>
-
-
-<ol>
-<li>Stomp your feet.
-跺你的脚。</li>
-</ol>
-
-
-<p>记得去年去洛城参观环球影城 (Universal Studio) 时，里面有一场电影动物明星
-秀蛮有意思的，那里面的动物实在是太听话了，让我想说他们是不是真的懂人话。
-OK 这不是重点，有一段节目主持人要观众跟他配合，他说，&#8221;Clap your hands.&#8221; 
-这就是拍手咩，我就跟著拍手了，再来他又说了一句，&#8221;Stomp your feet.&#8221; 我没听
-懂自己呆呆坐在那，结果身旁一时之间天摇地动，原来是大家都在跺脚。后来去别
-的地方也遇过一次主持人要观众配合 &#8220;Stomp your feet.&#8221; 所以我才学到，原来跟
- &#8220;Clap your hands.&#8221; 相对应的就是 &#8220;Stomp your feet.&#8221; 也就是跺脚的意思。</p>
-
-
-<ol>
-<li>She got cold feet before her wedding.
-她在婚礼前临阵退缩。</li>
-</ol>
-
-
-<P>Get cold feet 是一个在美国很流行的片语，意指一个人因为某些事情而过度紧张，
-吓得两腿发软，致于有临阵退缩的意图。例如你要上台演讲，突然之间觉得自已没
-准备充分，完全失去了自信，这时候你就可以说，&#8221;I&#8217;m getting cold feet.  Someone 
-please help me.&#8221; (我太紧张了，谁能帮我？)</p>
-
-
-<p>Get cold feet 在现实生活中的婚礼也许不常见，但在美国的电视电影中常喜欢演
-新娘在婚礼当天落跑，例如最有名的由茱利亚罗勃兹 (Julia Roberts) 所主演的落
-跑新娘 (Runaway Bride) 就是当中的代表作，像这种情形我们就可以说，&#8221;She got
-cold feet before her wedding.&#8221; 另外在六人行 (Friends) 里面也有一集 Monica
-在想要找 Rachel 还是找 Phoebe 当她的伴娘，她就请 Ross 出一些机智问答题让
-她们两人作答，其中有一题就是假设 Monica 在婚礼时说, &#8220;I don&#8217;t want to marry
-Chandler.  I&#8217;ve got cold feet.&#8221; Rachel 给的回答是, &#8220;Look Monica, getting
-cold feet is very common&#8230;.&#8221; (Monica 你听着了，会过度紧张是很平常的事情
-&#8230;) 所以 cold feet 这样的用法在美国真的是很流行的喔！常常可以听到。</p>
-
-<p>6. You have a lead foot. 
-你的腿很重。</p>
-
-
-<p>Lead 这个字是金属「铅」的意思，所以说如果脚是用铅作的一定□重了，但腿很重
-代表什么意思？有二种意思刚好相反的解释，第一个比较常用的解释是指你开车
-「太快」了，因为你的脚很重，所以油门也就踩得特别用力，所以如果你在开车时
-人家说，&#8221;Man, you got a lead foot.&#8221; 就是说你开车太快了。像有一次我们开两
-台车去一家餐厅吃饭，结果当我们到的时候另一台车早就在那里久候多时了。我们
-这车的一个老美就跟那台车的司机说，&#8221;You really got a lead foot.&#8221; (你开得太
-快了。) 另外一个很少用的解释则是指走路「太慢」。例如一行人去爬山结果他老
-兄一个人远远地落在最后面，这时我们可以催促他，&#8221;You got a lead foot or what?&#8221;
-(你是不是脚太重了，走不动呢？)</p>
-
-<p>什么样的人算是开车太快？选录一篇网路上看到的文章 Signs of having a lead 
-foot (开快车的一些征状) 1. &#8220;Your friends car pool with you not to save gas 
-but to save time.&#8221; (你的朋友跟你共乘一辆车不是为了省汽油而是为了省时间。
-) 2. &#8220;When you stop, you leave a mile long skid mark.&#8221; (当你停车时，煞车
-痕长达一哩), 3. &#8220;You always leave at the last minute, but you&#8217;re never late.&#8221;
- (你永远是在最后一分钟出门，但你从不迟到。) 4. Your speed gauge (speedometer)
- is stuck in the max speed position.&#8221; (你的时速表卡在最高速限上。) </p>
-
-
-<ol>
-<li>You are pulling my leg.
-你在愚弄我。</li>
-</ol>
-
-
-<p>Pull my leg 是一个让人很容易误会的片语，( 因为在中文里我们很不巧的有一个
-叫「扯后腿」的用法，所以很多人一看到 pull my leg 就会很直觉的以为是「扯后
-腿」的意思，错！扯后腿的正确讲法应该是, hold someone back 或是 be a drag/hindrance 
-on someone.</p>
-
-
-<p>Pull my leg 正确的意思是当你觉得别人是在开玩笑，而你不相信他所讲的话时你
-说，&#8221;You&#8217;re pulling my leg.&#8221; 意思相当于是「你是在愚弄我吧！」或是「你是跟
-我开玩笑的吧！」也就相当于另一个常用的片语，Get outta here. (Get out of
-here)。例如今天别人说我上次抽中了一台新车，你就可以用带有怀疑口吻的语气说，
-&#8220;You&#8217;re pulling my leg.&#8221; &#8220;Get outta here.&#8221; 或是最简单的讲法，&#8221;You must be
-kidding.&#8221;</p>
-
-<p>顺便请注意一下是 pull one&#8217;s leg 不是 pull one&#8217;s legs，试想你同时拉一个人
-的双腿他不就跌倒了吗？所以只能拉一脚 leg 不能拉两脚 legs！但是 &#8220;You are 
-pulling our legs.&#8221; (你在愚弄我们。)则是正确的用法。</p>
-
-
-<ol>
-<li>Someone tripped over the extension cord.
-有人被延长线给绊倒了。</li>
-</ol>
-
-
-<p>有两个片语 trip up 和 trip over 大家很容易搞混，使用上要小心。首先如果你
-单说自己被绊倒了，没有特定指被什么东西绊倒了，用 be tripped up 或是 get 
-tripped up，例如 &#8220;I got tripped up that&#8217;s why I got hurt.&#8221; (我被绊倒了，
-这也是我为什么受伤的原因了。再来如果是「被」什么东西绊倒了，直接在 be/get 
-tripped up 后面接一个 by something。例如我被延长线绊倒了，就是，&#8221;I got tripped 
-up by the extension cord.&#8221; 你有没有发现！这里是用被动式 &#8220;I got tripped up 
-by&#8230;&#8221; 喔！</p>
-
-
-<p>但 Trip over 指的是自己去「绊到」什么东西，所以一般用的是「主动」，而且通
-常直接在 trip over 之后加上绊倒你的东西。例如同样是被延长线绊倒的，但你想
-用 trip over，原句就会变成 &#8220;I tripped over the extension cord.&#8221; 或是像有些
-人自已走在路上好好的左脚都会去绊倒右脚，这种情况我们可以说 &#8220;I tripped over
-my own feet.&#8221; 或是 &#8220;I tripped over myself.&#8221;</p>
-
-<p>9. He has one foot in the grave.
-他已经一只脚在棺材里了。</p>
-
-
-<p>如果有人已经一只脚 (foot) 都在坟墓 (grave) 里了，这代表的意思应该不用我多
-说，就是指这个人已经一只脚在棺材里了，也就是指风烛残年或是行将入木了。例
-如，&#8221;The old man is so sick.  He has one foot in the grave.&#8221; (这个老人病得
-非常重，他已经是行将入木了)。这句话会变得十分地耳熟能详也要拜英国电视史上，
-在 1990-95 年间所推出的一部非常受欢迎的情境喜剧，名字就叫 One Foot in the
-Grave。主要是描述一对年老的夫妻 Victor 和他的妻子 Margaret 不向命运低头，
-拒绝当行将入木的无用老人而试图努力改变自己的命运。</p>
-
-<p>另外 one foot in the grave 有时候也指「处于极度危险之中」，当 one foot in 
-the grave 作此解释时，它就等于另一个常用到的片语 someone is skating on thin 
-ice 或是简称 someone is on thin ice。例如有人去跟地下钱庄借钱，你就可以说，
-&#8220;Now you have one foot in the grave.&#8221; 或是说 &#8220;You are skating on thin ice.&#8221; 
-如果比这个情况还要更严重，老美还会说，&#8221;You have one foot in the grave and 
-one on banana peel.&#8221; (你一脚踩在坟墓里一脚踩在香蕉皮上。) 想再恐吓他一下
-还可以再加上，&#8221;and that banana peel is slipping.&#8221; (而且香蕉皮还正在滑呢！
-)</p>
-
-
-<ol>
-<li>Triple step, triple step, rock, step.
-交换步交换步后摇前摇踏。</li>
-</ol>
-
-
-<p>不喜欢跳舞的人看到这样的句子大概觉得莫名其妙吧！其实这是美国现今最流行的
-社交舞 Swing 的基本步。我个人非常鼓励大家如果有机会来美国不妨去学一下当前
-最流行的 Swing、 Salsa 或是美国传统的 Square Dance (方块舞)。相信你可以在
-这里认识不少美国朋友而且将来到一些正式的场合需要跳舞时才不会 &#8220;Get cold feet&#8221;。</p>
-
-
-<p>男生在跳这些社交舞时最重要的工作之一就是要会带舞 (lead)，而女生则是要跟舞
- (follow)。而一些最基本的舞步英文是这么说的，前进是 forward，后退是 back。
-踏一步是 step，交叉是 cross。还有常用的像是交换步是 triple step，摇摇是
-rock，一只舞最后结束那个女生下腰的动作则是 dip。学会了这些简单的讲法，就
-至少能在跳舞时和舞伴沟通一下，不然你就只能靠「肢体语言」了！</p>
-
-<p>生活小故事 </p>
-
-
-<p> 上次去波士顿北方的普利茅斯 (Plymouth) 看五月花号 (May Flower) 时，顺道一
-游附近的 Plimoth Plantation，那是一座仿十七世纪印地安人和新英格兰人所建立
-的村落，里面的人都是著当时的传统服装，若有其事地在那里盖房子，种菜煮饭什
-么的。那些人看来就像是住在那个村落里一样，但我一想又不太可能，都二十一世
-纪了还有人住这种破房子。所以我就抓一个正在拔萝卜的老太太问她说，&#8221;Do you
-live here?&#8221; 她回答我说，&#8221;Yes, I live here with my husband and three children.
-&#8221; 我想，「啊？不会吧！她真的住这？」我又接著问了，&#8221;Did you ever go out and
-have some fast food like MacDonald?&#8221; 她一脸很疑惑的样子，说 &#8220;I don&#8217;t understand
-what you mean?&#8221; 我想怪了，大概是我的英文太破了。再问一次，&#8221;How about movies?&#8221;
- 我心想 movies 总不会听不懂了。结果她又好气又好笑地说了，&#8221;It is 1627 now.&#8221;
-(现在是 1627 年), 她一边说还一边拿了一顶草帽给我，&#8221;I think you need this
-because your brain is melting.&#8221; (我想你需要一顶帽子，因为你的脑袋已经开始</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note95/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note95</id>
-    <content type="html"><![CDATA[<p>次分享给各位的都是从美国收集来第一手最新资料, 关于一群美国人如何用一些很简
-单的句子来谈论天气, 真的很实用喔.</p>
-
-<p>1. What is the weather like out there? 
-外面的天气如何?</p>
-
-
-<p>要问别人外面的天气如何, 最简单的问法就是, &#8220;What&#8217;s the weather like out there?&#8221;
- 或是我们可以用一个很简单的 it 来代表天气, 像是 &#8220;What&#8217;s it like out there?&#8221;
-这样讲也可以. 还有要是你不喜欢用 What 来作问句, 你也可以简单地说, &#8220;How is
-the weather out there?&#8221;</p>
-
-<p>但是如果我们想问别人未来的某一个时间会不会出太阳或是会不会下雨, 例如我想
-问人家星期一会下雨吗? 像这种情况我们就可以说, &#8220;Is it supposed to rain on 
-Monday?&#8221; 这里用到了一个 be suppose to 的片语, 这种讲法是老美最喜欢的.  再
-比□
-□“a, 如果我们假设明天有什么活动, 我们常常会要求别人先看看明天会不会出太
-阳或下雨, 这种情况老美他们会说, &#8220;Why don&#8217;t you check and see if it&#8217;s sunny 
-tomorrow?&#8221; (你何不看看明天会不会出太阳呢?) 这里把 see if it&#8217;s sunny 改成 
-see if it&#8217;s going to rain 就变成了看看会不会下雨. </p>
-
-
-<ol>
-<li>It&#8217;s a beautiful day.
-今天天气很好.</li>
-</ol>
-
-
-<p>老美都是怎么形容天气很好的呢? 通常他们会用 beautiful, nice 或是 lovely 来
-形容.  其中我最常听到的就是, &#8220;It&#8217;s a beautiful/nice/lovely day.&#8221; 反之如果
-是天气很糟下大雨呢? 你可以用 &#8220;It&#8217;s nasty.&#8221; 来形容.</p>
-
-
-<p>但是有时候也可以用反讽的讲法.  有一次外头下著倾盆大雨, 我和一个美国同学又
-正好没带伞.  结果她居然说, &#8220;How lovely.&#8221; (天气可真是好啊.)  当时我还正经八
-百地问她是否天气很差可以用 lovely 来形容,  后来我才知道原来她只不过是在讲
-反话，害我有点受骗的感觉.</p>
-
-<P>3. It rained cats and dogs last night. 
-昨晚雨下得很大. </p>
-
-
-<p>Rain cats and dogs 是一句非常受欢迎的俚语啦, 几乎每个在美国的外籍学生都懂
-得用 rain cats and dogs 来形容雨下得很大.  当然如果你不想用俚语的讲法, 你
-可以单说, &#8220;It&#8217;s raining really hard.&#8221; (雨下得很大) 或是, &#8220;We&#8217;re having a
-heavy rain.&#8221; 同样也是雨下得很大.</p>
-
-<p>那雨下得很大, 我被淋成了「落汤鸡」这整句话要怎么讲? 落汤鸡在英文里只能用
- &#8220;I am soaked.&#8221; (我湿透了) 来形容, 所以整句话就成为. &#8220;It&#8217;s raining cats and 
-dogs out there so I am soaked.&#8221;</p>
-
-
-<ol>
-<li>We had a downpour.
-我们刚遇到了一场倾盆大雨.</li>
-</ol>
-
-
-<p>中文里常形容下雨像是用「倒」的一样, 这在英文里也有同样对等的字眼喔! 英文
-里用的是 downpour 这个字.  形容下雨像是用倒的一样 (pour 单独解就是倒水的意
-思).  所以下雨像是用倒的我们可以说, &#8220;We had a downpour.&#8221;</p>
-
-
-<p>另外有一个十分口语的讲法, &#8220;It&#8217;s really coming down out there.&#8221; 也是形容雨
-下得很大, 像是用「倒」的一样.</p>
-
-<p>5. It&#8217;s just sprinkling. 
-只是在下毛毛雨而已. </p>
-
-
-<p>在英文里不管下毛毛雨或是毛毛雪我们都可以用 drizzle 和 sprinkle 这两个动词
-来表示.  Drizzle 这个字就是气象术语里「下毛毛雨」的意思.  而 sprinkle 则是
-一个动词表示「撒」, 但也常被用来形容毛毛雨,  常听到的用法就是, &#8220;It&#8217;s drizzling.
-&#8221; 或是 &#8220;It&#8217;s sprinkling.&#8221;</p>
-
-<p>另外还有一个字叫 scattered rain.  指的则是零零星星地降雨. 例如, &#8220;We have 
-to cancel the track and field contest because of the scattered rain.&#8221; (因
-为零星的降雨所以我们必须取消田径赛. )</p>
-
-
-<ol>
-<li>You need to put on your sweater because it&#8217;s freezing.
-你必须穿上你的毛衣因为外面很冷.</li>
-</ol>
-
-
-<p>形容天气冷有几个形容词可以使用, chilly 指的是天气有点「凉」, cold 指的是
-「冷」, 而 freezing 指的则是「冻」. 除了 freezing 之外, 我室友还教我一个俚
-语, &#8220;It&#8217;s colder than a witch&#8217;s titty.&#8221; 也可以形容天气很冷, (还可以形容不
-友善 unfriendly ) 不过我想这不是什么好话, 因为当时他女朋友一直试图要阻止
-他教我这一句俚语.   至于各种冷的程度完全视个人而定, 像我可能觉得摄氏五度以
-下就算是 freezing 了, 可是你相不相信, 这种温度时还有老美穿着 T 恤在校园里
-走来走去呢! 我想他们觉得这种温度只是 chilly 吧! </p>
-
-
-<p>不过严格上说起来, 只有摄氏零度以下才能说是 freezing. 因为 freeze 是指液体
-凝结成固体, 而 freezing point 则是指「冰点」.水的冰点是摄氏零度, 所以照理
-说零度以下才能算是 freezing 啦! 不过平常何时使用 freezing 则是看个人的感受
-了, 不需严格去界定.</p>
-
-<p>Bonus: 温度零度是用 zero degrees, 而非 zero degree.  许多人常犯这个错误. </p>
-
-
-<ol>
-<li>It&#8217;s burning up out there. <br/>
-外面热得跟火炉似的.</li>
-</ol>
-
-
-<p>以前还没来美国之前常以为美国的冬天比较冷, 所以夏天一定比较不热.  后来我才
-知道真是大错特错.  美国东岸夏天的温度有时会超过华氏 100 度, (相当于摄氏 37.8 
-度), 在这种高温下人体不能自然散热, 简直就像是火炉一样.  </p>
-
-
-<p>在英文里要形容天气像「火炉」一样, 我们可以说, &#8220;It&#8217;s burning up out there.&#8221;
-另外我们也可以说热得跟地狱一样, &#8220;It&#8217;s hot as hell.&#8221; 或是意思一样, 俚语的讲
-法, &#8220;It&#8217;s hot as Hades.&#8221; 这个 Hades 在这里也是指地狱 (hell) 的意思.</p>
-
-<p>8. We can&#8217;t play tennis today because It&#8217;s too windy. 
-我们今天不能打网球因为风太大了. </p>
-
-
-<p>「刮著风」老美通常用形容词 windy 这个字来形容.  例如 &#8220;It&#8217;s windy.&#8221; 简单明
-了.  如果是刮著「微风」, 我们还可以用 &#8220;It&#8217;s breezy.&#8221; 来形容.  另外以前我考
- GRE 时学过一个单字 gusty 意指刮著强风的, 但是平常几乎听不到老美用这个字,
-顶多就是听气象预报时偶尔会听到一两次而己.  所以我们还是乖乖地用 windy 和
- breezy 比较实在.</p>
-
-<p>还有如果没有风天气很「闷热」要用哪个形容词? 我听老美用的是 muggy 这个词. 
-我知道还有一个 GRE 单字 sultry 同样也指「闷热」的 (也可当「风骚」解), 但口
-语上好像比较少听老美这么说.  </p>
-
-
-<ol>
-<li>We had 3 inches of snow and sleet last week.
-上个星期下了三英寸的雪和冰雹.</li>
-</ol>
-
-
-<p>在水文学里 (hydrology) 里的降水 (precipitation) 可分为几种: rain, snow, 
-sleet 和 freezing rain.  我想 rain 和 snow 大家都知道, 不必多说, 而 sleet 
-呢? 指的则是「冰雹」,是没有结晶的冰粒, 不像雪花有著不可思议我六角形结晶. 
-还有freezing rain 指的是「冻雨」. 形成的原因是雨水的温度早就低于零度, 却
-因为缺少结晶的条件所以没有凝结成冰晶, 但是一降到地面就立刻冻住了, 这就是 
-freezing rain.  这几种降水在美国的冬天都常见. </p>
-
-
-<p>另外老美常讲, &#8220;It&#8217;s icy.&#8221; 指的则是地面结冰, 但这种情况不一定有降水, 有时
-候明明昨晚一点雨都没下, 但一早起来大地却是白白的一片.  主要就是地面上跟枝
-头上的露水都结冰了. 但是美则美矣, 提醒各位在 icy road 的状况下不要随便开车
-上路, 那是很危险的一件事.  因为马路上有肉眼无法分办的 black ice, 但你只要
-车子一开过去就会打滑, 这种情况下很容易肇事.</p>
-
-<p>10. The devil&#8217;s beating his wife. 
-魔鬼正在打他的老婆. (正在下太阳雨)</p>
-
-
-<p>当你偶然间看到外头出著太阳却又一边在下雨时, 你是否会感觉到大自然的神奇呢
-? 对中国人而言, 晴天下雨算是一种好兆头, 但对老美而言, 他们觉得这是一种异象
-, 并不是件好事.  所以当他们小时候好奇地问父母为什么会一边下雨一边又出太阳
-呢? 他们的爸妈就会告诉他们. &#8220;The devil&#8217;s beating his wife.&#8221; (魔鬼正在打他
-的老婆.), 当然啦, 我不敢说这样的用法十分普遍, 但是上次听我室友提到还是觉得
-蛮有意思的, 分享给各位读者知道.</p>
-
-<p>生活小故事 </p>
-
-
-<p> 我的室友 Brandon 是一个非常有趣的美国人, 他不但常常会教我许多美国的俚语
-, 还会教我作许多的坏事.  例如说呢? 他上次教我去买一种恶作剧玩具 stink bomb.
-只要在密闭的空间一施放, 瞬时间就会像有十个人同时放屁那么臭.  :D 结果上次看烟火, 但很不幸下大雨, 烟火都被取消了, 许多人躲在屋筵下躲雨.  这时</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note94/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note94</id>
-    <content type="html"><![CDATA[<p>1. You are so sweet. 
-你真的好温柔体贴喔. </p>
-
-
-<p>Sweet 是一个用途很广的形容词, 只要有人作了什么会令人感动, 令人觉得心里有
-甜甜的那种感觉, 我们都可以用 sweet 来形容.  例如我说我昨天带女朋友去看星
-星, 这种事就可以说, &#8220;That&#8217;s so sweet.&#8221; 当然你也可以说这是很浪漫的, &#8220;That&#8217;s
-so romantic.&#8221; 但是通常老美讲, &#8220;That&#8217;s so sweet.&#8221; 的机会比较多啦!</p>
-
-<p>另外形容一个人很 sweet 的话则是说这个人很温柔体贴.  温柔体贴英文里还可以
-说成 considerate 或是 caring, 不过就像我上面提到的, sweet 才是比较普遍的用
-法, 讲 considerate 或是是 caring 听来有点太正式了. 所以下次如果各位女性朋
-友遇到哪位男士让你心里觉得很温馨的话, 就不妨称赞他, &#8220;You are so sweet.&#8221;</p>
-
-
-<ol>
-<li>He is so cute.
-他很可爱.</li>
-</ol>
-
-
-<P>记得以前总觉得称赞男人就是要用 handsome, 称赞可爱的美眉才用 cute. 但后来
-我发现这是一个很大的误会喔!  事实上美国的女人在称赞男人时用的多半也是 &#8220;He 
-is so cute.&#8221; 甚至你也可以说, &#8220;He is gorgeous.&#8221; 但反而比较少说, &#8220;He is so 
-handsome.&#8221;  实例之一就是有一集的 Friends (六人行) 当中 Rachel 看到一个很
-帅的男生, 她是怎么形容她的呢? &#8220;He is way too cute to be straight.&#8221; (他实
-在太可爱了, 所以他一定不会是异性恋.)  我觉得这句话本身对男生实在是一种至
-高无尚的赞美.  所以女生不妨把 &#8220;He is way too cute to be straight.&#8221; 这句话
-给背下来, 等将来遇到喜欢的男生时就可以派上用场. [顺道一提: way 就是很&#8230; 
-, 好用!]</p>
-
-
-<p>另外美国的女生有一点很有趣, 就是他们喜欢欣赏男生的小屁屁.   所以她们看到
-那种很帅的男生时, 不但会说, &#8220;He is so cute.&#8221; 还会说, &#8220;He has a cute butt.&#8221;
-编按: 事实上我也听过不只一个台湾美眉跟我说她们喜欢看男人的屁屁,  看来这似
-乎是大多数女生的共同嗜好, Can you girls tell me why? 男人的屁屁真的对你们
-有著致命的吸引力吗?</p>
-
-<p>3. He is adorable. 
-他很可爱.</p>
-
-
-<p>Adorable 这个字和 cute 都是形容一个人很「可爱」, 但 cute 有「俏皮」的含意
-在内, 而  adorable 则是表现出一种令人强烈喜欢的可爱, 所以虽然我们也可以拿
- adorable 来形容一个男生长得很好看, 但使用上要小心点, 像我个人就有一次很
-糗的经验, 就是有一个美国的小女生拿她男朋友的照片给我看, 我为了表示友好,
-就说了, &#8220;He is so adorable.&#8221; 结果她和她的朋友当场就笑得人仰马翻, 后来我才
-搞清楚了, 在美国男生公开称赞男生 adorable 是件很奇怪的事情, 唯一的可能就
-是这个人是同性恋.  所以在美国请勿随便称赞同性 adorable , 连称赞别人的男朋
-友都不行喔!  :(</p>
-
-<p>附带一提就是 adorable 其实最常用在形容小孩子,  &#8220;Your baby is so adorable.&#8221; 
-(你的婴儿真可爱), 或是形容宠物, &#8220;I like your kitten because it is so adorable.
-&#8221; (我喜欢你的小喵咪因为它好可爱). 但形容人的话就仅限于对异性吧! 另外我想
-跟大家介绍一个很有用的讲法「装可爱」, 这句话在英文里叫 act adorable 或是
- act cute. 例如, &#8220;I tried to act adorable to get all I wanted.&#8221; (我试著装
-可爱来得到我所想要的东西.) 或是, &#8220;He knows how to act cute to get her heart.&#8221;
- (他知道如何去装可爱来博取她的欢心.)</p>
-
-
-<ol>
-<li>A mamma&#8217;s boy is not my type.
-乖乖牌不是我喜欢的类型.</li>
-</ol>
-
-
-<p>Mamma&#8217;s boy 指的就是那种乖乖的男生, 凡事都听爸妈的话.  例如哪天男朋友告诉
-你他必须早点回家帮妈妈作家事, 你就讽刺说, &#8220;Don&#8217;t tell me you are a mamma&#8217;s 
-boy.&#8221; (不要告诉我你是乖小孩喔.) 另外相对于 mamma&#8217;s boy 则是 daddy&#8217;s girl, 
-指的则是乖乖女, 不会在外面随便交男朋友, 每天一定十点前回家那种. 提醒各位
-读者这个 mamma&#8217;s boy 和 daddy&#8217;s girl 都是固定用法, 所以你不会听到老美说, 
-mamma&#8217;s girl 或是 daddy&#8217;s boy.  </p>
-
-
-<p>不过这个 mamma&#8217;s boy 事实上是明褒暗贬啦, 表面上说你很听父母的话, 但事实上
-是说你凡事都唯父母是从.  所以如果你是真的要称赞人家是乖小孩的话, 则最好是
-用 good boy. 例如你叫他手安份一点, 他就真的不乱碰了, 这时你就可以称赞他,
-&#8220;You are a good boy.&#8221;</p>
-
-<p>5. Technically speaking, he is not my prince charming. 
-理论上来说, 他还不是我的白马王子. </p>
-
-
-<p>记得有一次帮老美同学带他三岁大的小孩, 我试著讲白雪公主的故事给她听, 但是
-我发现十分困难, 因为许多专有名词例如白雪公主 (snow white), 白马王子 (prince
-charming), 七个小□人 (seven dwarfs) 我都不会讲.  后来我讲到了, &#8220;Mirror,
-mirror, who is the most beautiful woman in the world.&#8221; 这时她再也忍不住了
-, 纠正我说, 这句应该是, &#8220;Mirror mirror on the wall, who is the fairest of
-them all?&#8221; (魔镜魔镜谁是世界上最美丽的女人?) 真是应验了人家说的, 还不如三
-岁娃儿.</p>
-
-<p>后来她又告诉我, &#8220;My mom told me that prince charming would just come and 
-sweep me off my feet.&#8221; (我妈妈告诉我有一天白马王子会出现, 并且令我倾倒. 
-) 这句话让我有点啼笑皆非. 原来美国人的家庭教育也是教小女生去作梦, 怪不得
-长大后女生都这么难追? 或许我妈妈也该教我, &#8220;You would wake up one day finding 
-your snow white is right next to you.&#8221; (有一天你会一觉醒来发现你的白雪公
-主就在你身边.) 如果每个妈妈都这么教他的小男生, 那么大概就不会有男生想要去
-追女生了吧?</p>
-
-
-<ol>
-<li>I had a feeling that he is the Mr. Right I was looking for.
-我有一种感觉他就是我要找的那个男人.</li>
-</ol>
-
-
-<p>Mr. Right 是个很普遍且很受欢迎的用法,  指的就是那位可以托付终身的男人.  
- 当然了, 有 Mr. Right 自然也有 Mr. Wrong (我记得顺子的专辑里好像有一首歌
-就叫 Mr. Wrong). 故名思意 Mr. Wrong 指的就是无缘的男人或是指弃你而去的负
-心汉, 但是 Mr. Wrong 这样子的用法似乎不太常见就是了.  </p>
-
-
-<p>此外我能想到的除了 Mr. Right 之外, 老美常用的还有 Mr. Perfect (完美先生).
-例如老美常说, &#8220;He is perfect for you.&#8221; (他非常适合你), 同样的我们也可以这
-么说, &#8220;He is your Mr. Perfect.&#8221;</p>
-
-<p>7. You got to admit you are whipped. 
-你必须承认你很听话.</p>
-
-
-<p>Whip 这个字的原意是指拿鞭子抽打, 但当人家说 &#8220;I am whipped.&#8221; 这句话时通常
-指的不是我被鞭子打了, 而是说「我很听女(男)朋友的话」, 或是更传神一点「被
-另一半管得死死的」. 例如有些女生会不准她男朋友跟以前的朋友在一起, 还有不
-管何时何地她都要男朋友陪他, 如果男生也乖乖地听话了, 这时我们就说他, &#8220;He
-is whipped.&#8221;</p>
-
-<p>还有什么样的人可以称得上 whipped 呢? 以下是一些经验法则 1. &#8220;If one calls 
-his girlfriend right after getting out of a movie to tell her how it is, 
-then he is whipped.&#8221; (如果有人一出电影院就打电话给女友的话, 他就是很听话
-)  2.  &#8220;If one brags about what his girlfriend does to him all the time 
-then he is whipped and too embarrassed to admit it.&#8221; (如果有人老是提女朋
-友为他作了些什么, 他不但很听话, 而且还不敢承认) 3. &#8220;If one swears to a girl 
-then he wants to be whipped.&#8221; (如果有人跟女生发誓的话, 他就是想变得听话.) 
-4. &#8220;If one never hangs out with his friends because he is too tied up with 
-his girlfriend then he is whipped.&#8221; (如果有人因为跟女朋友活动排得太满而没
-时间跟朋友出去的话, 他就是很听话. 5. &#8220;If one has a girlfriend smarter than 
-him such that he can&#8217;t play mind games so he is whipped.&#8221; (如果女朋友比他
-聪明的话, 他就没法跟她斗智所以只好听话一点.  </p>
-
-
-<ol>
-<li>He is fine.
-他很棒.</li>
-</ol>
-
-
-<p>很多人可能会误会 &#8220;He is fine.&#8221; 指的是他「还过得去的意思」. 其实不是的.  
-当你说一个人, &#8220;He is fine.&#8221; 时指的是这个人「很好、非常棒」的意思, 程度上
-相当于是, &#8220;He is awesome.&#8221;.  所以这个 fine 跟平常我们打招呼时应付式地回答
-,  &#8220;I am fine.&#8221; 的那个 fine 程度上有很大的区别.  </p>
-
-
-<p></p>
-
-<p>另外老美在口语上也会讲, &#8220;He is fly.&#8221; (这里可不是我打错了, 老美真的是用 is
-+ fly), 指的也是一个人非常棒的意思. 所以如果我们要形容一个令人心动的男生
-, 你有许多选择, 你可以说, &#8220;He is fine.&#8221; &#8220;He is awesome.&#8221; 或是 &#8220;He is fly.&#8221;
-都可以.</p>
-
-<p>9. He is one of the kind. 
-他是独一无二的.</p>
-
-
-<p>One of the kind 是一句成语, 形容某个人或某样东西是独一无二的.  所以当你说
-, &#8220;He is one of the kind.&#8221; 时, 就表示说这个人在你心中有著很特别的地位, 是
-别人所无法取代的.  但有时候我们也可以用 one of the kind 来耍耍嘴皮子.  例
-如人家生气地问你, &#8220;What kind of gentleman are you?&#8221; (你算是什么样的绅士?)
-这时你就可以接 &#8220;One of the kind.&#8221; (独一无二的), 接得很不错吧? 这句话的灵感
-我是看电影 (Shrek) 时学到的.  公主问 Shrek, &#8220;What kind of knight are you?&#8221;
-(你这样算是什么武士), 他就接道, &#8220;One of the kind.&#8221;</p>
-
-<p>此外有一次 Friends (六人行) 中讲到 Phoebe 不喜欢工厂大量生产的家俱, 因为
-那不是 one of the kind.  Rachel 觉得很奇怪, 为什么她只喜欢 one of the kind 
-的东西.  Ross 的解释很有道理, 他说因为 Phoebe 本身是双胞胎 (twins), 所以她
-就不能算是独一无二的 (one of the kind), 也就造成了她盲目崇拜 one of the 
-kind 的心态了.</p>
-
-
-<ol>
-<li>He is an alpha male.
-他是男人中的男人.</li>
-</ol>
-
-
-<p>Alpha male 这个用法我是去看了杜立德怪医 2 (Dr. Dolittle 2) 后才学到的. 指
-的是一群动物中最有权势, 居于领导地位的雄性.  如果把它用在人类, 我们不妨把
-它解释成是 「男人中男人」(man of all men), 同时也可以指那种很有男子气概 (macho)
- , 在男女关系中居支配者角色的男人. 所以有时候可以在女生的征友广告里看到, 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note93/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note93</id>
-    <content type="html"><![CDATA[<p>的, 实在让我有些大失所望.  OK, 暂时撇开吃的部分, 先让我们发挥一下狗仔队的
-精神, 偷听一下老美他们在这个烤肉的 Party 上有些什么样的对话.</p>
-
-<p>1.  You can come over and I&#8217;ll buzz you in. 
-你可以过来了, 我会帮你开门.</p>
-
-
-<p>「帮你开门」这个动作许多人不经思考就会说, open the door for you 但严格说
-来, open the door for you 指的是你亲自去把门打开.  但就像
-是美国有栅栏的那种社区, 通常都是对讲机的按钮一按外面的门就开了.  而这个
-「开门让访客进来」的动作英文里就叫 buzz someone in.  为什么用 buzz 这个字
-呢? 因为按按钮的时候通常可以听到「唧唧」的声音, 这个声音在英文里就叫 buzz.
-(也可以指蜜蜂所发出的嗡嗡声) 所以记得了, 下次要帮别人开门时就可以说, &#8220;I&#8217;ll
-buzz you in.&#8221; 反过来如果你去拜访别人, 则可以说, &#8220;Could you buzz me in?&#8221;</p>
-
-<p>2. May I have a glass of water? 
-可以给我一杯水吗?</p>
-
-
-<p>老美吃饭的习惯菜未上桌前一定会先给你一杯冰开水, 这点习惯是和我们是大不相
-同.  但我听过某些留学生来美国之后就被同化了, 连回台湾时吃饭前都要倒一杯冰
-开水, 结果还被老妈训斥了一顿. 在这里要提醒大家的是, 玻璃杯的讲法叫 glass,
-而非 cup.  Cup 指的是喝咖啡的那种杯子 (有时也可以叫马克杯 mug).  所以你跟
-别人要一杯水, 比较好的讲法应该是 a glass of water, 而非 a cup of water.<br/>
-反之如果想要一杯咖啡, 则要用 a cup of coffee 比较好.</p>
-
-<p>这里再提出一个有趣的问题,  一定是玻璃 glass 作的「玻璃杯」才能叫 glass 吗
-? 答案是否定的, 事实上那种免洗的塑胶杯, 有时候也可以勉强算是 glass.   因
-为我就看过很多次有人问, &#8220;Do you have a glass?&#8221; (你有玻璃杯吗?) 结果人家拿
-给他的却是那种塑胶的免洗杯.  或是像在飞机上空姐不是会问乘客 &#8220;Something to 
-drink?&#8221; 有一次坐我隔壁的乘客回答说, &#8220;A glass of water.&#8221; 但事实上空姐拿给
-他的也是飞机上的那种塑胶杯. </p>
-
-
-<ol>
-<li>We have to clean the grill before we start a fire.
-在生火我们必须把烤架清理干净.</li>
-</ol>
-
-
-<p>美国人爱好 barbecue (BBQ) 是有名的, 所以几乎家家户户有有固定式的烤肉架 (grill)
- 或是整台可以移动的烤肉推车 (smoker).  但如果有洁癖的人我想你大概不敢吃老
-美的 BBQ, 因为老美作 BBQ, 通常就是只把烤肉架给刷一刷后就直接把肉给放上去
-烤, 像我自己烤肉都还会放张锡箔纸在铁架上, 但老美他们才不来这一套, 所以第
-一批烤出来的肉通常带有前人烤肉留下的精华, 所以我还是建议大家吃第二波为妙
-.  不过我也看过一个爱干净的老美.  他把铁架刷完之后还拿了切半的洋葱在架子
-上用力磨擦, 因为洋葱很白, 擦过去就知道架子有多脏, 再加上洋葱本身就有杀菌
-和消毒的功能, 我觉得这是个不错的方法, 各位下次不妨试试.</p>
-
-
-<p>另外生火英文叫 start a fire 或是 light a fire.  美国人生火的方法跟咱们用
-火种生火的方法就是不一样.  他们生火就是油一浇, 火柴一点火就生起来了, 光看
-这点就知道他们平常是怎么浪费能源的. :D 而且老美他们还有一种易燃煤砖 briquette
-本身就含有可起火燃料, 只要用那种长形的点火器 fire starter 一点就然. 甚至
-用液态瓦斯烤肉也有越来越普遍的趋势.  所以有人说「懒惰」为发明创造之母, 这
-点在美国可以得到最佳应证.</p>
-
-<p>4. This guy is not done yet. 
-这家伙还没有熟呢!
-</p>
-
-
-<p>大家知道这个 this guy 在这里指的是什么吗? 指的可不是人而是指正在烤的那些
-食物喔! 真的是非常简单的口语讲法.  例如, 「我们该把这个鸡腿翻面了」这句话
-你就可以这样表达, &#8220;We have to flip over this guy!&#8221; 简单吧! 连 chicken leg
-都不用说.</p>
-
-<p>另外本句还有一个重点就是那个 done. 以前笨霖我每次看到 done 就会把它想成是
-「完成式」, 所以同样的句子我会把它讲成, &#8220;This guy has not been done yet.&#8221; 
-哇~~ 听起来是不是蛮笨的? 大家要知道, done 其实也可以当形容词用, 前面直接
-接 be 动词. 或是从文法上来看, 用 be 动词+ 过去分词 pp 可以表示一种状态, 
-而用完成式表示动作的完成. 所以你常可以听老美说, &#8220;I am done.&#8221; (我做完了. 
-[另意: 我完蛋了]) 而不说 &#8220;I have done.&#8221; 就是这个道理.  所以这里只要简简单
-单地说, &#8220;This guy is not done yet.&#8221; 就可以了. 如果是问人家这块肉烤熟了没
-则可以说, &#8220;Is this guy done yet?&#8221;</p>
-
-
-<ol>
-<li>Don&#8217;t overcook the chicken.
-不要把鸡肉烤得太熟了.</li>
-</ol>
-
-
-<p>在英文里我们常常可以在一个字的前面加上 over, 来表示「太过&#8230; 怎么了」, 例
-如 overvalued (价值高估了), overcrowded (太过拥挤了), overreacted (反应过
-度), 而 overcooked 则是指煮得太熟了.  例如你吃到了一块烤过头的鸡肉, 不妨
-这样子抱怨, &#8220;This chicken was overcooked.  It tasted like rubber.&#8221; (这块
-鸡肉太熟了, 吃起来像橡皮一样.)  如果是烤焦了呢? 则用 burned 来形容.  例如
-, &#8220;Turn down the fire.  The steak is burned.&#8221; (把火关小一点, 牛排已经被烤
-焦了.)</p>
-
-
-<p>相反的, 如果要提醒别人「烤透一点」该怎么讲? 烤熟一点我们可以说 cook through.
-例如, &#8220;The steak is still bloody inside.  Maybe you should cook it through.&#8221;
-(牛排里面都还血淋淋的, 也许你该把它烤透一点.)</p>
-
-<p>6. Anyone need a veggie burger? Here is the patty.
-有人要素食汉堡的吗? (素)肉饼在这里.</p>
-
-
-<p>Veggie 是一个很常用的俚语, 它可以代表 (1) 蔬菜;  vegetable 或是 (2) 素食
-的; vegetarian 或是 (3) 素食主义者; vegetarian. 所以 veggie 在不同的地方
-有不同的意思. 例如:  &#8220;My boyfriend is a veggie so we only go to veggie restaurants.
-&#8221; (我的男朋友是个素食主义者, 所以我们只去素食餐厅.) 所以 例句中的 veggie
-burger 指的就是素食的汉堡.  另外 patty 则是指包在汉堡里的肉片, 通常老美超
-市里有卖一块块压制好, 生的 patty, 常用来做汉堡烤肉用.</p>
-
-<p>另外 vegetable 也可以指「植物人」. 这和 vegetarian 「素食主义」这个字很接
-近, 不要弄混了.  记得有一部电影叫 Bone Collector (人骨拼图者?) 歹徒就跟已
-经躺在床上动弹不得的警探说, &#8220;Do you want to be a vegetable? What kinds of 
-vegetables you want to be?&#8221; (你想变成植物人吗? 你希望变成那种蔬菜?) 这里
-很巧妙地用了 vegetable 作双关语.</p>
-
-
-<ol>
-<li>This tender, juicy steak really hits the spot.
-这片多汁香嫩的牛排真是来得正是时候.</li>
-</ol>
-
-
-<p>Hit the spot 是一个很有用的片语, 但它在不同场合下有不用的中文翻译.  我举
-些 hit the spot 的使用场合大家看了便知.  例如上次我们去爬山, 正在大家渴得
-要死不活之际, 笨霖我从预先「暗藏」的冰桶中拿出几罐冰的可乐, 这时能喝到可
-乐 (还是冰的喔!) 简直就会让人感动地掉下眼泪来, 像这种场合你就可以说, &#8220;It 
-really hits the spot.&#8221;  意思就是说这样东西来得正是时候, 刚好命中你最迫切
-的需求.  这连带让我想到中文里有一句成语叫「久旱逢甘霖」, 一场久旱之候的及
-时雨, 我们也可以说, &#8220;The rain really hits the spot.&#8221; </p>
-
-
-<p></p>
-
-<ol>
-<li>Do you need some pickles?  No.  This is good enough. <br/>
-你需不需要一些腌黄瓜啊? 不用了, 这样就够好了.</li>
-</ol>
-
-
-<p>当别人问你需要些什么, 但你真的不需要的时候该怎么□拒别人? 最简单的可以说
-, &#8220;No. Thanks.&#8221; 言简意赅.  或是你也可以说, &#8220;That&#8217;s OK.&#8221; 同样也是挽拒别人的
-意思. (注意 &#8220;That&#8217;s OK.&#8221; 并不是答应别人而是拒绝别人, 不要搞错了.) 第三种
-讲法则是我觉得最客气的讲法, &#8220;This is good enough.&#8221; 或是 &#8220;That is good enough.
-&#8221; 意思是说, 这样子已经够好了, 你不用再麻烦了. 但我已经吃得差不多了则不能
-说成 &#8220;I&#8217;ve had enough.&#8221; 因为这是指我受够了 (意指东西很难吃.) 应该说 &#8220;I am 
-stuffed.&#8221; (我吃饱了.) 才对. </p>
-
-
-<p></p>
-
-<p>&#8220;That/This is good enough.&#8221; 在日常生活中有许多不同的应用.  例如别人建议你
-可以去看某部电影, 讲完后又问你还是你想看一些别的电影.  这时你就可以客气地
-说, &#8220;No. That&#8217;s good enough.&#8221; 又例如说你去吃饭, 别人只给你刀叉, 后来想起
-你是中国人, 问你还需不需要一双筷子, 这时你也可以客气地说, &#8220;No. This is good
-enough.&#8221; 这种句子很简单而且在日常生活中的应用也很多, 一定要熟记才是.</p>
-
-<p>9. Eat up! 
-大家尽情享用吧!</p>
-
-
-<p>当主人的该怎么提醒别人可以开动了呢? 简单的我们可以说, &#8220;Let&#8217;s start eating.&#8221;
-或是用一个片语 &#8220;Eat up.&#8221; 也不错.  像 Shrek 这部电影里公主把三个鸟蛋作成了
-煎蛋后, 她说开动了, 用的也是 &#8220;Eat up.&#8221;</p>
-
-<p>或许有人会问那 eat 和 eat up 有什么不同? 简而言之, eat 是指「吃」的动作, 
-但也可以指「吃饭」而言.  所以你可以跟好友说, &#8220;Do you want to go to eat?&#8221; 
-(想不想去吃饭啊?) 但 eat up 则有「吃光」和「尽情享用」的意思在内.  通常都
-是用在提醒别人「可以开动了」. 值得注意的是, 许多带有 up 的片语都有「用完、
-耗尽」的意思.  例如 use up 指用光, read up a magazine 指读毕杂志等, 所以
- eat up 有「吃光」的意思在内, 例名篮球比赛里 eat up the clock 就是指终场
-前获胜的一队把时间耗尽 (中译: 搓麻将 ). 所以当主人对客人说 &#8220;Eat up.&#8221; 有恳
-请客人把菜吃个精光的意思在内, 所以也就是请客人尽情地享用.</p>
-
-
-<p>但话又说回来, 这样的解释只是帮助各位记忆而已.  事实上,  &#8220;eat&#8221; 和 &#8220;eat up&#8221;
-有时候我们很难去介定两者的区别, 也就是说两者事实上常常混用.  例如你可以说
-, &#8220;Computer games eat up my time.&#8221; (电脑游戏占去了我的时间.) 但这里如果你
-用 eat my time 也并无不妥.  所以说这些口语上的用法并不如字典里的定义那般
-精确.</p>
-
-<p>10. Do you guys want to stick around and play Scrabble? 
-你们想不想留下来再玩一会拼字游戏呢?</p>
-
-
-<p>当客人想要走了, 而作主人的还不希望客人走时, 就可以用到 stick around 这个
-片语.  Stick around 指的就是再留下来一会, 跟 stay 的意思很像.  所以当主人
-要留客时, 就可以用 &#8220;Do you want to stick around?&#8221; 或是 &#8220;Do you want to stay?&#8221;
- 来表示你希望他们不要那么早走.</p>
-
-<p>Stick around 的应用范围其实非常广, 基本上只要能用 stay 的地方, 口语上都可
-以用 stick around 来代替.  例如天气播报员会说, &#8220;Warm weather will stick 
-around for a while.&#8221; 这就是说热浪还会持续好一阵子. 或是像新职员刚报到, &#8220;I 
-can promise you I will stick around for two years.&#8221; (我可以向你保证我至少
-会做满二年.)</p>
-
-
-<p> 生活小故事</p>
-
-<p>五月是草莓盛产的季节, 六月又紧接著是水蜜桃和蓝□的季节, 这可把嗜食水果的
-我乐坏了, 常常开车到各果园 (Orchard) 去自己动手摘水果 (Pick your own fruits).
- 当然每次回来一定都是带著大包小包的各式水果, 不但自己吃绰绰有余, 还可以分
-给众室友, 从此笨霖我喜欢 pick your own 的名声不胫而走.  话说上个星期我去
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note92/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note92</id>
-    <content type="html"><![CDATA[<p>片时可就大有用处了.</p>
-
-<p>1. I&#8217;ll call the cops. 
-我会打电话叫警察.</p>
-
-
-<p>警察正式的名称是 police (集合名词, 只能当复数用, 不能指个人), 或是 policeman
-(指个人).  而警官则是 police officer. 像在 &#8220;Angle&#8217;s Eye&#8221; 这部电影里 Jennifer
-Lopez 饰演的是一名警官, 所以我们就可以称她, &#8220;She is a police officer.&#8221; 但
-就像在中文里我们也常戏称警察为「条子」, 在美国老美也戏称警察是 cop, 这个用
-法就由来是以前警察都穿那种有铜扣 (copper) 的大衣, 所以警察就被昵称为 copper.
-后来日子久了就变成了 cop.  这个字原来是带有一点歧视警察的味道在， 不过日子久了, 连警察们自己都互称是 cop, 所以这个字就变成是一个中性的
-字眼了.</p>
-
-<p>另外在美国的急难电话是 911, 所以要打电话叫警察除了 &#8220;I&#8217;ll call the cops.&#8221; 
-之后, 你也可以说, &#8220;I&#8217;ll call 911.&#8221; 如果是要叫消防队的话, 则可以说, &#8220;I&#8217;ll 
-call 911.&#8221; 或是 &#8220;I&#8217;ll call firetrucks.&#8221; (Firetrucks 在这里是消防车的意思.) </p>
-
-
-<ol>
-<li>I was pulled over by the State Patrol.
-我被公路巡警给拦下来.</li>
-</ol>
-
-
-<p>之前提到警察叫 cop, 但这只是一个总称, 事实上我们还可以把警察细分成许多种
-.  在美国每一州都有州立警察队, 称之为 State Patrol.  他们通常都分布在州际
-公路 (Interstate) 上抓超速的人. 另外每一个郡 (county, 大小相当于我们的县) 
-也有自己的警察, 这种警察叫 sheriff. 像笨霖我住的这里属于 Fulton County, 
-所以这里的警察就叫 Fulton County Sheriff. (记得以前在学校学到 sheriff 这个
-字都是指「警长」, 但事实上它应该还有另一个意思就是指「郡警」.  还有每个城市有所谓的 City Police. 例如来亚特兰大这个城市就可以
-看到所谓的 Atlanta City Police. 所以当你以后看到警车上写什么 Patrol, Sheriff 
-或是 Police, 你大概就知道他们是属于哪一个层级的. </p>
-
-
-<p>属于联邦机构的则有 FBI (Federal Bureau of Investigation, 联邦调查局) 和
-DEA (Drug Enforcement Administration 打击毒品机构) 在这里工作的人就不叫 police
-了, 他们叫 agent. (探员).  如果有看过人魔 (Hannibal) 的人我想一定印象□
-`刻, 女主角 Clarice Starling 就是一个 FBI agent.  至于那些在第一幕出现一
-些家伙背后写著斗大的 DEA 则是打击毒品的探员.  通常以毒品为主题的电影 如 Traffic,
- Blow 都不难看见这些 DEA 的身影.</p>
-
-<p>3. Freeze. 
-不要动.</p>
-
-
-<p>有人说来美国应该学的第一句话就是 &#8220;Freeze&#8221;. 因为这句话通常都是人家拿枪指著
-你时要你不要动时所说的一句话.  你如果听不懂的话后果可想而知.  这句话还有比
-较白话一点的讲法, 例如你可以说, &#8220;Don&#8217;t move.&#8221; 或是强调一动也别动, &#8220;Don&#8217;t
-move a muscle.&#8221; , &#8220;Don&#8217;t move an inch.&#8221; 或是 &#8220;Stand still.&#8221; 都可以.</p>
-
-<p>最后还是提醒大家一句, 美国人几乎家家户户都有枪枝, 当你不小心误闯别人家时
-, 听到 &#8220;Freeze.&#8221; 可别随便乱动, 以免不小心就把小命给丢了. </p>
-
-
-<ol>
-<li>It&#8217;s a double homicide.
-这是一件双尸命案.</li>
-</ol>
-
-
-<p>当电影中提到有命案发生的时候, 它们通常不会白话到去说, &#8220;Someone got killed.&#8221; 
-(有人被杀了). 而会用一个比较专门的字眼 homicide. 这个字指的就是「杀人案件」
-. 当然也可以用 murder 这个字, 指的是「谋杀案件」.  例如, &#8220;It&#8217;s a homicide 
-committed by a professional killer.&#8221; 这是一件由职业杀手所犯下的命案. </p>
-
-
-<p>另外补充几个刑事案件的说法, 顺手牵羊叫 shoplifting, 抢劫是 robbery, 武装
-抢劫 armed robbery, 强奸是 rape, 偷窃的小case是 petty theft，大case是 larceny，
-更大案件 grand larceny, 半夜闯空门则是 burglary.  走私毒品 drug trafficking,
-重伤害 serious assault, 殴打 assault and battery, 纵火 arson. 像这些字都常
-在警匪片中出现, 有兴趣的读者不妨记下来.</p>
-
-<p>5. He is a serial slasher. 
-他是一个连续杀人犯. </p>
-
-
-<p>美国有一类的电影就是有一个坏人和一堆无辜的人, 然后坏人就会依序把那些无辜
-的人一个一个给干掉.  但通常会留下最后一个, (想当然尔这个人不是男主角就是女
-主角).  而坏人一定就是那个让你最想不到的人.  这类吓人的电影随便就可举出一
-堆, 例如 Scream 1, 2, 3; Urban Legend: Final Cut; Valentine, A Nightmare
-on Elm Street, Friday the Thirteenth 等等都是.  这些凶手通常有一个共同点,
-就是会拿一把超大型白晃晃的刀子, (以免观众看不出来吗?).  像这种拿刀砍人的人
-英文就叫 slasher (slash 是拿刀砍人的动作, 这个字电影中常用). 另外加上 serial
-表示连续犯, 所以砍了不止一人的凶手就被称之为是 serial slasher 或是 serial
-killer.</p>
-
-<p>不过有时候我们在球赛中也会听到像是, &#8220;He is a slasher.&#8221; 这样的句子, 在这里
- slasher 当然不是解释成杀人犯, 而是指「得分杀手」或是指表现很杰出的人.  例
-如, &#8220;She is a slasher with excellent athletic ability.&#8221; (她是一个有运动细
-□
-M的得分杀手) Slasher 这个字运动播报员很爱用, 值得大家记一下. </p>
-
-
-<ol>
-<li>You don&#8217;t look like a cold-blooded murderer.
-你看起来不像是冷血凶手.</li>
-</ol>
-
-
-<p>Cold-blooded 指的是冷血的, 没有感情的. 这个字的由来是因为两栖动物或鱼类他
-们的体温是由环境控制, 不像哺乳动物体温是恒定的, 所以被称为 cold-blooded animals 
-(冷血动物).   像是在 Sweet November (甜蜜的十一月) 这部电影里女主角□
-□k主角有没有养宠物, 他说有, &#8220;Fish&#8221; (鱼). 她就回道, &#8220;Fish is cold-blooded. 
- Doesn&#8217;t count.&#8221; (鱼是冷血动物, 所以不能算是宠物.)</p>
-
-
-<p>Cold-blooded 这个字用来形容罪犯是最好不过了, 所以我们常可以听到 cold-blooded
-murder 这两个字连用, 意指这是一件令人发指的凶杀案.  而 cold-blooded murderer
-指的则是冷血杀手.  不过所谓的 cold-blooded murderer 多半是预谋杀人.  有别
-于因为一时冲动, 血气方刚的热血杀手 hot-blooded killer. 当然 cold-blooded
-平常时拿来骂人也不错用, 例如, &#8220;You are the most cold-blooded man I&#8217;ve ever
-known.&#8221; (你是我所认识最冷血的人了)</p>
-
-<p>7. The cops are after me. 
-警察在追我.</p>
-
-
-<p>&#8220;The cops are after me.&#8221; 这句话看来似乎只是单纯地指警察在我后面, 但这个
-after 在这里也可以解释成 running after 的意思. 意思就是有人在后面追我.  例
-如电影上常看到罪犯跑回老窝之后就急忙地说, &#8220;They are after me.&#8221; 也就是说有
-人在追我啦! 当然追你的对象不限于人, 记得我的一个老美朋友有一次跟我讲到他
-的冲浪经验.  他说, &#8220;A shark was after me.&#8221; (一只鲨鱼在追我), 听来真是乱恐
-布的.</p>
-
-<p>8. If you dare to take off.  I&#8217;ll hunt you down. 
-如果你敢逃跑的话, 我会去追捕你的. </p>
-
-
-<p>Hunt down 是一个再常见不过的动词片语了, 不单是警察抓小偷时可以用 hunt down.
-在日常生活里我们也可以常听到 hunt you down 这样的用法, 通常是带有警告的意
-味.  例如, &#8220;If you dare to touch my girlfriend.  I&#8217;ll hunt you down.&#8221; (□
-p果你敢碰我女朋友的话, 我会把你找出来的.) 在电影 Meet the Parents 里, 准
-岳父也是这么警告他未来的女婿, 如果你敢对我女儿不好的话.  &#8220;I&#8217;ll hunt you down.&#8221;</p>
-
-<p>不过当然在警匪片中用到 hunt down 的次数是最多的了! 例如一些耳熟能详的句子
-, &#8220;No matter where you are, I&#8217;ll hunt you down.&#8221; (不管你躲到天涯海角, 我都
-会把你抓到.) 或是, &#8220;A detective was sent out to hunt down the drug traffickers&#8221;
- (我们派出一位探长去追补毒枭)</p>
-
-
-<ol>
-<li>They held me at gunpoint.
-他们拿枪指著我.</li>
-</ol>
-
-
-<p>「拿枪指著某人」这句话英文里可以直接翻成 &#8220;point a gun at someone&#8221;, 但是老
-美比较常用的说法则是 hold someone at gunpoint.  例如, &#8220;The suspect kidnapped 
-a police officer and held him at gunpoint.&#8221; (嫌犯挟持一名警官并且拿枪指著
-他).  这句话关键在于一般我们不太会想到去用 gunpoint (枪口) 这个字, 所以我
-把它提出来提醒各位注意有这样的用法.  有时候甚至我们还可以更简化用 at gunpoint 
-这个片语来代替「某人拿枪指著我」这一长串句子.  例如有歹徒拿枪指著我□
-m劫时我该怎么跟别人描述呢? 最简单的说法就是, &#8220;He robbed me at gunpoint.&#8221; 
-就行了. </p>
-
-
-<ol>
-<li>We got to find out who the dirty cop is.
-我们必须找出谁是坏警察.</li>
-</ol>
-
-
-<p>有不少的警匪片里都有坏警察, 而片子最后的高潮就是带你找出谁是坏警察. (例如
-由 Monica Potter 所主演的 &#8220;Along Comes a Spider&#8221; 这部片子就是个很好的例子
-.  结局请各位看了之后就知道.)  坏警察的讲法有很多种, 从最简单的 dirty cop, 
-corrupt cop 到 crooked cop 都是.  例如, &#8220;He turned out to be the dirty cop.&#8221; 
-(到最后原来他是坏警察).</p>
-
-
-<p>而坏警察所最常做的事就是所谓的 double-cross, 这个字的意思就是指具有双重身
-份. 用在警察身上则是指黑白两道都沾, 一方面是警察但另一方面又跟黑道挂勾. 例
-如, &#8220;The movie is about dirty cops and double-crosses.&#8221; (这部电影是有关双
-重身份的坏警察). double-cross 的动词用法也很常见, 意指因具有双重身份而出卖
-同夥.  例如, &#8220;The dirty cop double-crossed his partner and put him in danger.&#8221;
- (这个坏警察出卖他的搭档, 并且使他陷于危险之中.)</p>
-
-<p>生活小故事 </p>
-
-
-<pre><code>    今天我的美国室友找我到 Georgia 北部的 Raven Cliff 去 hiking, 一路
-</code></pre>
-
-<p>风光明媚, 流水潺潺, 让我们不禁心生下次要带来此地露营的打算.  结果就在我们
-兴高采烈地讨论时, 居然给我们看到了三只黑熊 (bear), one, two three, 一只跟
-著一只, 就从不远的森林中走过.  (当时不知是太兴奋还是太紧张了, 居然还把 bear
-念成了 beer, 真是丢脸), 虽然以前在中央山脉上也看过山猪、山羌等野生动</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note91/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note91</id>
-    <content type="html"><![CDATA[<p>1. He is a she.
-「他」是「她」.</p>
-
-
-<p>大家应该知道大陆所用的汉语拼音跟我们所用的拼音是不太相同的.   比如说「何」
-这个字我们在台湾拼成 Ho, 但在大陆那边却拼成 He.  但你知道老美看到 He 这个
-字通常发不出 /ho/ 的音, 而会很本能地发 /hi/ 的音.</p>
-
-<p>有一次呢, 我们系上有位大陆来的何小姐跟她老板 Frank 去开会, 另外随行的是一
-个来自韩国的男生 Yolboong.   他们在旅馆订了二间房, 原本预计是何小姐一人睡
-一间, 另外二个男生睡一间.  结果旅馆的人一看三个人的名字: Frank? 这个是男
-生没问题. Yolboong? 这个人不知道是男生女生. He?  啊&#8230; 这个一定是男生.   
-所以就把何小姐和她老板 Frank 放在一个房间里.  这位德国来的教授 Frank 知道
-了大吃一惊, 跟女学生睡一间房那还得了? 赶忙跑去跟柜台小姐说明, 他说, &#8220;No. 
-No. No.  He is a she.&#8221; (不不不, 「他」其实是「她」), 搞得柜台小姐更是丈二
-金钢摸不着头脑, 但在一旁的我们则早就笑翻了. 后来 Frank 遇上了另一个大陆的
-何同学, 只不过这次的何同学是个男生.  他难掩心中的兴奋跟大家宣布, &#8220;Now he 
-is a he, not a she.&#8221; 直把大夥逗得哈哈大笑. </p>
-
-
-<p></p>
-
-<p>大陆还有一些姓氏的翻法也很有意思, 像是游、尤翻成 You, 所以在自我介绍时可
-能会出现, &#8220;I am You.&#8221; 另外如果有姓「舍」的男生也很有趣, 因为「舍」的拼成
- She. 所以就会成了 &#8220;He is She.&#8221;  的有趣画面.</p>
-
-<p>2. It&#8217;s a she, not a he.
-是「她」, 不是「他」.</p>
-
-
-<p>英文里要分男性女性这点常让我很苦恼, 像是 he 和 she 我一直到现在还常常混著
-用, 反正通常也无伤大雅, 大家听得懂就好.  但上上个星期小笨霖终于因为乱用
-he 和 she 出包了. 在一场正式的晚宴上, 坐我隔壁座的是一个读大学部的美国女
-生, 我们刚好聊到中国食物, 她告诉我, &#8220;My roommate likes to cook Chinese food.&#8221;
- (我室友喜欢作中国食物.) 我想都没想, 就接道, &#8220;Really? does HE cook Chinese
-food for you?&#8221; (真的吗? 「他」都煮中国菜给你吃喔?) 完了, 她一听脸色大变,
-&#8220;It&#8217;s she, not he.&#8221; 结果一旁的老美还没安好心地替我解释 &#8220;He thinks you live
-with your boyfriend.&#8221; (他以为你跟你男朋友住一起呢.)   这下子她更生气了,
-抗议说, &#8220;I don&#8217;t even have a boyfriend!&#8221; (我连男朋友都没有说呢!) 看她气呼
-呼的样子, 我都不知道该怎么跟她解释其实我真的不是故意的!</p>
-
-<p>3. Hey man! You got a &#8220;yellow book&#8221; over here.
-嗨老兄! 你有一本 &#8220;黄色书刊&#8221; 在我这喔.</p>
-
-
-<p>记得上次我室友跟我说我有一本 yellow book 在他那时, 我还真是吓了一跳.  (莫
-非是我的饭岛妹妹写真集没藏好?) 结果不是啦, 老美口中所说的 yellow book 是
-指分类广告电话簿, 就像是你如果自已有申请电话的话, 电话公司就会送你两本厚
-厚的电话簿, 一本是住宅用的, 白纸印刷.   一本是商业用的, 黄纸印刷, 所以叫
-yellow book. 或是像官方的正式报告书如是黄色封皮我们也可以称之为 yellow book.
-中文翻成「黄皮书」.</p>
-
-<p>那「黄色书刊」在英文中正确的讲法是什么? 正式一点的我们可以说 pornography 
-book (简称 porn book), 或是也有人称之为 erotica (同时泛指一切跟色情有关之
-物). 但在口语中的讲法说 dirty book 或 adult book 就行了.   例如, &#8220;Are you 
-reading a dirty book?&#8221; (你正在读黄色书刊吗?)</p>
-
-
-<ol>
-<li>Surprise!
-惊讶吧!</li>
-</ol>
-
-
-<p>这是一个读者提供的英文乌龙.   话说有一个德国人、法国人、及一个中国人要到
-矿场工作. 老板对德国人说:「你体格不错, 你负责苦力. 」对法国人说: 「你说你
-是工程师, 你负责采矿的计划. 」而对中国人他说:「你很瘦小, 你负责补给(supplies)
-.」然后隔周, 他们开始上工. 几天后德国人及法国人发现中国人不见了, 找了许久
-后他们决定最好还是回头工作. 德国人开始工作的同时, 中国人突然跳出来说:「Surprise!
-」</p>
-
-
-<p>编按: 老美有一种 party 就叫 surprise party.   通常主角是在未被告知有 party
-的情况下来到会场, 然后大夥们就一起跳出来喊, &#8220;Surprise!&#8221;</p>
-
-<p>5. I want to take American Online.
-我要搭乘「美国线上」班机.</p>
-
-
-<p>去年在洛城搭机时, 由于机场很大, 用走的很远, 所以我就搭机场内的 shuttle bus.
-一上车司机伯伯就会问每个人你要搭哪一家航空公司的班机, 以便等下可以把你在
-正确的登机门放下来.  结果当我上车时, 司机伯伯也同样问我, &#8220;Which airline?&#8221;
-但那时我不知是太紧张还是因为平时电脑玩太多, 居然把 &#8220;American Airline&#8221; (美
-国航空) 讲成了 &#8220;American Online&#8221; (美国线上, 美国最大的 ISP, 相当于台湾的
- Hinet / Seednet ).   结果这位黑伯伯也够狠的了, 明知我讲错还故意挖苦我,
-&#8220;Ok. No problem, I&#8217;ll find you a pay phone so you can travel through the
-internet.&#8221; (没问题, 我去帮你找一具公共电话让你可以在网路上旅行.) 当时全车
-的乘客都在偷笑, 而我也恨不得挖个地洞躲起来.</p>
-
-<p>6. Do you like tap dancing?
-你喜欢踢踏舞吗?</p>
-
-
-<p>美国有那种合法的脱衣酒吧, 里面有上空或全空女郎 (视地区而定) 站在桌上表演
-脱衣舞, 故名 table dancing. 如果你额外再付她一笔钱的话, 她会走下来坐在你大
-腿上 (lap) 大跳艳舞, 故名 lap dancing, 当然所有的表演都是只能看不能摸的,
-这可是考验一个人定力的大好机会.  我自知定力不够, 所以尚未尝试过.</p>
-
-<p>结果有一天我的一个老美好友问我想不想跟他一起去看 &#8220;tap dancing&#8221;? 我一想这
-怎么可以呢? 万一在老美面前身体有了异样的反应岂不是很糗? 本著我少男的矜持
-, 连忙推说不要.  他看我内心挣扎如此激烈觉得非常奇怪, 他说我们只是去看踢踏
-舞 (tap dancing), 你干么那么害羞.  啊, 这时我才明白, 原来我把 tap dancing 
-想成了跟 lap dancing 是一样的东西, 真糗.</p>
-
-
-<ol>
-<li>What do you mean by &#8220;multifunctional&#8221; ?
-你说 multifunctional 是指什么意思呢?</li>
-</ol>
-
-
-<p>在某一次的学术会议中, 轮到一个老中上台报告.   这位老兄的英文不甚灵光, 大
-家自然也就听不太懂他在讲些什么.   结果等到报告完毕, 依例大家提问题.   一个
-老美可能刚才还稍微有听他讲某某蛋白质是 multifunctional, 就问他, &#8220;What do 
-you mean by multifunctional?&#8221; 这位中国来的学者不知是太紧张还是怎么地, 居
-然回答, &#8220;Multifunctional means many functions.&#8221; (Multifunction 的意思就是
-有许多 function.) 这位发问的老美只好苦笑道, &#8220;I mean multifunctional in Chemistry,
- not in English.&#8221; (我是问你 multifunctional 在化学上是什么意思, 不是问你它
-在英文上的定义是什么.)  语毕, 全场大笑, 也把许多正在熟睡的人也给笑醒了. </p>
-
-
-<ol>
-<li>Smell my breath.
-闻闻我呼的气.</li>
-</ol>
-
-
-<p>一次跟一堆老美在宿舍楼下开 party, 大家都喝了点酒.   正在我醉意蒙胧之际, 
-隔壁的女孩子靠过来对我说, &#8220;Kun-Lin, smell my breath.&#8221;, 我可能也是醉了, 心
-想美国的女人怎么那么大方, 居然跟我说, &#8220;Smell my breasts.&#8221; (闻我的胸部) 呢
-? □
-□n理智还在, 才没有作出下流的动作.   后来她把嘴巴开张, 我才会意过来, 原来
-是, &#8220;Smell my breath.&#8221; 喔! </p>
-
-
-<p>前几集的笔记介绍过, breath 在英语中除了可以当呼吸之外, (例如, &#8220;I can&#8217;t catch
-my breath 就是我不能呼吸了.) 也可以当作你呼出来的空气, 例如, &#8220;Smell my breath.
-&#8221; 这样的用法我就是从这一次的经验中学到的喔! 另外 breather 则是指喘口气的
-意思.  例如你会听到老美说, &#8220;I need a breather.&#8221; 就是说我需要喘口气休息一下
-之意.</p>
-
-<p>9. &#8220;You don&#8217;t shave?&#8221; &#8220;Yes, I am shy.&#8221;
-你没有刮腋毛吗? 是的, 我很害羞.</p>
-
-
-<p>这是一个典型老美和老中鸡同鸭讲的笑话.   有一次我陪一个女生去逛 mall, 她看
-中了一件无袖的套装, 于是就很高兴地跑去试穿. 可是等她穿出来之后, 却看她一直
-把手臂夹得紧紧的.  店员看了很奇怪, 问她, &#8220;You don&#8217;t shave?&#8221; (你是不是没刮
-腋毛) 结果她居然回答, &#8220;Yes, I am shy.&#8221; (是的, 我很害羞.) 差点没让我昏倒
-, 原来这位大小姐居然把 shave 给听成了 shy.</p>
-
-<p>10. Your swing is like a tight-wound spring.
-你的挥棒像是上紧的发条一样. </p>
-
-
-<p>从台湾来的有几项东西值得自豪的, 除了许多 made in Taiwan 的电子产品之外,
-还有一项就是当年扬威美国的三级棒球.   所以有一次跟系上同学去打棒球, 我大棒
-一挥, 一支漂亮的中外野安打, 一旁的老外就跑来鼓励说, &#8220;Your swing is like a
-tight-wound spring.&#8221;, 我一听, &#8220;Taiwan spring&#8221; (台湾发条)? 心里乐开花了,
-原来你们这些老外也晓得我们台湾人的厉害, 还说我们的打击像是台湾发条- &#8220;Taiwan
-spring&#8221;.</p>
-
-<p>后来我想问他什么样的打击才能算得上是台湾发条, 那时我才知道自己搞错了, 原
-来他所说的 tight-wound spring 是说我的挥棒像是上得紧紧 (tight-wound) 的发
-条 (spring) 一样, 而非台湾发条 (Taiwan spring)   </p>
-
-
-<p>生活小故事</p>
-
-<p>最近我跟几个好友闲来无事, 忽然想起台湾的油饭不禁食指大动, 于是我们就说要
-自己作油饭和鱿鱼羹来吃.   结果等到大家把东西都买回来要开始作时, 我们才发现
-少了一样「红葱头」. 可是我明明有列在采购清单上啊? 于是我就问去中国店采买的
-□
-H说, 我的「红葱头」呢? 结果这位天兵不慌不忙从袋子里拿出了两个特大的红洋葱
-, 说「傻瓜, 这不就是你要的红葱头吗?」语毕, 这位天兵差点没被我们抓去「阿鲁
-巴」. 
-</p>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
-    <link href="http://yfu.github.com/note90/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note90</id>
-    <content type="html"><![CDATA[<p>礼拜内忙完了.   现在终于好不容易又有时间写写笔记来跟各位分享我最新收集的
-英语笔记, 希望各位没有荒废英文学习太久才好.   这次我们的主题还是跟办公室
-内的话题有关, 不过也不全然限定于只能在办公室里用, 在日常生活中也是常常可
-以派得上用场的.</p>
-
-<p>1. In the middle of something?
-正在忙吗?</p>
-
-
-<p>我知道有许多许多的人, 对于某一种概念学会了一种说法之后, 从此就只会用这种
-说法.  例如「你在忙吗?」这个句子, 很多人在国中起就知道要说, &#8220;Are you busy?&#8221;
-讲到了来美国留学三年, 他还是只会说 &#8220;Are you busy?&#8221;.   其实有时候我们的眼
-界要放广一点, 对于同一个概念要有不同的变化.  就像是 &#8220;Are you busy?&#8221; 这句
-话, 其实老美也很常用 &#8220;In the middle of something?&#8221; , (但这句话比较接近于
-&#8220;Are you busy right now?&#8221; 是问人家「现在」是不是正在忙?  &#8220;Are you busy?&#8221;
-的含意比较广, 也可指「最近」忙不忙?) 大家不要小看这么小小的变化, 如果你除
-了 &#8220;Are you busy?&#8221; 之外, 有时还懂得刻意去用 &#8220;In the middle of something?&#8221;
-我相信你的的英文说出来就会跟别人不一样. 举个例子吧, 办公室里想找人八卦,
-又怕人家正在忙, 这时你就可以问他, &#8220;In the middle of something?&#8221; (正在忙吗
-?)</p>
-
-<p>记得在不久之前看过的一部黑人电影 Down to Earth 中也有 in the middle of something 
-这个用法, 只不过男主角是用这句话来提出一个论点, &#8220;The first kiss is always 
-in the middle of something.&#8221; 也就是说, 初吻总是发生在讲话讲到一半时, 或是
-当你们正在作其它的事情时, 通常是果不其然的.   他同时也觉得, &#8220;The first kiss 
-is the only real kiss in your relationship.&#8221; (只有初吻才是真正的吻), &#8220;The 
-others are just protocols&#8221; (其它的都只是一种敷衍、虚应故事而已.)
- </p>
-
-
-<ol>
-<li>What are you up to?
-你正在作什么?</li>
-</ol>
-
-
-<p>跟上面的例子一样, 「你正在作什么啊?」这句话通常我们就只会说, &#8220;What are you 
-doing?&#8221; 这样子不会很无聊吗? 其实有时我们可以换句话说.  例如: &#8220;What are you 
-up to?&#8221; 同样也是问人家你正在作什么.  承上例, 假设你在办公室里, 你想找人八
-卦, 所以问同事, &#8220;In the middle of something?&#8221; 他回答, &#8220;Kind of.&#8221; (算是吧.) 
-这时你就可以打破砂锅问到底, &#8220;What are you up to?&#8221; (那你最近在忙什么啊?) 
-另外有时候老美见面时也会问 &#8220;What are you up to?&#8221; 意思就是问你最近在作什么
-啊? 跟另一句问候语 &#8220;What&#8217;s up?&#8221; 意思上很接近.   但是你要听对方的语气喔! 
-有时候 &#8220;What are you up to?&#8221; 指的虽然还是 &#8220;What are you doing?&#8221; 但它却是
-「你在搞什么鬼啊?」的意思喔!   例如当你看到别人在乱翻你的东西, 你就可以责
-问他, &#8220;Hey, what are you up to?&#8221; 也就是骂他「你在搞什么鬼啊?」.   或是像
-电影 Blow 里毒贩的老爸骂他的儿子, &#8220;I know what you are up to.&#8221; (我知道你
-在干些什么勾当.)  以上这些例子里, &#8220;What are you up to?&#8221; 完全可以用 &#8220;What 
-are you doing?&#8221; 来取代, 只不过因为我们在说话时要力求变化, 所以要多学几种
-不同的讲法.   </p>
-
-
-<p>其实 &#8220;What are you up to?&#8221; 还有许多其它的意思, 在此不一一列举, 不过还有一
-个比较常用的解释是, 「进展的如何了?」例如朋友告诉你他正在写一部武侠小说,
-(就像我的 labmate 一样), 你就可以问他, &#8220;What are you up to?&#8221; (进展的如何
-了), 而他的回答可能是, &#8220;I am writing Chapter 3 now.&#8221; 我现在正在写第三章呢
-.</p>
-
-<p>3. Can you just give me a ballpark figure?
-能不能给我一个大概的数字. </p>
-
-
-<p>Ballpark 指的是专供球类比赛的公园, 特别是指大型的棒球场. 例如亚特兰大勇士
-队 (Atlanta Braves) 的主场, Turner Field 就是一个 ballpark.  那什么是 ballpark
-figure 呢? 通常在棒球比赛时不是都会报今天的观众人数, 例如是 49,132 人吗?
-这个数字 49,132 就是 ballpark figure, 但这只是一个大约的估计数字而已, 所
-以 ballpark figure 的意思就是指大约的估计数字.   所以在公司里如果老板问会
-计, 上个月水电费总共多少钱? 之后再加上一句, &#8220;Just give me a ballpark figure.&#8221;
- 意思就是我只要一个大略的数字就行了.   甚至有些老美懒到就只说 ballpark,
-所以老板也有可能会说, &#8220;I&#8217;ll need a ballpark of the revenue last year.&#8221;<br/>
-(我需要去年的营收的大约数字.) 你就要自己知道这个 ballpark 是 ballpark figure
-的意思.</p>
-
-<p>其实很多像 ballpark 这种有点俚语的讲法, 你去问美国人, 我保证他们百分之九
-十九点九都知道 ballpark 的意思. 但是有很多外国人, 不管他们的英语再流利, 
-不管在美国住多久, 却还是常常会有听不懂的状况.  像小笨霖的指导教授是欧洲人
-, 但在美国也待超过十年了, 英语的流利自然是不在话下.  可是呢? 有一次我跟她
-说 &#8220;I can only give you a ballpark.&#8221; 她却问我 ballpark 是什么意思.  我讲
-这个小故事给各位听的原因, 就是告诉你们拿这种俚语去跟美国人交谈, 通常是没
-问题的, 但是如果去跟英语同样也很流利的老印, ABC, 或是在美国住了很久的外国
-人, 则不保证他们能听得懂.</p>
-
-
-<ol>
-<li>Bottom line: We have to turn into profit by 2002.<br/>
-最重要的是: 我们必须在 2002 年前转亏为盈.</li>
-</ol>
-
-
-<p>大家看过财务报表没? 上面是一大堆密密麻麻的数字, 告诉你公司的资产有多少, 
-折旧多少, 应收帐款多少.   但是这些都不是最重要的, 最重要的在最最下面那一行
- (bottom line), 叫净赚 (Net earnings) 告诉你这家公司总共加起来到底是赚钱还
-是赔钱, (这其实才是最重要的, 不是吗?) 所以 bottom line 这个字后来就变成了
-有「最重要的是&#8230;」的意思.   例如商场上有句名言, &#8220;In business, If you don&#8217;t 
-take care of your customers, somebody else will.  And that is the bottom 
-line.&#8221; (如果你不关心你的顾客的话, 其它的人会, 这是最重要的原则. ) 另外 bottom 
-line 也有「最后的底限」,「不能再退让的原则」的意思.   例如老板可以告诫员
-工, &#8220;Bottom line: We have to ship this order by Friday.&#8221; (我最后的底限是
-, 我们必须在星期五前运交这批货. )  </p>
-
-
-<ol>
-<li>The new CFO was sent to bring the company out of the red.
-这位新的财务长被派来把公司从赤字中拯救出来.</li>
-</ol>
-
-
-<p>中国人喜欢红色, 所以股市大涨时盘面上都是红通通的一片.   不过欧美国家对红
-色的认知则大不相同, 红色就表示亏损, 赤字. 像之前提到的 bottom line 如果是
-用红笔写的, 那就是表示公司整体上来说是赔钱的.  相反的如果是用黑笔写的, 则
-表示是赚钱的.  所以我们常可以听到 in the red 或是 in the black 这样的讲法
-, 其实就是指公司赚不赚钱.  当然啦, 我们也可以用最简单的讲法, lose money 
-和 make money 或是形容词 unprofitable 和 profitable来表示赔钱或赚钱.  例
-如这家公司是赚钱的, 你可以说, &#8220;This company is in the black.&#8221;, &#8220;The comapny 
-is making money.&#8221; 或是 &#8220;The company is profitable.&#8221; 都可以. </p>
-
-
-<p>讲到这个 profitable 让我不得不提醒大家 non-profit 这个字, 因为常常有人会
-搞错. Non-profit 这个字指的并不是说不赚钱的, 而是说「非营利性质的」, 例如
-像消费者文教基金会我们就可以说他是一个 non-profit organization, 非营利机
-构, 这种组织就不是以赚钱为目的.  但 nonprofitable 的话则是指不赚钱的就等
-于 unprofitable 或是 non-profit-making.</p>
-
-<p>6. Shelly just called in sick. 
-Shelly 刚打电话来请病假.</p>
-
-
-<p>Call in sick 是一个在办公室内常会用到的片语, 指的是有人打电话来说他生病了
-不能来上班.   有兴趣听老美讲这句话的人不妨去看 &#8220;What Women Want?&#8221; (男人百
-分百) 这部电影, 我记得他们就有用 &#8220;call in sick&#8221; 这个片语.   当然啦, 这种事
-想也知道一定有相当的比例是偷懒而不想来上班而已, 不然就是员工找藉口集体罢
-工, 例如 &#8220;Some workers called in sick to have a strike.&#8221; (有些工人藉由集
-体打电话请病假来罢工.)</p>
-
-<p>那如果是正常的请病假 (sick leave/ medical leave) 要怎么讲? 你可以说, &#8220;I 
-need a sick leave for two days.&#8221; (我需要请两天病假.) 或是如果是因为老婆要
-分娩了, 想要请事假 (personal leave), 你可以说, &#8220;I&#8217;m asking for a three-day 
-paid/unpaid personal leave for my wife&#8217;s labor.&#8221; (因为我老婆要生了, 我想
-要请三天假.)   至于这个假是扣不扣钱? (paid/unpaid) 就看公司的政策而定了. </p>
-
-
-<ol>
-<li>I just heard that seven people are going be laid off next month.
-我刚听到公司下个月要裁七位员工.</li>
-</ol>
-
-
-<p>最近失业率不断上升, 我也就顺便来谈谈裁员的话题.   公司要裁员的讲法有许多
-种, 其中最常见的不外是 layoff 这个字 (如果分开来写: lay off 是动词, 但合
-起来写 layoff 则是名词) .   例如, &#8220;Cisco issues a profit warning, plans 
-layoffs.&#8221; (思科发布盈余警讯, 计划裁员.)  当然还可以用比较口语的讲法说, cut 
-jobs 或是 slash jobs, 例如上一句我们也可以说, &#8220;Cisco plans to cut/slash 
-jobs.&#8221; (思科计划裁员.) 据路边马路消息说, 由于 layoff 最近在英语中的出现频
-率排名大幅成长, layoff 这个字将会被收录在最新的英文常用 3000 字汇当中. ^__^</p>
-
-
-<p>要是真的不幸在美国被裁员了怎么办? 先记住两句话再说, 第一句是, &#8220;Whose decision
-was this?&#8221; (这是谁的决定.) 俗语说冤有头债有主, 先问清楚了是谁动你的, 将来
-要把汽车轮胎放气才知道要放哪一台.  另一句话就是, &#8220;I am between jobs.&#8221; 这
-句话在找新工作时很好用.   人家问你现在在作什么, 你不要呆呆地说, &#8220;I just got
-laid off.&#8221; 多难听啊! 你应该说, &#8220;I am between jobs.&#8221; 我正好在两个工作间的空
-档.  听起来比较委婉 这可是之前刚被裁了员的好友 Joseph 教我的, 他就因为很
-会讲这句 &#8220;I am between jobs.&#8221; 目前已经在德州休士顿找到新工作了. :D</p>
-
-<p>8. He suggested we should go to eat after my graveyard shift.
-他建议说我们可以在我的大夜班之后一起去吃东西. </p>
-
-
-<p>轮班这个字在英文里叫 shift, 例如三班制就叫 three shifts. 例如, &#8220;We have
-to work in three shifts to keep the company running.&#8221; (我们必须轮三班制来
-保持工厂的运转.) 我想大家都知道三班制就是日夜, 小夜班和大夜班.   在英文里
-日班就是 day shift 或是 regular shift, 小夜班是 night shift. 那大夜班呢?
-有一个很有趣的讲法, 叫 graveyard shift. 所以如果你要说明自己上的是大夜班
-, 就可以这样说, &#8220;I work on the graveyard shift.&#8221;</p>
-
-<P>至于为什么叫 graveyard shift 呢? 其中有一个广为流传的故事是这么说的, 在十
-九世纪时, 人们有时候会不小心把还活著的人当成死人埋掉.   为了避免这种悲剧
-发生, 所以他们在每个棺材里都装上电铃, 以便让这些意外醒来的「尸体」能够按
-铃求救.   也因此必须另外安排一位仁兄晚上时在墓地 (graveyard) 里巡查, 以便
-有人按铃时能即时通知家属.  所以大夜班后来就以此得名, 成为了 graveyard shift. 
-至于你相不相信这种传说呢? 就看你自己了! </p>
-
-
-<ol>
-<li>I am only a regular 9-to-5er.
-我只是一个平凡的朝九晚五上班族.</li>
-</ol>
-
-
-<p>我相信中文的「朝九晚五」这个字应该就是从英文 9-to-5 这个字直接翻过来的吧
-? 由于上班族的工作时间多半都是很固定从早上九点到晚上五点, 所以才有 9-to-5 
-这个用法, 指的就是很一般上下班的工作.   记得有一次跟一个在社会上己经工作
-多年又回来念研究所的老美聊到他回学校念书的动机, 他就告诉我, &#8220;I don&#8217;t want 
-to work 9 to 5 for the rest of my life.&#8221; (我不想一辈子都作朝九晚五的工作.) 
-  另外像这种上班族也可以自称是一个 9-to-5er, 也就是指作这种朝九晚五工作的
-上班族.  但是像小笨霖我呢? 我就该自称是 10-to-3er 了. (我当然没那么认真凌
-晨三点回家, 而是下午三点就回家睡午觉了!) </p>
-
-
-<ol>
-<li>I refuse to work overtime during the weekend.
-我拒绝在周末时加班.</li>
-</ol>
-
-
-<p>英文里加班叫 work overtime. 例如别人喊你今晚出去吃饭, 你说, &#8220;Sorry, I have 
-to work overtime.&#8221; 就是告诉他, 很抱歉, 我今晚要加班.   不过有趣的是, 除了
-「加班」可以叫 overtime, 加班费也可以叫 overtime. 例如你可以大声地告诉老
-板, &#8220;You have to pay me overtime!&#8221; (你必须要付我加班费.)   不过现在时机歹
-歹, 我看还是小声讲就好了.</p>
-
-
-<p>除了这个 pay overtime 之外, 老美也常用到另外两个字, 一个叫 double time,
-另一个叫 time and one-half. Double time 指的是双倍的工资, 而 time and one-half
-或是 time and a half 则是指一倍半的工资.   例如老板叫你作一些额外的工作,
-你可以说, &#8220;If you pay me double time, I&#8217;ll do it.&#8221; (如果你付我双倍的工资
-, 我就去做.)   再造一句, &#8220;I like to work on holidays because I am on time
-and a half.&#8221; (我喜欢在假日时工作, 因为这时的工资算一倍半.)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试]]></title>
+    <title type="html"><![CDATA[小笨霖英语笔记本九: 考试 ]]></title>
     <link href="http://yfu.github.com/note9/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
     <id>http://yfu.github.com/note9</id>
-    <content type="html"><![CDATA[<p>, 从考试的范围, 考古题的说法, 到考试卷的说法.</p>
+    <content type="html"><![CDATA[<p>的考试呢? 我想考试似乎对每个人的前途都有或多或少的影响, 当然这在号称没有
+大学联考压力的美国也不例外, 所以, 这一集就让我们来看看关于考试的一些讲法
+, 从考试的范围, 考古题的说法, 到考试卷的说法.</p>
 
 <p>1.What&#8217;s going to be covered on the test?考试的范围是什么? </p>
 
@@ -2373,1178 +380,1947 @@ gonna score high in the test next time 也可以, 但是就不够口语化.  另
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩]]></title>
-    <link href="http://yfu.github.com/note89/"/>
+    <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩 ]]></title>
+    <link href="http://yfu.github.com/note8/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note89</id>
-    <content type="html"><![CDATA[<p>□
-b办公室里基本的电话英语就那么几句, 只要各位把一些基本的句型给记牢了, 你也
-可以跟老外聊上几句喔!   所以现在就让我们来看看我觉得最重要的几句在办公室里
-的电话英语.   通常在这种场合讲的英语会比较正式, 如果对居家生活电话英语有兴
-趣的读者可参考: 实用电话英语演练 一文.</p>
+    <id>http://yfu.github.com/note8</id>
+    <content type="html"><![CDATA[<p>女人啊女人啊, 你永远都是男人的最爱, 但为何上帝把你造得如此的美丽
+, 却又如此地难以了解. 在中文里我们有太多太多的成语来形容美女, 如沉鱼落雁
+, 倾国倾城, 闭月羞花等等. (你能想像如何教一个不懂中文的老外这些成语吗? )
+英语中用来形容女孩子的字眼也不少, 但跟中文比起来就真的是小巫见大巫了, 不
+过还是有些用来形容女人的说法值得学一学.</p>
 
-<p>1. ABC corporation.  May I help you?
-ABC 公司, 我能帮你什么吗?</p>
-
-
-<p>这句话算是制式的讲法.  一般接起电话的人通常会先报公司的名字 &#8220;ABC corporation&#8221;
-, 然后再说, &#8220;May I help you?&#8221; 或是如果要更客气一点的话则可以说 &#8220;How can I
-help you?&#8221; (我该怎么帮你?), 因为这样的问法表示我「该」怎么帮你, 而非我
-「需不需要」帮你? 但基本上 &#8220;May I help you?&#8221; 跟 &#8220;How can I help you?&#8221; 都很
-常见就是了.</p>
-
-<p>不过如果是机器接的电话, 则听到的多半是这样, &#8220;Thanks for calling ABC corporation,
- if you know your party&#8217;s last name or extention, press 1.   If you want 
-to recieve information or publication, press 2.  If you want to talk to 
-the operator, press pound sign or remain on the line.&#8221;  (感谢你打电话到 ABC 
-来, 如果你知道你要找的人的姓或是分机号码, 请按 1, 如果是想要本公司的简介或
-出版品, 请按 2, 如果是要找总机, 请按 #, 或是请别挂断. </p>
+<p>1. Hey, look at the chick over there. 看看在那边的女孩.</p>
 
 
-<ol>
-<li>And you are?
-你是?</li>
-</ol>
+<p>Chick 这个字代表的就是女孩子, 各位不要跟 chic (时尚) 这个字给搞混了.  Chick
+这个字念起来就像是 chicken 前面的几个音, 所以蛮好认的. 一般而言 chick 和
+ girl 是可以交互使用的, 例如, 她是个十三岁的女孩, 就是 She is a thirteen-year-
+old chick.</p>
+
+<p>2. She is gorgeous! 她真是漂亮.</p>
 
 
-<p>如果人家打电话来是要找你的上司, &#8220;May I talk to your manager?&#8221; (我能不能跟
-你们经理讲话?) 这时你总不能糊里糊涂地就把电话拿给经理说, 说不定人家是打电
-话来跟你经理勒索一百万的呢! 所以通常我们一定要先确定打电话来的是谁.  最客
-气的问法是, &#8220;Whom I am speaking with?&#8221; 或是 &#8220;Whom am I talking to?&#8221; (我正
-在跟谁讲话呢?) 但是人家一听是像我这种小毛头打电话找他们经理, 他们就会用比
-较口语的说法, &#8220;And you are?&#8221; (你是?) 如果人家这样问我, 我就可以答, &#8220;This 
-is Benlin.&#8221;</p>
+<p>要懂得适时地称赞女孩实在是每个男士必修的功课.   一句简单的 You are pretty!
+或是 You are so beautiful 就可以让人家高兴上好半天.  Gorgeous 和 pretty,
+beautiful 都是美丽的意思, 但是程度上可能要比 pretty 和 beautiful 还要再来
+的高一些. 所以下次再看到美女, 别忘了说一声, You are gorgeous! 说不定她就
+变成你的老婆了.</p>
+
+<p>3. She is a babe. 她是个美女.</p>
 
 
-<p>像是 &#8220;And you are?&#8221; 这么口语的英文书上大概学不到, 但这却是老美天天在用的
-句子, 只怕你学了之后还不敢用.   其实真的不用怕.  越简单的句子老美越听得懂
-.   而且事实上  &#8220;And you are?&#8221; 这句话还有许多适用的场合, 例如在公司的接待
-处 (reception).  来访的客人如果说, &#8220;I&#8217;m looking for Mr. Wolf.&#8221; (我要找伍
-夫先生) 接待小姐就可以反问他, &#8220;And you are?&#8221; (你是?)   所以像这种简单又好
-用的句子大家一定要记起来喔!</p>
+<p>这句话是用来形容美女的喔.   像是我今天去打球看到一个很美很美的女孩, 那我
+就会跟我的同学说, She is really a babe. 要特别注意 babe 跟 baby 只有一字
+之差但却相差十万八千里.  你千万不要说成 Oh!  I like the baby, 那么你很有
+可能被人家当成恋童癖.</p>
 
-<p>3. I&#8217;ll put her on the phone. Just a second.
-我会请她听电话, 请等一下. </p>
+<p>4. She turns me on.她让我眼睛为之一亮.</p>
 
 
-<p>Put someone on the phone 这个片语就是说请某人听电话.   例如你打电话找你女
-朋友, 结果女朋友的同事接了电话, 就开始跟你东扯西扯, 问你们昨天是不是吵架了
-啊? 什么时候要结婚啦, 这时如果你实在不想跟她讲了, 就可以说, &#8220;Could you please
-just put her on the phone?&#8221; (你能不能请她来听电话啊?) 反过来如果今天是你接
-到了电话, 结果要找的是别人, 你就可以说, &#8220;Ok. I&#8217;ll put her on the phone.<br/>
-Just a second.&#8221; (好, 我会请她听电话, 请稍等一下.)</p>
+<p>各位男生不知有没有这样的经验, 一位长发美女从你眼前走过, 你的目光便不自觉
+地投射在她身上, 全身的血液也开始跟著沸腾起来.   这要怎么用英文形容呢? 这
+就叫 She turns me on.  这好像是说, 她把你身上的电源都给打开了.</p>
 
-<p>上面讲的 put someone on the phone, 指的多半是只有一只电话时, 但如果像公司
-里有许多分机, 则用「转接」 transfer 或是 redirect. 会比较恰当.  例如同样的
-情况你可以说, &#8220;I&#8217;m transferring your call.&#8221; 或是 &#8220;I&#8217;m redirecting your call.&#8221;
- (我帮你转接到分机给她.) 如果是接线生转接的话, 他们有时就只简单地说, &#8220;One 
-moment, please.&#8221; 或是, &#8220;OK. I&#8217;ll put you through.&#8221;</p>
+<p>另外, turn-on 也可以当作名词用, 它用来表示任何令你觉得很不错的人, 事, 物
+.  另外你可以说 She is such a turn-on. 就是说她给我的感觉还蛮不错的.</p>
 
 
 <ol>
-<li>Would you mind holding for one minute?
-你介不介意稍微等一分钟啊?</li>
+<li>I think she is a hottie. 她是个辣妹.</li>
 </ol>
 
 
-<p>在美国如果有机会打电话给客户服务 (Customer Service)部门, 如果没意外的话都
-会听到以下的电话录音, &#8220;All of our representitives are currently busy serving 
-their customers.  Your call will be answered in approximate 5 minutes&#8221; (我
-们所有的客服人员都在忙著服务他们的顾客, 请等五分钟后, 就会有人接听你的电话
-), 然后十分钟过去了, &#8220;Please continue to hold, your call is very important 
-to us.&#8221; (请继续等候, 你的来电对我们非常重要).  所以大家要知道, 老美基本上
-对这种无止境的等待是深恶痛绝的.  所以要记得, 如果人家打电话来, 千万不要因
-为听不懂就说, &#8220;Hold on&#8221;, 然后就跑去求救兵, 这对打电话来的人是十分不礼貌的
-.</p>
+<p>所谓的 hottie 就是指那种很辣的辣妹, 穿着打扮各方面可能都非常地时髦.  或是
+你也可以说, hot babe 或是 hot chick. 但有一点请注意, 也许你在国内对一个女
+孩子说, 你真是个辣妹啊! 她可能还会蛮高兴的, 但是在美国你不可以去跟女孩子
+说 You are a hottie. 那么你可能换回一巴掌. </p>
 
 
-<p>如果万不得已一定要请他稍候, 我们要客气一点地说, &#8220;Would you mind holding
-for one minute?&#8221; 所以记得要给对方一个明确的时间, 例如 one second 或是 five
-minites 不要让对方无止境地等下去.   但是如果一分钟到了你还没忙完, 则最好再
-说一次, &#8220;Sorry, I am still on the phone.  Could you hold for another minute?&#8221;
- (对不起, 我还在讲电话, 能不能再请你稍候一分钟.)</p>
+<p>另外有一个字眼跟 hottie 很像, 叫 hot tamale, 但是这个字一般而言比较少人在
+用. Hot tamale  原是一种墨西哥食物, 被引申成为辣妹的意思, 不过这个用法比
+ hottie 更强烈, hottie 单指好看或漂亮的人, 但 hot tamale 则又加上了一些不
+能自己控制自己, 有点疯狂的意思, 所以也不要乱用喔.</p>
 
-<p>5. He&#8217;s out for lunch.  Would you like to try again an hour later?
-他出去吃午餐了, 你要不要一小时后再打来?</p>
+<p>6. Do you know Jean? She is a cutie. 你认识 Jean 吗? 她好可爱喔!</p>
 
 
-<p>受到中文的影响, 许多人要讲某人「出去」吃午餐了常会说成, &#8220;He went out for
-lunch.&#8221; 其实这个 went 是多余的, 通常老美只讲 be out for something 就行了.
- 如果要再简化一点, 单说, &#8220;He is on lunch.&#8221; 或是 &#8220;He is on (lunch) break.&#8221;
-(他正在休息时间.) 这样子也可以.</p>
+<p>看来中外皆然, 女孩子总是分为二种, 漂亮美艳型和活泼可爱型.   至于那种遵守
+交通规则型 (obeying the traffic rules 则不在本文讨论范围之内)  漂亮的女生
+叫 hottie, 相对的, 可爱的女生就叫 cutie. 或是你单讲, She is so cute! 也是
+不错的用法.</p>
 
-<p>如果别人要找的人不在, 通常我们有二种选择, 第一种是请别人晚点再打来, 除了
-像例句用 try again/ call again 之外, 我们也可以用 call back/ try back 这样
-的讲法. 例如你可以建议别人, &#8220;Why don&#8217;t you call back in 30 minutes?&#8221; (你何
-不30 分钟后再打来呢?) 第二种选择就是请对方留言, 客气一点的讲法是, &#8220;May I 
-take your message?&#8221; 或是 &#8220;Would you like to leave a message?&#8221; (你想留言吗
-?)</p>
+<p>7. She is well-developed. 她很丰满.</p>
+
+
+<p>刚才说的是以脸蛋来分的, 现在说的是以身材来分的.   看到身材很好的女生, 女
+生之间彼此会说 She is well-developed 或是 well-endowed, 但这算是很文明的
+讲法, 要是男生看到这种女人, 他们通常不会那么拐弯抹角, 他们会直接说, She
+has big boobs, She has big breast 或是 She has big jugs. 至于身材不好的呢
+? 很抱歉, 在英文里好像找不到身材不好这个词耶! 因为她们根本就用不到哇! ^__^
+ 如果真要说的话, 可以说 She is flat-chested.</p>
+
+<p>Well-endowed 或是 well-hung 如果是用来形容男生的话, 例如 He is well-endowed, 
+则指的也是某个部分很大.  至于是哪个部分呢? 自己想想看吧!</p>
 
 
 <ol>
-<li>She is not here but you can call her machine.
-她不在这里, 但是你可以打她的电话答录机.</li>
+<li>Do you like blondes or brunettes. 你喜欢金发妞还是棕发妞?</li>
 </ol>
 
 
-<p>老美管电话答录机叫 answering machine 或是也有少数人叫 answer machine.   
-但是在一般的对话中常常简称 machine. 例如 &#8220;You can call her machine.&#8221; 就是
-说, 你可以打她的电话答录机留言.   或是你打电话给某人, 但你想他很可能不在, 
-这时你就可以说, &#8220;I&#8217;m expecting a machine.&#8221; (我想会是电话答录机接的电话.) 
-如果是   &#8220;I want to check on my machine.&#8221; 则是说我要检查电话答录机里的留言
-. </p>
+<p>西方的女子大致上可依其发色分为二种, 一种叫 blondes, 金发妞, 另一种叫 brunettes,
+ 棕发妞. 一般美国人或是欧洲人对于 blond girl 的刻板印象就是胸部很大, 但是
+没有大脑, 又很喜欢作爱, 所以很容易就能骗上床.  所以在美国有很多所谓的 blond 
+jokes, 讲的就是对金发妞的一些笑话.  你在美国跟人家说 blond joke, 人家都会
+知道你在说什么.  而棕发妞则正好相反, 她们通常都很有智慧, 事业心也很强.  
+ 所以我听老美说过一句话蛮有意思的, If you dream of a blond, your life sucks. 
+But you dream of a brunette, your life is wonderful! </p>
 
 
-<p>记得喔! 通常人家讲 someone&#8217;s machine 时百分之九十九都是指电话答录机而言,
-你可别傻傻地问人, &#8220;Answering machine?&#8221;  像六人行 (Friends) 里有一集 Chandler
-说, &#8220;I got her machine.&#8221; 结果 Joey 还呆呆地问他, &#8220;Her answering machine?&#8221;
-Chandler 就讽刺  Joey 的无知说, &#8220;No. interestingly enough, her leaf blower
-(machine) picked up the phone.&#8221; (很有趣喔, 不是电话答录机喔! 而是她的吹落
-叶机接的电话.)  注: 美国的□叶都不是用扫的, 而是用吹的, 很神奇吧? 而 leaf
-blower 就是那种背在身上拿来吹落叶的机器啦!</p>
+<p>很多美国的小孩子都是金发, 但是随著年纪渐长, 头发的颜色会渐渐转为褐色夹杂
+金色, 通常我们可以根据其纯度而将其区分为 bleach blond, sandy blond 和 dirty
+blond. (事实上没有人是天生的 bleach blond,  一般 bleach blond 的头发, 都
+是染出来的结果.)  我们可以称染出来的金发叫作 dyed blond hair, 而天生的金
+发叫作 platimum blond.</p>
 
-<p>7. I&#8217;m interested in your CRM software. Can you give me an quote?
-我对你们的客户关系管理软体有兴趣, 能跟我报个价吗?</p>
+<p>9. I don&#8217;t like my wife bitching around. 我不喜欢我老婆泼妇骂街. </p>
 
 
-<p>之前讲的都是别人打电话进来要怎么回答, 现在要讲的是如果你打电话给别的公司
-要怎么讲.   通常你会打电话给别的公司不外乎以下几种状况: 询价, 下订单, 追踪
-订单, 应征工作, 推销产品等等.  首先谈到询价.   如果只是要请对方大略地估个
-价钱, 你可以说, &#8220;Can you give me a quote?&#8221; 或 &#8220;Can you give me an estimate?&#8221;
-但是提醒大家, 这个 quote 发 /kwot/ 的音, 记得要特别强调那个 /wo/ 的音, 不
-然老美会以为你在说 coat /kot/ 或是 court /kort/ 这个字.  这种情况就发生在
-我身上不只一次, 有一次拿车去修车厂估价, 我跟技工说, &#8220;Can you give me a quote?&#8221;
- 他却回答我, &#8220;You need a coat?&#8221; 扯了半天他才搞懂, 后来我才知道原来自己 quote
-的音发错了. 所以最好的办法就是用 estimate, 这个字是绝对不会发错的.</p>
+<p>一般男生总觉得女生唠叨, 这个唠叨在英文中就是 bitch. 这个 bitch 在英文中有
+很多意思, 它可以指母狗, 也可以用来骂女生, 而当动词用时, 则是唠叨的意思.
+ 例如, My girlfriend bitches me all the time. 我女朋友总是唠叨我.  或是你
+可以用 bitch around 这个片语. 有点像是中文泼妇骂街的味道.</p>
 
-<p>另外, estimate 和 quote 也可以指「报价单」而言, 例如你可以要求别人, &#8220;Can 
-you send me a sample with an estimate ASAP?&#8221; (能不能请你尽快送一份样品和报
-价单给我?)</p>
+<p>10. She is a  slut. 她真是一个荡妇.</p>
 
 
-<ol>
-<li>I&#8217;d like to place an order for a DL-1100 color printer.
-我想要下一份 DL-1100 彩色印表机的订单.</li>
-</ol>
+<p>教完好的, 也要教些不好的了.  Slut 是个非常不好的字, 它和 bitch 这个字差不
+多, 都有点像是骂人&#8221;妓女&#8221;的味道.   但二者的意思严格说来不尽相同.  Bitch最
+好的翻译是&#8221;坏女人&#8221;, slut最好的翻译是&#8221;野女人，贱女人&#8221;. 说得更清楚一点, slut
+多半强调的是那种喜欢一夜情的女人, 到处追求新鲜刺激, 喜欢跟不同的男人发生
+关系, 而 bitch 纯粹就是那种看到她就想对她吐口水的女人.  不过除非你是真的
+很讨厌某人, 不然不要用到 slut 或 bitch 这两个字.</p>
 
-
-<p>以前每次为了买东西而打电话给人家, 我都直接说, &#8220;I want to buy this, I want 
-to buy that.&#8221; 当然啦! 要买东西的人最大, 不管你说什么别人都一定会想办法把东
-西卖给你的.   只是你如果直接说 buy 听来比较像是日常生活在说的对话.   如果
-像是公司要采购商品时, 最好正式一点用 order, 或是更完整一些说 place an order 
-for, 例如 &#8220;I want to order a color printer.&#8221; 或是, &#8220;I want to place an order 
-for a color printer.&#8221;  都是不错的用法. </p>
-
-
-<ol>
-<li>I&#8217;m calling to check my order status.
-我打电话来查看我订单的状况.</li>
-</ol>
-
-
-<p>以前我因为不知道 check order status 这个用法, 常拉拉杂杂讲了一堆才能表达
-我的意思.  例如我可能会说, &#8220;I ordered something yesterday.  Can you check 
-if you&#8217;ve shipped it or not.&#8221; 这句话听起来是不是蛮笨的? 后来我暗中观察, 
-同样的情况，原来老美居然都简简单单地说 &#8220;I want to check my order status.&#8221; 或是
- &#8220;I want to track my order status.&#8221; 就能完整地表达这句话的意思, 真是太神奇
-了.</p>
-
-
-<p>这让我想到有一次在机场也是, 我想问柜台小姐我的朋友倒底坐哪一班飞机, 那班
-飞机有没有慢分, 他大概几点会到, 当我好不容易讲完这么长一串时, 柜台小姐居然
-只回了我一句, &#8220;You wanna check passenger status?&#8221; 差点没昏到, 原来我只要用
- check passenger status 就行了喔?</p>
-
-<p>10. I was referred to you by Mr. Gordon.  
-我是 Gordon 先生介绍我来的. </p>
-
-
-<p>打电话到别人公司如果是有求于人的话,例如要去应征啦或是推销东西啦, 最好能先
-攀点关系啦! 例如最常用的招数, 我是某某人介绍来的, 就是 &#8220;I was referred to
-you by someone.&#8221;  (注意, 介绍在这里用 refer 而不是用 introduce.) 还有呢?
-□
-p果你今天拿到了该公司的折价卷, 则最好也是开宗明义地说, &#8220;I got your number
-from a coupon, which says your product is 50% off today.&#8221; (我是根据你们折
-价卷上的号码打过来的, 它上面写著今天产品五折优待.) 这样子让他想赖都赖不掉
-.  总之呢? 先表明自已是怎么搭上这条线的, 这样子别人才不会有突兀的感觉啦.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩]]></title>
-    <link href="http://yfu.github.com/note88/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note88</id>
-    <content type="html"><![CDATA[<p>不少人在纳闷, 不就是 &#8220;nose shit&#8221; 和 &#8220;ear shit&#8221; 吗? 如果真是这样的话, 我建
-议你还是赶快往下看吧.</p>
-
-<p>1. It&#8217;s so cold.  I can even see my breath.
-天气好冷啊, 我甚至可以看到我呼出来的空气.</p>
-
-
-<p>记得去年冬天时我陪一个美国小女生去参观校园, 刚好那天天气特别地冷, (说真的
-要不是有美女相伴我才懒得踏出大门呢!)   结果呢, 她一出门就作了一个很可爱的
-动作, 她呼出了一道白色的空气说, &#8220;Wow, it&#8217;s so cold. I can even see my breath!
-&#8221;  相信这种可爱动作有不少人一定也常作吧? 所以大家要知道, breath 不但指「呼
-吸」而言, 在日常生活中还常常拿来指你呼出的空气.</p>
-
-<p>有时候像我们吃东西完不是会在嘴巴留下味道吗? 这时候如果别人问你刚才吃了些
-什么东西? &#8220;What did you eat?&#8221; 你就可以张开嘴巴呼一口气说, &#8220;Smell my breath.&#8221; 
-(闻闻我的口气), 让他自已去猜猜看.  所以如果有人有口臭的话, 你就可以用 &#8220;Your 
-breath stinks&#8221; 来形容.  电影 Shrek 的预告片里也有一句类似的台词, &#8220;You need 
-a Tic Tac because your breath stinks.&#8221; (你需要一颗 Tic Tac 薄荷糖, 因为你
-的口气很难闻)  </p>
-
-
-<ol>
-<li>You just spit on me.
-你刚喷口水在我身上.</li>
-</ol>
-
-
-<p>Spit 这个动词就是指吐口水或吐痰中那个「吐」的意思.  例如你要写一个牌子说
-, 「请勿随地吐痰」, 就可以写道 &#8220;No spitting here.&#8221; 不过正常人会去吐别人口
-水或吐人家痰的人应该不多吧? 所以一般 spit on someone 指的是在谈话时「喷」
-口□
-□b别人身上. 例如 &#8220;Could you stop spitting on me?&#8221; 就是能不能请你别继续喷
-口水在我身上? 不过有些人别的不会, 就是特别会喷口水, 对付这种人老美还有一句
-顺口溜, &#8220;Say it, don&#8217;t spray it.&#8221; (说出来, 不要喷出来) 是不是还挺溜的?</p>
-
-
-<ol>
-<li>You&#8217;re drooling all over the table.
-你的口水流的满桌都是.</li>
-</ol>
-
-
-<p>英文里的 drool 这个字不但能够当成名词「口水」, 还能当作动词「流口水」解释
-.  由 drool 而衍生出来的片语很多, 例如有人流出来的口水把你写的字给涂掉了. 
- 这时候可以这么说, &#8220;You&#8217;re drooling off my words.&#8221; 还有中文里如果我们很想
-要某样东西不是也会说「流口水」吗? 英文里用法很类似, 不过用的是 drool over 
-something 这个片语.  例如,   &#8220;I&#8217;m  drooling over the new computer.&#8221; 就是说
-新的电脑出来了, 让我看到都会流口水.</p>
-
-
-<p>口水的讲法还有许多种, 像是  saliva 这个字也当「口水」解释, 不过 saliva 是
-医学上的专有名词, 也就相当于中文里的「唾液」.   而 water 这个字则是可以广
-泛地解释为 「口水」、「泪水」或 「汗水」. (视上下文而定) 例如你说, &#8220;My mouth
-is watering.&#8221; 就是说我开始在流口水啦! 所以有一个形容词 mouth-watering 就是
-指「垂涎三尺」或是「垂涎欲滴」.  例如 &#8220;This cheesecake is mouth-watering!&#8221;
-(这个起士蛋□真是令人垂涎欲滴)</p>
-
-<p>4. Don&#8217;t pick your nose in front of me. 
-别在我面前挖鼻孔.</p>
-
-
-<p>有很多人都知道「我在流鼻水」的英文可以说 &#8220;I have a running nose.&#8221; 但却不
-知道「挖鼻孔」的英文是什么, 其实呢「挖鼻孔」就是  pick one&#8217;s nose.  至于知
-道鼻屎叫 booger 的人可能就更少了.  那鼻屎的好朋友「鼻涕」呢? 英文里有许多
-种讲法, 比较文雅的讲法是 snivel 或 nasal mucus.  (mucus 原意是黏液, 所以
-鼻子里的 [nasal] 黏液 mucus 自然就是鼻涕了).   不过如果小朋友们才不会跟你
-什么 nasal mucus 呢, 他们比较爱用不文雅的  snot 这个字.  (Snot 的发音是不
-是听□
-_来就比较粗俗?)  例如有个讨厌鬼的鼻涕快滴下来了, 你就可以跟他说, &#8220;Hey, your
-snot is dripping down.&#8221;</p>
-
-<p>有个跟 booger 蛮有趣的小故事讲给各位听.   有次几个老美来我家玩一种猜字游
-戏, 就是一个人说提示, 其它的人猜.  那一次猜的字里面就有 booger.   不过当时
-小笨霖还不认得 booger 是什么意思, 所以我就问一个老美, 他告诉我, &#8220;It&#8217;s the 
-black stuff in your nose; some children play with them or even eat them.&#8221; 
-(它就是你鼻子里黑色的东西, 有些小孩子会玩它甚至会吃它),  后来没多久那个老
-美肚子饿了, 他问我, &#8220;Do you have something to eat?&#8221; (有没有吃的东西啊?) 结
-□
-G我现学现卖, 随口回了他一句, &#8220;I only have booger, wanna eat?&#8221; (我只有鼻屎
-啦, 你要吃吗?) 结果全场的人全都笑翻了.  从此我再也没忘掉 booger 这个字. </p>
-
-
-<ol>
-<li>If you want to sneeze, do it after I leave.
-如果你要打喷涕的话, 等我走了再打吧.</li>
-</ol>
-
-
-<p>打喷涕的英文就是 sneeze 这个字, 例如我自己最近花粉过敏, 喷涕是一个接一个
-打, 我就可以说, &#8220;I have a allergy so I sneeze every 5 minutes.&#8221; (我因为过
-敏所以每五分钟就打一次喷涕), 够可怜的吧! 想想还是台湾好, 至少没有可怕的花
-粉□
-停w.  顺道提醒大家一点, 如果有美国人在你面前 sneeze 的话, 要记得跟他们说
-, &#8220;Bless you.&#8221;, 如果是有人跟你说, &#8220;Bless you.&#8221; 你也别忘了要说一声 &#8220;Thank 
-you.&#8221; 这也算是一种礼貌啦! 另外 sneeze 也有一个常用的片语, sneeze at, 字面
-上□
-O对什么东西打喷涕, 也就是「不屑一顾」的意思. 例如 &#8220;You shouldn&#8217;t sneeze 
-at your boss.&#8221; (你不该对你老板不屑一顾)</p>
-
-
-<p>那打完喷涕后要作什么? 就是「擤鼻涕」啦.   「擤鼻涕」在英文里的讲法叫「吹
-鼻子」, blow one&#8217;s nose. 例如你要去擤鼻涕, 就可以说, &#8220;Excuse me, I have to
-blow my nose.&#8221; 如果是要提醒别人该擤鼻涕了, 则可以用客气一点的讲法, &#8220;Please
-wipe your nose.&#8221; (擦擦你的鼻子吧!)</p>
-
-<p>6. Your ears are full of earwax.
-你的耳朵里全是耳屎.</p>
-
-
-<p></p>
-
-<p>各位有看过 Jennifer Lopez 所主演的 The Wedding Planner (爱上新郎) 这部电
-影吗? 里面有一段他们在玩拼字游戏时还记得吗? 他们拼的就是 earwax 这个字, 也
-就是英文里「耳屎」的意思. 所以美国人觉得「耳屎」其实是一种腊 (wax), 我还特
-□
-O挖了一点 earwax 出来看看, 真的不怎么像就是了. 不过呢? 后来又有读者告诉我
-, 老美的耳屎是湿的, 所以和我们东方人耳屎干干的不太一样, 所以如此听来, 老美
-会把耳屎叫 earwax 也就不足为奇了.</p>
-
-<p>上面讲到挖鼻孔是 pick one&#8217;s nose, 那挖耳朵自然就是 pick one&#8217;s ear 了? 没
-错, 老美管挖耳朵叫 scratch one&#8217;s ear 或是  pick one&#8217;s ear 所以平常我们挖耳
-朵用的小杓子就叫 earpick, 只不过老美他们挖耳朵都是用棉花棒  (cotton swab 
-或作 Q-tip, 一种有名棉花棒的牌子), 你说 earpick 老美可能会听不太懂.  </p>
-
-
-<ol>
-<li>My eye is twitching.
-我的眼皮在跳.</li>
-</ol>
-
-
-<P>中国人有一句谚语说「左眼跳财, 右眼跳灾」, 这句话要解释给老美听可能要花上
-老半天工夫.   不过如果你已经知道眼皮跳用的是 twitch 这个动词, 那可能会简单
-些.  所以我们可以这样解释给外国人听, &#8220;Twitching on the left eye forecasts 
-fortune but twitching on the right eye forcasts disaster.&#8221; 
-
-附注一点: 大家学到了「鼻屎」和「耳屎」的讲法, 可能会期待「眼屎」的讲法. 
- 不过我问过两三个老美, 他们都告诉我「眼屎」并没有一个固定的讲法.   但是我
-们可以用一个万用字 discharge.   凡是身上排放出来的分泌物或排泄物都可以用 
-discharge. 例如 &#8220;There is a thick, yellow discharge coming from my eye.&#8221; 
-(我眼睛里流出黄色黏稠的分泌物.   或是直接讲 eye discharge.  例如, &#8220;You have 
-to wash your face to clean the eye discharge.&#8221; (你必须去洗脸把眼屎给洗掉.)</p>
-
-
-<ol>
-<li>No peeking.
-不淮偷看.</li>
-</ol>
-
-
-<p>以前老师教我们「看」有三种, 一种是盯著看 look at, 一种是看电视的看 watch, 
-一种是看电影的看 see.   不过后来我才发现还有一种看叫「偷看」- peek , 英文
-里其实也很常用. 例如最简单的在玩捉迷藏时我们不是常会叫鬼不要偷看吗? 不要偷
-看在英文里就是, &#8220;No peeking.&#8221;  但是不只小孩子会说, &#8220;No peeking.&#8221; 连大人也
-常说, &#8220;No peeking.&#8221; 例如你跟一个异性在同一个房间里换衣服时, 你就可以先声明
-说, &#8220;No peeking.&#8221; 免得到时有人无法控制自己.  或是像电影 Sweet November 里
-女主角用围巾把男主角的眼睛蒙起来时说的也是这一句, &#8220;No peeking.&#8221; (至
-于躲在暗处偷看则是 peep, 参看笔记七十)</p>
-
-
-<p>除此之外, 「目不转睛」地看要用 stare, 例如你今天心血来潮穿裙子来上学, 结
-果班上的臭男生个个老盯著你看, 这时你该说的就是, &#8220;Don&#8217;t stare at me like that.&#8221;
- (别那样目不转睛地盯著我看).  凝视的话则是用 gaze. 例如: &#8220;He gazed into
-my face and said I will never let you go.&#8221; (他凝视著我对我说, 我绝不会让你
-走)</p>
-
-<p>9. There is no cure for my pimples.
-我的青春痘是没治了.</p>
-
-
-<p>青春痘的英文叫 pimple, 口语上也可以说 zit. Pimple 大家一定要牢记, 因为有
-一个字 pimp 跟 pimple 很像, 但 pimp 却是「皮条客」的意思, 也就是指在色情行
-业拉客的那些人.   所以如果你原来要说青春痘却说成了 pimp 那真是世界宇宙级英文大乌龙.</p>
-
-<p>那挤青春痘要怎么说? 你可以用  squeeze one&#8217;s pimple 或是 pop one&#8217;s pimple. 
- 个人建议用后者比较口语,  因为 pop 原是爆裂时发出的「啪」一声, 所以 pop one&#8217;s 
-pimple 听来也比较传神.   例如: &#8220;I just can&#8217;t help popping the pimple.&#8221; (我
-就是忍不住要挤青春痘)</p>
-
-
-<ol>
-<li>You got a very cute dimple in your cheek.
-你脸上有一个好可爱的酒窝.</li>
-</ol>
-
-
-<p>Dimple 这个字原指「小凹洞」, 最明显的例子就是高尔夫球上就有很多的 dimples. 
- 那人身上的 dimple 呢? 指的多半就是酒窝了.  所以你要赞美人家有酒窝, 可以说
-, &#8220;You got a cute dimple in your cheek.&#8221; 或是 &#8220;A cute dimple just appeared 
-in your face.&#8221; (一个可爱的酒窝刚在你的脸上浮现) </p>
-
-
-<p>不过呢, 除了脸上会有 dimple 外, 身上的其它地方也会有 dimple. 特别是像美国
-有很多超级大胖子, 你注意看他们的屁屁或是手臂, 因为肥肉过度挤压的结果, 上面
-也会有许多窟窿, 这些窟窿也叫 dimple.   例如我就听过一个胖哥在耍宝时说过,
-&#8220;I do have dimples in my cheeks, my butt cheeks.&#8221; (我身上也有酒窝, 只不过
-不在脸上, 而是在屁屁上)  编按: 俚语中的 cheeks 就是指屁股的那两片肥肉啦!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩]]></title>
-    <link href="http://yfu.github.com/note87/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note87</id>
-    <content type="html"><![CDATA[<p>专门用来考验情侣之间的忠诚度.   所以制作单位每次会邀请四对男女朋友, 然后
-把它们分别放在岛上不同的地方去接受诱惑.   到最后你们可以自己决定是否要继
-续在一起还是要分手.  OK.   这次要谈的主题就是当男人或女人遇到你有感觉的对
-象时, 要怎么用很口语化的方式去表达自己内心的感觉.</p>
-
-<p>1. I still have feelings for her.
-我对她还有感情.</p>
-
-
-<p>中文里说我们对某人有「感觉」指的就是对别人那份感情还在. 英文的用法也十分
-类似, 老美也说, have feelings for someone.   特别是当他们提到自己的前任男
-女朋友时, 常会说, &#8220;I still have feelings for her/him.&#8221;  意思就是缘分未尽
-, 心里上还是喜欢人家的.  举个六人行 (Friends) 里的经典名句来加深印象吧.
- 有一次 Chandler 的前任女友 Janice 来找他, 还说要在他家过夜, 那 Chandler
-的现任女友 Monica 就反对啦, 而她的理由就是, &#8220;He still has feelings for you.&#8221;,
- 更劲爆的是下一句, &#8220;Feelings can&#8217;t go forever, but you can.&#8221; (感情是不会
-永远消失的,   但是..  你可以永远消失)  再举一例, 如果有两个人明明都已经分
-手了, 结果还在那里大吵特架, 你个爱情顾问要怎么分析这个状况呢? 就这么说吧
-, &#8220;You&#8217;re fighting because there is still feelings there.&#8221; (因为你们的感
-情还在, 所以才会吵架).</p>
-
-<p>注意一下 feeling 指「感觉」时用的是单数, 例如 &#8220;I don&#8217;t have a good feeling 
-about this.&#8221; (我觉得这件事不好), 但当「感情」讲时多半用的是复数, feelings, 
-例如 &#8220;No hard feelings.&#8221; (不要难过),  &#8220;I still have feelings for her.&#8221; 都
-是. </p>
-
-
-<ol>
-<li>She is the girl I&#8217;m clicking with.
-她就是跟我来电的那个女孩.</li>
-</ol>
-
-
-<p>Click 这个字是个形声字, 原意是形容「颗粒」一声.   例如你在按滑鼠时不是会
-发出「颗粒」一声吗? , 这个声音如果用英文发音就是 &#8220;click&#8221;. (我在想按滑鼠的
-动作就叫 click, 不知是否是因为其声音而来? ) 所以如果我说 &#8220;I click with someone.
-&#8221; 指的是什么意思吧?  没错, 指的就是两人「一拍即合」, 或是更白话一点就是指
-两人「来电」.   举个例子来说吧, 今天你带表姐去相亲, 回来之后别人问你结果
-如何? 你就可以这么说啦, &#8220;She clicked with that guy.&#8221; 或是更简单一点, &#8220;They 
-were clicking.&#8221; (她俩一拍即合), 这样子你这个媒人就是很成功了.  还有一句也
-很有意思, &#8220;They&#8217;re clicking sexually.&#8221; (他们两人在性趣方面一拍即合), 通常
-暗指两个人第一次见面就上床, 像电影 &#8220;Head over Heels&#8221; 里就有这样的用法. </p>
-
-
-<p>跟 click with someone 同样常被老美用的是 &#8220;have chemistry&#8221; 这个片语.  例如
- &#8220;They were clicking.&#8221; 这句话你也可以说成, &#8220;The have chemistry.&#8221;, 这句话
-你可以理解成两人之间有某种奇妙的化学反应, 所以也是指两人「来电」的意思.</p>
-
-<p>3. I bound with her.  
-我跟她有往来. </p>
-
-
-<p>第一次听到 &#8220;I bound with her.&#8221; 时, 笨霖我很直觉地认为这句话是指两人的关系
-很亲密, 至少应该是男女朋友的关系吧.   所以当我第二次听到另一个男生说 &#8220;I
-bound with him.&#8221; 时, 我吓了一跳, 还以为这人是 gay 呢! 后来才知道 bound with
-someone 并不是两人有亲密的关系喔! 这只是说两人处得来, 像是朋友一样, 所以
-男生不但可以 bound with 女生, 其实也可以 bound with 男生啦!   所以 bond
-with someone 顶多就是 get along with someone 的意思.   所以下次如果是同性
-别的人跟你说, &#8220;We are bonding.&#8221;, 可别太惊讶喔.</p>
-
-<p>类似的用法也可以说, &#8220;I have connection with her.&#8221; 同样也是说你们之间有往
-来的意思, 但是什么程度的往来端视上下文而定, 有时可以是普通朋友间的往来, 
-但也可以是跟「性」有关的往来.  Temptation Island 里就有一段话值得大家学一
-学, &#8220;There was one connection with the girl I clicked with.  I bound with 
-her.  But it didn&#8217;t go anywhere.&#8221; (有一次我跟一个我一拍即合的女生来往, 但
-却没什么搞头.)</p>
-
-
-<p>4.It didn&#8217;t go anywhere.
-但是没有什么事发生.</p>
-
-<p>&#8220;It didn&#8217;t go anywhere.&#8221; 是很值得学的口语说法, 意思是 &#8220;Nothing happened 
-between us.&#8221; 什么事也没发生.   比如说你跟一个美眉打情骂俏好一段时间了, 但
-就是无法跨越普通朋友的鸿沟. 别人问你有什么进展没有, 你就可以回答说, &#8220;It 
-didn&#8217;t go anywhere.&#8221; 或是也可以这么说, &#8220;It didn&#8217;t work out.&#8221;</p>
-
-
-<p>为什么说它是很值得学呢? 因为我知道这句话大多数的人听得懂, 但说不出来.  你
-可能会说 &#8220;Nothing happened between us.&#8221; 但我想你大概不会说, &#8220;It didn&#8217;t go
-anywhere.&#8221; 吧! 以此类推, 你要问人家「有没有什么进展?」最口语的说法是什么
-? 想个三秒钟. 1,2,3 时间到!  答案是, &#8220;How did it go?&#8221; 答出来了没? 因为你
-说 &#8220;How did it go?&#8221; 所以别人正好可以接, &#8220;It didn&#8217;t go anywhere.&#8221;</p>
-
-<p>5. Maybe I don&#8217;t deserve you.  
-也许我真的配不上你. </p>
-
-
-<p>Deserve (应得的) 是一个在英文中很好用的字, 它应用在谈恋爱方面有许多有趣的
-用法, 很值得大家学起来.   例如「我配不上你」, 英文就是, &#8220;I don&#8217;t deserve
-you.&#8221; 但是如果有人失恋了, 你可以安慰他 &#8220;You deserve someone better.&#8221; (你
-一定可以找到更好的), 或是说 &#8220;She doesn&#8217;t  deserve you.&#8221; (她根本就配不上你
-) 注意一下这里如果直接从中文翻, &#8220;You can find someone better.&#8221; 听起就不是
-那么好了.  用 deserve 有强调这原本就是属于你的, 是你应得的.</p>
-
-<p>此外在日常的会话中也常听到一句, &#8220;You deserve it!&#8221; 这句话是说这是你应得的
-, 就是「活该」、「自作自受」的意思   例如有人老爱脚踏两条船, 结果到头来同
-时被两个女人给甩了, 这种人不值得安慰, 你就可以对他说, &#8220;You deserve it.&#8221;</p>
-
-
-<ol>
-<li>We don&#8217;t match each other.
-我们俩个不配.</li>
-</ol>
-
-
-<p>和上一句的 &#8220;I don&#8217;t deserve me.&#8221; (我配不上你) 不同,   &#8220;We don&#8217;t match each 
-other.&#8221; 指的是我们两个人不合, 或是说两个人不配..  像是在穿着方面, 我们也
-常听人家说, &#8220;Your clothes don&#8217;t match.&#8221; 指的就是两件衣服不配, (例如红衣服
-配上绿裤子之类的.)   当然 match 这个字除了当动词外也可以拿来当名词用.   
-例如你要说某两人很相配, 你就可以说, &#8220;You are a perfect match.&#8221;</p>
-
-
-<ol>
-<li>She is physically attractive
-她的身体很吸引人.</li>
-</ol>
-
-
-<p>在谈恋爱的人通常会把他们的关系分成二大类, 一种是男生比较喜欢的, 肉体上的
-, 英文里叫 physical.   另一种则是女生比较喜欢的, 精神上的, 英文里叫 emotional.
-   从这里又可以引申出很多的变化.  例如 &#8220;She is physically attractive.&#8221; 说
-的就是她很吸引人, 特别强调是在身体方面.   或是你问别人喜不喜欢她? 别人回
-答, &#8220;I don&#8217;t know, it&#8217;s just physical.&#8221; 这句话男生好像常说, 意思就是, 
-「我自己也不知道, 那只是生理上的反应而已.」所以当老美提到 physical 时, 你
-要能听弦外之音.  像是 1981年, Olivi Newton-John 有一首歌就叫 &#8220;Phyiscal&#8221; 
-里面是怎么唱的呢? &#8220;Let&#8217;s get physical, physical, I wanna get physical, let&#8217;s 
-get into physical&#8221;, 下一段就更白话了, &#8220;Let&#8217;s get animal, animal, I wanna 
-get animal, let&#8217;s get into animal.&#8221; 上下文一对照, 想要不知道是什么意思也
-很难吧!</p>
-
-
-<p>另外也许有人听过 corporeal 这个字, 同样也是指「肉体的」, 例如肉体关系就是
- corporeal relationship.  而相对应于 corporeal 这个字的则是 spiritual (精
-神上的).  例如「精神生活」就可以翻成 spiritual life. 不过这两个字口语中比
-较不会用到, 一般人说话时用的比较多的还是 physical 和 emotional.</p>
-
-<p>8.  I am emotionally unavailable.
-我已经心有所属了. </p>
-
-
-<p>Physical 强调的是,  emotional 强调的则是精神方面.   例如我听老美说过, &#8220;I&#8217;m
-emotionally unavailable.&#8221; 这句话就相当于中文的「心有所属」的意思.  因为虽
-然 &#8220;I&#8217;m unavailable.&#8221; 指的是一个人已经死会了,    但是特别强调这只是 emotionally
-的 unavailable, 所以这是说虽然你们还没有在一起, 但你的心已经是属于他的了.
-  那 emotionally cheat 又是什么? 通常指的是你实际上还没有作出对不起对方的
-事, 但心里上却喜欢别人.  也就是中文里的「精神外遇」啦! 各位知道吗? 美国的
-女生也是很爱吃醋的, 以前我的朋友只因为跟别的女生讲话时状似亲热, 他女朋友就
-跟大家告状, &#8220;He emotionally cheated on me.&#8221;  天啊! 像这种女人我们就说她,
-&#8220;She is too emotional.&#8221; (她太情绪化了. )</p>
-
-<p>补充一点 available 在英文里可以指一个人还是「活会」, 例如我说, &#8220;I&#8217;m still 
-avaliable.&#8221; 就是说我还没交女朋友的意思.  而 &#8220;I&#8217;m unavaliable.&#8221; 自然就是
-「死会」的意思了.   但有时会有结了婚的人戏称自己是, MBA, 也就是, &#8220;Married, 
-But still Available.&#8221; 的意思. </p>
-
-
-<ol>
-<li>I&#8217;m not attracted to you.
-你不吸引我.</li>
-</ol>
-
-
-<p>&#8220;I&#8217;m not attracted to you.&#8221; 这句话我在电视或电影上常听到, 可是说真的, 我
-常分不清楚他们倒底是说, &#8220;I&#8217;m not attractive to you.&#8221; (我不吸引你) 还是 &#8220;I 
-am not attracted to you.&#8221; (我不被你吸引)   偏偏这两句话意思刚好相反.  天啊
-!  不过呢, 后来我才发现百分之九十九的时候当你听到这句话时, 他们说的都是, 
-&#8220;I am not attracted to you.&#8221; 也就是 &#8220;I don&#8217;t like you.&#8221; 这句话比较婉转的说
-法. </p>
-
-
-<p>其实想想, 说 &#8220;I&#8217;m not attracted to you.&#8221; 真的比直接了当地说, &#8220;I don&#8217;t like
-you.&#8221; 好多了, 说 &#8220;I don&#8217;t like you.&#8221; 多么地刺耳啊, 所以如果别人跟你告白时
-, 但你对他并没有意思时, 不妨客气一点地说, &#8220;I&#8217;m not attracted to you, but
-we still can be friends.&#8221; (你不吸引我, 但我们还是可以当朋友. )</p>
-
-<p>10.It&#8217;s  always been you.
-我喜欢的一直都是你. </p>
-
-
-<p>女生不是常常会对男生的忠诚度打问号吗? 「说, 你要底是从什么时候开始喜欢我
-的」, 「你现在还像以前那么喜欢我吗?」. 小笨霖听来像是常常被质问的人喔! 呵
-..  没有啦! 没这么好命.   不过我刚从老美那学来一句很好用的挡箭牌, &#8220;It&#8217;s always
-been you.&#8221;  (我喜欢的人一直是你啊.) 很厉害吧, 不知道现在完成式 It has been
-还可以这样用.  如果 &#8220;It&#8217;s always been you.&#8221; 还不够的话, 赶快再补上二句, &#8220;I
-love you unconditionally.&#8221; (我是无条件爱你的), &#8220;I&#8217;m the one who loves you
-completely/totally.&#8221; (我就是那个全心全意爱你的人.)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩]]></title>
-    <link href="http://yfu.github.com/note86/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note86</id>
-    <content type="html"><![CDATA[<pre><code>    各位看完了上一篇的加强语气上之后有没有意犹未尽的感觉? 现在讲起美
-</code></pre>
-
-<p>语来有没有比较理直气壮一些? 这周我又想到一些不错的例子, 希望大家学英文时
-除了背一大堆单字片语之外, 也要学会如何精准地掌握老美在说话时的一些语气.</p>
-
-<P>1. It takes forever!
-怎么等那么久啊!</p>
-
-
-<p>这是每个上网族共同的经验吧! 等一个网页下载了老半天, 它老哥就是动也不动.
- 这时你该说些什么呢? &#8220;It takes so long.&#8221;?  可以, 但不如这么说, &#8220;It takes
-forever!&#8221;  Forever 的原意是「永远」, 所以可以用来强调时间上不合理地长.</p>
-
-<p>另外呢, 老美常用来形容时间很长的字还有像是 eons 或 ages, 这两个字同样也是
-指非常久的时间.  例句 &#8220;It takes eons/ It takes ages for our government to 
-clean up the rivers.&#8221; (政府要花上很久的时间才能把河川清理干净)</p>
-
-
-<ol>
-<li>I feek like killing someone.
-我真想杀人.</li>
-</ol>
-
-
-<p>小笨霖我常常一个人坐在学校的电脑室里面, 一边上网, 一边听旁边的老美聊天打
-屁.  说真的, 在这里学到的美语绝对是最实用最生活化.  记得上上星期四电脑有
-点当机, 坐我对面的金发美女就开始「碎碎念」, &#8220;It takes forever!&#8221;.   过了一
-会, 电脑还是不动, 她又说了, &#8220;I feel like killing someone.&#8221; (我真想杀人). 
- 但更好笑的是在她一阵乱按之后, 电脑整个挂了.   只见她很生气地站了起来, 说
-, &#8220;Ok.  That&#8217;s it.  Someone has to die.  NOW.&#8221;  (有人必须为这个偿命- 就是
-现在)   我觉得她一个人唱独角戏唱得活灵活现的, 不自觉地暗自偷笑.   但我很
-怕自己偷笑被她发现, 那么那个 someone 很可能就是小笨霖我了.  </p>
-
-
-<p>所以在这段小故事中大家可以学到二个老美开玩笑时经常挂在嘴边的话, &#8220;I feel
-like killing someone.&#8221; 和 &#8220;Someone has to die.&#8221;  当然如果今天有人惹到你了
-, 你可以更直接了当地说, &#8220;I&#8217;m gonna kill you!&#8221; 这些都是当你在情绪不好的时
-候, 可以用来发泄一下的说法.</p>
-
-<p>3. Don&#8217;t even think about parking here.
-想都别想在这停车. </p>
-
-
-<p>想告诉别人此处不准停车, 最简单实用的句子就是, &#8220;No parking here.&#8221; 但是如果
-要强调此处真的是不准停车, 老美会说,  &#8220;Don&#8217;t even think about parking here.&#8221;
-所以不但是不淮停车, 你连想都别想.   所以这个 even 在这里就是一个加强语气
-很好的用法.   再举一例, 看电视上的节目主持人在广告前不是会叫大家不要转台
-吗? 简单地可以说, &#8220;Stay tuned.&#8221;  或是 &#8220;Don&#8217;t go away.&#8221;   但是 Food Channel
-上炙手可热的大厨  Emeril 却老爱这么说, &#8220;Don&#8217;t even think about touching
-that dial!&#8221; (想都别想碰那个摇控器)  (编按, dial 是 remote 摇控器的另一种
-口语说法)</p>
-
-<p>4. In your dreams.
-你作梦去吧.</p>
-
-
-<p>拒绝别人的说法有很多种,  但如果是强调此事绝无可能, 在中文里我们常说「你作
-梦去吧!」或是 「等下辈子吧」这两句话在英文里则分别是,  &#8220;In your dreams.&#8221;
-和  &#8220;Not in your life.&#8221; (注意一下, &#8220;In your dreams.&#8221; 算是固定的用法, 各位
-不要直接从中文翻译成, &#8220;Go to dream.&#8221; )  用法上很简单, 中文里怎么用, 英文
-里就怎么用.   &#8220;A: Can you lend me two thousand dollars?&#8221;  (能不能借我二千
-块钱呢?&#8221;   &#8220;B: In your dreams.&#8221;  (做梦去吧.)  &#8220;A: Do you want to be my girlfriend?&#8221;
- (要不要当我女朋友啊?)  &#8220;B: Not in your life.&#8221; (等下辈子去吧.)</p>
-
-<p>5. Over my dead body.
-打死我我也不干. .</p>
-
-
-<p>跟上一句 in your dream 有异曲同工之妙, 同样也是拒绝别人, 同样也也强调绝无
-可能, 英文里还有一句, &#8220;Over my dead body.&#8221; 从字面上来看, 这句话是说, 这件
-事除非我躺下了, 你从我身上跨过去才能作.  翻成中文就是打死我我也不干.   例
-如别人问你, &#8220;Could you clean up the bird poop on my car?&#8221; (能不能帮我清一
-下车上的鸟屎啊?) 你的回答就可以是, &#8220;Over my dead body.&#8221;  (死也不干)</p>
-
-<p>再举个在 Friends (六人行) 里的例子来加深各位的印象.  有一回 Joey (男) 为
-了演出上的需要, 必须练习和男生接吻 (多么骇人听闻的事啊!)   结果他要 Ross 
-和 Chandler 和他练习,  Ross 的回答就是, &#8220;Over my dead body.&#8221;  而 Chandler 
-的回答就更妙了, &#8220;I&#8217;ll use his dead body as a shield.&#8221; (那我就拿他的尸体当
-挡箭牌.)</p>
-
-
-<ol>
-<li>Just buy the damn boat.
-你就把那艘该死的船给买下来吧.</li>
-</ol>
-
-
-<p>Damn 这个字听来有点不雅, 但我每次看电视时却几乎都会听到一两次, 所以我觉得
-这个字应该没有 f__k 和 s__t 来得那么糟  (这两个字在电视上是会被消音的). 
-  也因此在日常生活中使用 damn 应该还能被接受才对, (当然真的要讲 damn 时还
-可以用 darn 来代替, 就像是许多人用 shoot 来代替 s__t 一样! )</p>
-
-
-<p>Damn 这个字除了用来咒骂之外 (Damn it!), 最常见的用法就是拿来强调自己一种
-不耐烦或是不满意的感觉.   例如你跟别人一起去买船, 别人看了好半天就是没法
-作决定, 这时失去耐心的你就可以说, &#8220;Just buy the boat.&#8221;   但是如果实在是看
-不下去了, 则可以用更强烈的语气说, &#8220;Just buy the damn boat.&#8221;  再举一例, 当
-你正在吵架, 结果还一直有人问你到底发生了什么事, 你可以回他一句, &#8220;Mind your
-own business.&#8221;  或是更凶一点 &#8220;Mind your own damn business.&#8221; (管你自己的事
-吧.)</p>
-
-<p>Damn 在必须承认自己的错误但又想逞口舌之能时也很有用, 可以表达出一种心不甘
-情不愿的态度.  例如你跟别人辩论一件事情, 结果到最后你发现对的人是他, 错的
-人是你, 你该怎么说呢? &#8220;Ok. You are damn right.&#8221; (好吧, 算你对)  如果你们正
-在讨论一个女孩子, 但最后你不得不承认别人对她的了解远胜于你, 则你可以服输
-地说 &#8220;You know her damn well.&#8221;  (你真是太了解她了)</p>
-
-
-<ol>
-<li>This one is a heck lot worse.
-这个东西烂多了.</li>
-</ol>
-
-
-<p>跟 damn 很类似, 也同样常被拿来加强语气的还有一个字, 就是 heck.   Heck 这
-个字原来是地狱 hell 的意思, 但是说 hell 太难听了, 所以老美就发明了 heck 
-这个字.  Hell 和 heck 这类字基本上是抱怨, 不耐烦, 发脾气等负面用法.  在日
-常生活中的老美常用 hell 或 heck 来加强负面的语气.  例如单讲 &#8220;This one is 
-a lot worse.&#8221; 不够, 还要再用 heck 强调一下就变成了, &#8220;This one is a heck 
-lot worse.&#8221;  另外同样也是十分常见的用法, &#8220;What the heck is that?&#8221; (那是什
-么鬼东西? ps. 通常是看到什么令你十分惊讶的东西. )  &#8220;What the heck are you 
-standing here?&#8221; (你站在这里作什么?) 或者是请人家滚出去, &#8220;Get the heck out 
-of here.&#8221; </p>
-
-
-<p>笨霖我对 heck 这个字可说是又爱又恨, 爱的是它真的很好用, 恨的是它太好用了
-, 所以我常乱用, 像就曾经回我指导教授的 e-mail 时, 说了一句, &#8220;What the heck
-is that?&#8221; 而被她好好训了一顿.    还是一句老话, 日常生活中讲的和写的英文绝
-对不能混在一起.</p>
-
-<p>8. Read my lips.
-你给我仔细听好了.</p>
-
-
-<p>当你要跟别人宣布一件很重要的事情时, 可以先说一声 &#8220;Listen.&#8221; 或是 &#8220;Look.&#8221;
-来提醒大夥的注意   但是如果真这件事非常地重要, 我们还可以更强调一些说 &#8220;Listen
-up.&#8221;  (但是没有人说 look up)  例如 &#8220;Folks now listen up, the meeting will
-begin at 1 pm.&#8221; (大夥们听好了, 会议将在下午一点开始. )</p>
-
-<p>但是如果你所要表达的意思是, 「你给我仔细听好了」, 那么 &#8220;Listen up&#8221; 还不够
-看, 这里用 &#8220;Read my lips.&#8221; 更能确切地表达中文里的意思.  &#8220;Read my lips.&#8221; 
-  字面上指的「读我的唇」, 但真正的含义就是「你给我仔细听好了」.  例如别人
-约你, &#8220;Do you want to hang out with me tonight?&#8221; (今晚你想不想跟我在一起
-啊?) , 如果这个人是个很讨厌的人的话, 你就可以回答他 &#8220;Read my lips.&#8221; , &#8220;NO.&#8221; 
- 当然我看老美在讲这句话时一定会放慢讲, 好把那个 &#8220;NO&#8221; 的唇形给表现出来. </p>
-
-
-<p>话说 1988 年 George Bush Sr. 竞选时向选民保证当选后不加新税, 他当时是这么
-说的,  &#8220;Read my lips: No new taxes.&#8221; 但是他当选之后并未实践诺言, 所以后来
- read my lips 也变成对不履行诺言的总统的一种讽刺语.</p>
-
-<p>9. I want tonight to be the night.
-我要的那个晚上就是今晚.</p>
-
-
-<p>定冠词 the 也常被用来加强语气喔!  像是例句  &#8220;I want tonight to be the night.&#8221;
- 这里用 the night 就可以特别强调今晚是个特别的晚上  但这句话用在什么场合
-呢? 就像是你的好友计划要跟女友共度情人夜.  又撂下了一句, &#8220;I want tonight
-to be the night.&#8221;  (就是今晚了) 我想你大概不难猜出他心里又在打什么坏主意
-了吧!   所以当你在讲到 the night 时, 不妨暧昧一点地把 &#8216;the night&#8217; 拉长音
-读成 &#8216;thee night&#8217;.  这样会更传神一点.  各位有没有听过 Rod Steward 的冠军
-歌曲 &#8220;Tonight is the Night&#8221;? , 歌词中就有非常强烈的性暗示: &#8220;Spread your
-wings and let me come inside.&#8221;   (张开你的双翼, 让我进入你的体内) 不会有
-人看不懂吧?</p>
-
-<p>用 the 来加强语气的用法不胜枚举, 再举个普级点的例子, 假如你正跟一个女孩在
-交往, 结果你的好友问你, &#8220;Are you dating some girls?&#8221; (你正在跟一些女孩交往
-吗?)  这里用 some girls 并不是指你同时跟许多人交往, 而是指对象不很明确, 
-随便看看而已.   所以如果你是真的很用心跟一个女孩子在交往的话, 你就可以这
-么反驳他, &#8220;It&#8217;s not some girls, it&#8217;s the girl.&#8221; (我不是随随便便地找一个女
-生, 而是认真地跟她交往.) </p>
-
-
-<ol>
-<li>She totally kissed me.
-他真的亲了我.</li>
-</ol>
-
-
-<p>有时去看电影常常会有意想不到的收获.  (我不是指 kiss, 而是指这整个句子啦!) 
-上个星期跑去看 &#8220;Head Over Heels&#8221; 这部电影, 女主角的一句, &#8220;He totally kissed 
-me.&#8221;   让我灵机一动, 原来 totally 也可以拿来修饰动词喔? 我想同样的场景我
-大概只会说, &#8220;She really kissed me.&#8221; 吧!   后来回想起来, 老美真的常常那 totally 
-来修饰动词, 只是我都没注意而己.  就像有一次在一个聚会中, 一个老美说了一句
-, &#8220;I totally have to move my car.&#8221; (我真的需要去移动我的车子.) </p>
-
-
-<p>好吧! 本期到这里结束, &#8220;I totally need some sleep now!&#8221;   写笔记好累喔.<br/>
-z  zz  Zz z z z,</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩]]></title>
-    <link href="http://yfu.github.com/note85/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note85</id>
-    <content type="html"><![CDATA[<p>语的初衷啊! 所以这次小笨霖又要拿出一些国中的单字, 跟各位分享一下如何用这
-些简单的单字去加强一句话的语气.   大家要知道, 人的感觉有许多层次, 「你说
-得对」, 「你说得很对」, 「你说得完全正确」这几句话的意思相近, 但语气完全
-不同.  诸位不妨试试, 这几句话你有没有办法用英语表达出来正确的语气呢?</p>
-
-<P>1. A win is a win.
-赢了就是赢了. (服气吧!)</p>
-
-
-<p>加强语气的第一课: 把自己要强调的那个名词或是形容词头尾各放一个, 中间加上
-一个 be 动词就成了! 例如推销员硬塞给你一些东西, 你可以不客气地说, &#8220;That&#8217;s
-enough.&#8221; (这些就够了), 但是他装作没听到, 还继续塞给你, 这时你就可以这么说
-, &#8220;Enough is enough.&#8221; (我说够了就是够了).  我想你都这么说了, 他应该会知难
-而退吧!</p>
-
-<p>另外如果跟别人比赛, 别人输了却怪东怪西, 一下说天气不好, 一下说自己今天手
-扭到, 这时候你该怎么跟他说呢? &#8220;A win is a win.&#8221; (赢了就是赢了, 不管你怎么
-说, 赢的人都是我.)   再举一个有趣的例子, 有次我跟老美学打空气手枪, 打了半
-天都打不到圆圈内, 结果同行的女生第一发就是红心 (bull&#8217;s eye) 满分十分, 我
-很不服气,  还跑上前去检查是不是真的红心, 这时我的朋友就亏我了, &#8220;A ten is 
-a ten.&#8221; (十分就是十分, 不管你怎么看它都是十分.) </p>
-
-
-<ol>
-<li>You ARE stupid.
-你真是笨啊!</li>
-</ol>
-
-
-<P>第二个用 be 动词来加强语气的用法就是在说这个句子的时候, 特别去强调那个 be 
-动词.  像这句 &#8220;You are stupid.&#8221; 你可以加强 be 动词 &#8220;are&#8221;, 并把读音拉长, 就
-成了, &#8220;You A-R-E stupid.&#8221; 这句话翻成中文的话相当于是说, 「你&#8221;就是&#8221;很笨」
-.   我看电视时还看过这么一幕, 大意是老公问老婆说: 「你为什么什么都不会?」
- 老婆就回敬他一句, &#8220;I A-M stupid.&#8221; (我就是笨啊.) 怎么样, 不然你咬我啊? 谁
-教你当初要娶我?</p>
-
-
-<ol>
-<li>I am super busy.
-我超级忙的.</li>
-</ol>
-
-
-<p>讲到「很」怎么样的时候, 你还只会用 very 吗? 那你就太落伍啦! 美国时下的年
-轻人喜欢用 super 来加强 very 的语气.  相当于中文里「超级&#8230;」的意思啦.  
-比方说我很忙, 你当然可以说, &#8220;I am very busy.&#8221; 但是你如果说, &#8220;I am super 
-busy.&#8221; 那语气上就不太一样, 不但是很忙, 而且是超级忙了! 所以现在各位可以举
-一反三了吧! 例如我超级饿的, &#8220;I&#8217;m super hungry.&#8221; 这件事超级简单的, &#8220;That&#8217;s 
-super easy.&#8221; 那里超挤了, &#8220;It&#8217;s super crowded over there.&#8221;  我超级兴奋的, 
-&#8220;I&#8217;m super excited.&#8221;  不过提醒各位一下, 这种用 super 代替 very 只是口语上
-的用法, 在正式的书写英文里最好还是少用为妙. </p>
-
-
-<ol>
-<li>It&#8217;s all good.
-那真是太棒了.</li>
-</ol>
-
-
-<p>All 在某些场合也可以用来替换 very 而达到加强语气的效果.   最常见的就是老
-美有时候不说, &#8220;It&#8217;s very good.&#8221; 而说, &#8220;It&#8217;s all good.&#8221; 或是也有人说, &#8220;It&#8217;s 
-all that good.&#8221; 例如我从电视上学来的, 别人问你初吻的感觉如何啊? 你该怎么
-回答呢? 就是 &#8220;It&#8217;s all good.&#8221; (真是太棒了!) 另外比如别人问我, &#8220;Benlin, how 
-can you dance like an animal?&#8221; (笨霖你怎么跳起舞来这么有劲呢?) 像这种情况
-我就可以回答说, &#8220;I&#8217;m just all that good.&#8221; (我就是这么棒, 没办法啦.)</p>
-
-
-<p>当然如果你嫌 all good 还不够 good 的话, 你可以用 f<em><strong>ing good 这种用法.
- 这大概是我能想到语气最强的讲法了.   例如别人问你 Jordan 篮球打得如何? 你
-就可以回答说, &#8220;Oh, he is f</strong>ing good.&#8221;  (他真是他 x 的太棒了)  想知道更多
- f</em>__ing 的用法的人不妨去看看小笨霖英语笔记本: 「老师不会教的英语」(Something
-you will never learn from your teachers) 这个单元</p>
-
-<p>5. You are so right.
-你说得太正确了.  </p>
-
-
-<p></p>
-
-<p>美国人这个 so 常常会用在你想不到的地方来加强语气. 例如 &#8220;You are right.&#8221;
-可以在 be 动词 are 之后加上一个 so, 就变成了, &#8220;You are so right.&#8221;  语气上
-的程度就不一样.   当然有些用法是你更想不到的, 例如老美有时不单讲, &#8220;You are
-fired.&#8221; , 他们说, &#8220;You are so fired.&#8221; (我记得很清楚, 在 Friends 中有一次
- Ross 跟自己的学生约会, 别的教授就是跟他说 &#8220;You are so fired&#8221; , 意思就是
-这下子你真的被开除了.)  当然也有人说, &#8220;You are so hired.&#8221; (你真的被雇用了
-, 电影 Sugar and Spice).   当然 so 不单单放在 be 动词后面, 有时也可以放在
-动词前, 例如你太需要这部车了, &#8220;You so need this car.&#8221; 我们太爱对方了, &#8220;We
-so love each other.&#8221;</p>
-
-<p>有一个小小的规则各位不妨记一下, 依照语气的强弱排名, so (太&#8230;)   < totally 
-(完全地) < definitely (明确地) < absolutely (绝对地).   例如在前言中所举
-的例子, "You are right." (你说得对) 但是你也可以说, "You are so right." 
-(你说得太正确了) 如果要再夸张一点就是, "You are totally right.", "You are 
-definitely right." (你说得完全正确) 或是到了有些奉承的地步 "You are absolutely 
-right."  (你绝对是正确的. )</p>
- 
-6. That makes perfect sense.
-这真是太有道理了. 
-
-<p>Perfect (完美的) 也是一个在夸张时很好用的字, 例如你看到一个好到不能再好的
-女孩, 这时与其说些什么 pretty 或是   beautiful 都还不如说, &#8220;She is perfect.&#8221; 
-(她实在太完美了).   这让我想到美国不久前有一部讲电影叫 &#8220;Perfect Storm&#8221;, 
-你看它如果用什么 &#8220;Terrible Storm&#8221; 是不是就远不及 &#8220;Perfect storm&#8221; 来得好呢
-?</p>
-
-此外 perfect 常和 make sense 合用, 在中文里似乎没有这种用法.   例如 &#8220;That 
-makes sense.&#8221; (这样子说有道理), 老美如果要夸大一点他们就会说, &#8220;That makes 
-perfect sense.&#8221; (这样子说太有道理了).   所以如果你嫌上面所说的, &#8220;You are 
-absolutely right.&#8221; 还不够马屁的话, 不妨就用, &#8220;Your words makes perfect sense 
-to me.&#8221;   
- 
-<p>7. We&#8217;ve done this a million times.
-这件事们已经作了几百万次了.</p>
-
-英文跟中文一样, 可以用数字上的夸大来加强自己的语气, 像是你说  &#8220;We&#8217;ve done 
-this several times.&#8221; 是绝对不会让人一掬同情之泪的, 这时要说, &#8220;We&#8217;ve done 
-this a million times.&#8221; 才能让别人注意到问题的严重性.   还有不是很多人喜欢
-说, &#8220;Thanks a lot.&#8221; 吗? 如果是别人对你帮助真的很大, 则不妨改说, &#8220;Thanks 
-a million.&#8221; 更有那种由衷表达谢意的味道. 
-
-<p>另外如果是要强调数量上的许多,  则不妨可以用 tons of 这个片语.  像老美不是
-超爱喝 Coke 的吗? 你就可以这么说, &#8220;He drinks tons of Coke every day!&#8221; (他
-每天都要喝好多可口可乐.)   像这里的话用 tons of 就会比用 lots of 来得更加
-有力, 不是吗?  </p>
- 
-8. You don&#8217;t know nothing.
-你什么也不知道. 
-
-<p>或许有人已经发现这句话的文法是错的, 正确的应该是 &#8220;You don&#8217;t know anything.&#8221; 
-才对.  但很多老美特别爱说, &#8220;You don&#8217;t know nothing.&#8221; (两句话意思完全一样
-!)  像是这种错误叫双重否定, (double negative). 但据笨霖个人体会, 这种错误
-用法在美国可以说是太普遍了, 而且它有加强语气的作用说.   像你看看, &#8220;You didn&#8217;t 
-pay me any money.&#8221; 跟 &#8220;You didn&#8217;t pay me no money.&#8221; (你没有给我钱),  这两
-句话意思完全一样, 但哪一句话听起来比较爽呢? 当然是, &#8220;You didn&#8217;t pay me no 
-money.&#8221; 啦! 本句适合去跟老板讨债时说, 最近有被裁员裁到的, 这句话一定要学
-起来. </p>
-
-不过如果你是完美主义者, 坚持一定要用文法正确的句子, 那么你还有另一个选择
-, 就是加上 even 和 single 这两个字. 例如说吧,   &#8220;You don&#8217;t have any idea.&#8221; 
-(你什么主意也没有) 你可以改成, &#8220;You don&#8217;t even have a single idea.&#8221; 或是
-像第二个例句, &#8220;You didn&#8217;t pay me any money.&#8221;  你可以说, &#8220;You didn&#8217;t even 
-pay me a single penny.&#8221; (你连一分钱都没付给我), 怎么样, 听起来也很酷吧!
- 
-<p>9.  Way back.
-还很后面.  </p> 
-
-All the way 或是只说 way, 通常是用来强调距离或方向的远近.   比如你示意要
-别人后退一点, 结果别人退了一步问你这样子够了吗? 如果你希望它再退多一点, 
-(比方说还要他再退个二十步) 你就可以说 , &#8220;Way back.&#8221; 或是 &#8220;All the way back.&#8221; 
-意思就是, &#8220;还在后面远著呢!&#8221;
-
-<p>当然  way 也常被放在 too 的前面来加强语气.  例如原来是 &#8220;This is too expensive.
-&#8221; (这太贵了), 如果你这句是要故意说给老板听的, 就可以说, &#8220;This is way too 
-expensive.&#8221; (这个贵得有点离谱喔!)  </p>
- 
-10. She is dead serious.
-她是极为认真的.
-
-<P>Dead 原意是「死亡」的意思, 不过它也常被用来加强语气喔.   例如 &#8220;She is serious.
-&#8221; (她很认真), 听起来一般一般,. 但是如果是, &#8220;She is dead serious.&#8221; 那就表示
-她这次玩真的, 真的不是在开玩笑的喔.  再举个例子吧, 某人很穷我们可以说他, 
-&#8220;He is broke.&#8221; 可是如果要说他是「一贫如洗」呢? 那就是 &#8220;He is dead broke.&#8221; 
-了. </p>
-
-另外有一个固定用法叫 drop-dead gorgeous,  形容一个女生极为美丽.   我解释
-一下, gorgeous 原来就是形容一个女子很美丽, 而 drop-dead 则是说倒下去 (drop) 
-就翘辫子 (dead) 了, 所以 drop-dead gorgeous 的意思就是这位姑娘实在太美了
-, 所以你看到她之后立刻死去都无所谓.  这跟论语里说的「朝闻道, 夕死可矣」的
-道理好像有点相通.  只不过中国人比较含蓄, 还要等到晚上, 美国人则是 drop-dead, 
-立即就可以去死了. (事实上, 美国不久前就有一部电影, 名字就叫 drop-dead gorgeous,
- 不知道有谁知道这部电影中文怎么翻? )
+<p>特别注意 slut 这个字是给女生专用的, 如果要讲男生, 要用 slut boy. 男生女生
+都可以用的, 则是一夜情人 one nighter, 一夜情则是 one night stand.</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩]]></title>
-    <link href="http://yfu.github.com/note84/"/>
+    <title type="html"><![CDATA[小笨霖英语笔记本七: 购物 ]]></title>
+    <link href="http://yfu.github.com/note7/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note84</id>
-    <content type="html"><![CDATA[<p>上的意思, 而听不出里面的弦外之音, 所以每次去看电影时大家在笑时, 我只能跟著
-「陪笑」, 不知道到底为何而笑, 为谁而笑.  后来终于在看 007 (读法: double-O
-seven) 的 The world is never enough 时好死不死给我听出一句双关语来, 那时心
-中真是暗自窃喜.   后来我才发现, 其实在一些报章杂志 (特别像是 TIME 时代杂志
-) 的标题都特别喜欢用双关语, 只要你多留心, 一定会有不少意外的惊喜.  不过这
-次先不跟各位大玩文字游戏,   我们只看一些比较生活化, 都是我在日常生活中听到
-过的双关语.</p>
+    <id>http://yfu.github.com/note7</id>
+    <content type="html"><![CDATA[<p>日常的口语给我, 大家看到的许多资料我都是找她求证的,   其实老美很多人也是
+很热心的, 不是吗?</p>
 
-<p>1. You can only drink in your private place.
-你只能在自己的地方喝酒. </p>
+<p>这一集的笔记我们来谈谈去买东西时会遇到的一些会话.   像有些很简单
+的句子, 如 Charge or debit? 常使得刚来美国的人觉得十分地困扰, 不知道这句
+话到底在问什么东西, 当然更别说要正确地回答了! 希望这集笔记对马上要来美国
+的人有点帮助.</p>
 
 
-<p>Private place 这个字有两个意思, 一个是指私人拥有的地方, 如自己的房子或是
-自己的小房间, 另一个意思则是相当于中文的「私处」.   记得有一次和老美在我们
-宿舍楼下的交谊厅开 party, 像这种时候大家不免要喝点小酒.  但是我们学校有明
-文规定, 不能在公共的场合喝酒, 所以 party 才刚开没多久, 舍监就跑来对我们说
-, &#8220;You can only drink in your private place.&#8221; 他的意思当然是要我们把酒拿回
-自己的房间喝啦.   没想到这时候有一个老美耍宝, 把整瓶啤酒往自己的裤子一放,
-说, &#8220;Ok, now I&#8217;m drinking in my private place.&#8221; (好, 我现在就在我的「私处」
-喝酒.) 直把大家笑到四肢无力.</p>
+<p>1.Charge or debit?  (Credit or debit?) 使用信用卡或是电子钱包?
+　</p>
 
-<p>2. You cold shoulder.
-你对人都不理不睬.</p>
-
-
-<p>在英文中, give someone a cold shoulder 这句话指的是对某人不理不睬的意思.
- 例如, &#8220;My girlfriend gave me a cold shoulder after a huge fight.&#8221; (我的女
-朋友在跟我大吵一架之后就不理我了.) 而在我之前所提的那部 007 之中, 有这样一
-段剧情, 就是当石油大王的女儿 (苏菲玛索饰) 和 007 在床第之间温存时, 她一边
-冰块摩擦他的肩膀, 一边说, &#8220;You cold shoulder.&#8221; 其实这句话表面上是说, 「你
-的肩膀好冷」 但事实上她想说的是, 「你都不理人家」. 如果有去租录影带回来看
-的人, 不妨注意一下这句话它是怎么翻的.</p>
-
-<p>题外话: 个人对这一幕有点小小的意见, 当他们两人在床上一阵翻云覆雨之后, 苏
-菲玛索起床时居然还抱著棉被把自己的身体包得紧紧的, 难道她还怕他看不成? 看来
-实在有点假耶.</p>
+<p>Charge (Credit) 指的就是一般我们说的信用卡, 信用卡使用上很方便, 但若是没
+有收入又没有社会安全卡, 是很难申请到信用卡的.   而我们的提款卡 (ATM 卡) 
+就是 debit, 它会从你的支票户头直接扣钱. 一般而言, 只要去有刷卡的地方都会
+被问这一句, 刚来美国的人常常对这句话感到莫名奇妙, 不知道这句话到底在问什
+么, 其实只要了解什么是 charge 什么是 debit, 这句话就不难了解, 视你是使用
+信用卡还是 ATM 卡而回答. 使用信用卡就说 charge, 使用 ATM 卡就答 debit.  </p>
 
 
 <ol>
-<li>I&#8217;m expecting a cold reception.
-我早就期待你会冷淡地接待我.</li>
+<li>Cash back? 是否要找回现金?</li>
 </ol>
 
 
-<p>Cold reception 这句话同样出自 007 那部电影, 这句话刚好跟我们常听到的「热
-情地接待」: warm reception 正好相反, 意指「冷淡地接待」.  话说当石油大王的
-女儿问 007 会不会滑雪时, 他的回答是, &#8220;Yes, I&#8217;m expecting a cold reception.&#8221; 
-如果单看字面上的意思, 这句话是说, 「我早就料到你不会热情地招待我」, 但事实
-上 007 用了 cold reception 的双关含意, 意指「我早料你会用这种在冰天雪地的
-活动来迎接我」, 所以这句话妙就妙在他一方面答应她要去滑雪, 一方面又暗骂她招待不够周到，实在是高招啊! </p>
+<p>在美国跨行提款的手续费是 $1.5,  够吓人的吧? 可是偏偏美国那么大, 你要找到
+跟发卡银行同一家银行的提款机谈何容易? 那这是不是意谓著每次去提领现金都要
+负担高额的手续费? </p>
+
+
+<p>其实只要你善用 cash back 这个功能,  那情况就完全不一样了,  cash back 就是
+说假设你买 10 块的东西, 但刷卡时你可以刷 30 元, 剩下的 20元他会拿现金 20
+块找你, 如此出门就不必带著大笔的现金, 又不必负担高额的提款手续费.   唯一
+缺点是有金额限制, 有些店最多可 cash back $50, 有些店只能 cash back $20.
+ 一般的情形是只有 ATM 卡才能 cash back 的, 一般的信用卡是不行的, 但是有些
+特别的信用卡, 如 Discover, 也有提供 cash back 的功能. 他的优点在于不受发
+卡银行提款机的限制, 我在亚特兰大拿的 ATM 卡到波士顿一样可以 cash back, 而
+且完全不收手续费, 请大家多加利用.</p>
+
+<p>3. How are you going to pay? 你要怎么付款?</p>
+
+
+<p>不住在美国的人, 或是刚来美国的人听到这句话一定觉得丈二金刚摸不着头脑. <br/>
+其实这句话跟 Charge or debit 这句话很像, 问的就是你要用什么方式付款如信用
+卡(credit card) 提款卡 (debit card) 或是现金 (cash) 来付帐.   这句话在&#8221;电
+子情书&#8221;这部电影中曾出现过,   在男主角去女主角的书店买东西时, 店员就问男主
+角这句, 汤姆汉克就答: cash. 就是付现的意思了.</p>
+
+<p>4. Double coupon. 双重折价卷.</p>
+
+
+<p>我想只要在美国待过一阵子的人, 都知道利用 coupon 来省钱的道理吧! 所谓的 coupon,
+ 就是由制造商所发行的一种折价卷, 如 Save 50c 的 coupon (折价卷)可以让你在
+结帐时少付 50c, 然后再由这些商店拿著这些 coupon 去跟制造商换钱.</p>
+
+<p>那什么是 double coupon 呢? 就是在美国有一家很有名叫 Kroger 的 grocery store. 
+为了促销, 所推行的一种政策.  他们宣称拿著 50c 的 coupon 去他们的店里买东
+西, 就可以折价 1 元, 折价的金额足足多了一倍.   多余的这 50c 是 Kroger 给
+顾客的优惠.  但是也有一些限制, 例如,每张 coupon 的面额不得超过 75c, 而且
+对同样一个商品, double coupon 只能使用一次.</p>
 
 
 <ol>
-<li>Check out my figures.
-看看我的数字.</li>
+<li>Bring your receipt to the customer service, and they will refund you.把你的收据拿给顾客服务部, 他们就会退钱给你.</li>
 </ol>
 
 
-<p>Figure 这个双关语在美国常常被拿出来使用, 因为 figure 不但可以指「数字」或
-「图表」而言, 又可以指女人的「身材」, 所以有很多妙用.  像是如果有一个女生
-拿了一叠数据来给你看, 跟你说, &#8220;Check out my figures.&#8221; 当然很明显地她是指
-看看我的数字.   这时如果你要吃她豆腐的话, 就可以回她一句, &#8220;That&#8217;s a nice 
-figure.&#8221; 当然你说的也是双关语, 可以解读成, 「这个数字很棒」, 但其实你真正
-的意思却是「嗯.. 身材很棒.」这里注意一下,  figure 当身材解时多半用单数, 而
-当数字或图表时多半用的是复数 figures.   在这里人家明明讲的是复数的 figures, 
-你就是故意要理解成单数的 figure, 分明就是要占人家便宜说.   </p>
+<p>美国是个很重视消费者权益的国家, 所以几乎每个商家, 都一定会有一个专门的 customer 
+service 柜台. 有任何的问题去找他们, 他们多半会给你满意的答覆.  我是觉得去
+超市买东西, 他们算错钱的比例蛮高的, 只要发现收据上有任何问题, 就可以拿著
+收据去 customer service 要求退钱 (refund). </p>
 
 
-<p></p>
+<p>我觉得老美也蛮有人情味的, 有一次我结帐时忘了拿会员卡出来, 以致于多付了六
+七块钱, 虽然这是我自己的错, 但是当我拿著会员卡和收据去跟 customer service
+说明后, 他们还是把钱退给我. 让我觉得十分感动.</p>
 
-<p>之前我在书上也看过类似的笑话, 大意也是有一个女生说, &#8220;Check out my figures.&#8221;
-那个男生的回答更妙, &#8220;That&#8217;s a round figure.&#8221; 大家知道吗? round figure 在数
-学上的话意思指「整数」, 例如你去买东西刚刚好 $17.00 那就是一个 round figure
-(因为小数都刚好 round off 掉了!) 但是 round figure 对女生讲的话则是指「浑
-圆的身材」, round 在这里又成了「浑圆」的意思了.  怎么样, 是不是很有趣呢?</p>
-
-<p>5. There is nothing underneath.
-下面什么东西都没有.  </p>
+<p>6. I want to take the raincheck for the eggs. 我要拿一张鸡蛋的 raincheck.</p>
 
 
-<p>有一次小笨霖和几个老美在电视上看马戏团表演, 其中有一个节目是空中飞人的项
-目, 结果看到有一个年纪轻轻的小姑娘出来表演了, 我们当中有一个老美就惊呼了,
-&#8220;There is nothing underneath.&#8221; (她里面什么没穿) 小笨霖这时立即睁大了眼睛,
-看看能不能在电视上瞧出什么端倪来.   可是我很失望地发现, 其实她里面还是有穿
-的, 只不过是那种很透明很透明的贴身衣物罢了.   当我把我的大发现告诉他们, 结
-果害我被耻笑一顿, 原来他说的, &#8220;There is nothing underneath.&#8221; 照字面翻释是
-底下完全没有东西, 他原本的意思其实是说「底下完全没有安全网之类的防护
-设施」, 但却被色迷心窍的某人理解成了「里面什么都没穿」的意思.</p>
+<p>有时候某样商品大特价, 该样商品很快地就被抢购一空了.   这样的情形如果是在
+国内, 商家一定会说, 卖完了就卖完了, 我也没办法. 可是美国的制度很有意思,
+这样特价品卖完了没关系, 你可以去跟他们领一张 raincheck. 等到过一段时间后
+ (也许等到该样商品特价结束了) 你还是可以用特价时的价钱去购买该样商品. 这
+样的制度真的让人觉得很贴心.</p>
 
-<p>另外有一句双关语跟这句有异曲同工之妙, 就是以前 Brooke Shields 替牛仔裤公
-司广告时, 曾说了一句, &#8220;There is nothing between me and my jeans.&#8221;  这也是
-一句有趣的双关语喔, 因为你可以解释成, (1) 牛仔裤十分贴身, 或是 (2) 我里面
-什么都没有穿.
- </p>
+<p>所谓的 raincheck 指的是球赛若因雨而延赛, 则球迷可以把入场卷换成 raincheck, 
+先保留这张票的权利, 以便日后可以补看球赛. </p>
 
 
 <ol>
-<li>This way up.
-这头朝上.</li>
+<li>I am sorry you are on the Cash Only Lane. 我很抱歉你现在是在只收现金的结帐道上.</li>
 </ol>
 
 
-<p>大家如果有仔细看过箱子上的英文的话, 就一定有看过 &#8220;This way up.&#8221; 这句话指
-的是「这头朝上」.   我想大概是有些货品不能倒著放, 所以特别注明出来. 有次我
-看了一部叫 &#8220;Chicken Run&#8221; 的电影, 讲的是有一群鸡想办法要从鸡舍逃跑的故事, 
-他们最后做出了一台飞机, 还铺了一条跑道.   跑道的尽头就放了一块箱子的木板
-, 上面就写著 &#8220;This way up.&#8221; 这里就是编剧的巧思了, 因为在这里 &#8220;This way up.&#8221; 
-有另一个双关语的意思,  way 可以指一条道路而言, 所以 this way 在这里指的就
-是跑道而言, 而  &#8220;This way up.&#8221; 指的就是「从这个跑道起飞」的意思了! </p>
+<p>Cash Only 故名思义就是只收现金, 其它的什么信用卡, 支票都一律不收.  通常是
+商家为了增快结帐的速度所以才会设 Cash Only Lane. 可是刚来美国时, 标示都没
+注意在看, 要是走到这一个 lane, 身上的现金又偏偏不够时, 那麻烦就大了, 你就
+必须花 $1.5 的提款手续费去领 $20 来给他, 真是气人. </p>
+
+
+<p>此外还有很多不同的 lane, 例如 Express Lane, 可能是只受理少于十样商品的顾
+客, 总之, 要结帐前先看清标示就不会吃大亏.</p>
+
+<p>8. The price will go down. 这价钱将会降低. </p>
+
+
+<p>个人经验 go down 跟 go up 很好用, 当你不知道用什么动词, 如 increase 或 surge,
+ 就用 goes up,  像是有一次我去买汽车保险, 我一直想问他如果我一年当中都没
+有理赔, 那明年的保费会不会降低? 这个降低我就一直想不起来要用 decrease 好
+还是 lower 好, 结果后来我才听他说, &#8220;The price will go down.&#8221; 是不是听来很
+顺. 再说一个例子, 比如作实验时浓度上升, 这个上升你可以说 increase, 但也可
+以说,  &#8220;The concentration goes up.&#8221; 听来是不是也不错?</p>
+
+<p>另外类似的口语讲法, 你可以用 rise 跟 drop 来代表 go up 和 go down. 例如 
+&#8220;The price will drop.&#8221;</p>
 
 
 <ol>
-<li>Oh.  I&#8217;m coming.
-喔.  我来了.</li>
+<li>We have a clearance sale today. 我们今天清仓大拍卖.</li>
 </ol>
 
 
-<p>Come 这个字大家都知道是「过来」的意思, 但它另外还有一个色色的口语用法, 指
-的是在爱爱时的「高潮」.   所以美国的电影里常常会用到这个双关语来制造笑料. 
-  比如说在美国派 (American Pie) 这部电影里吧! 儿子和他女友躲在房间里做人生
-最快乐的事情, 结果父亲来敲门了, 你猜怎么这? 这个女生这时刚好说, &#8220;Oh. I&#8217;m 
-coming. I&#8217;m coming.&#8221; 父亲误以为她是说「我马上就来了」所以就走掉了, 事实上
-呢她当然指的是另外一个意思啦!</p>
-
-
-<p>另一个例子就是在之前讲的那部 007 电影的结尾, 007 说了一句, &#8220;Christmas only
-comes once a year.&#8221; 这句话听来平凡无奇, 意思就是「耶诞节一年才来一次」, 但
-在场的美国观众都笑翻了, 你知道为什么吗? 因为那个女主角的名字刚好就叫 Christmas,
- 所以这样子你就不难猜说为什么老美要笑了吧?</p>
-
-<p>8. This is a free elective course.
-这是一门选修的课.</p>
-
-
-<p></p>
-
-<p>有一次我在校园内遇到一个朋友, 我很惊讶她怎么还没毕业, 照理说她这个暑假就
-该走人了啊! 结果她垂头丧气地跟我说, 都是被学校给害惨了啦! 因为有一门课上面
-写著, free elective course, 结果她就以为是可以自由选择要选或不选, 当然她就
-没有选啦! 结果到了结算毕业学分的时候, 人家告诉她少选了一门课, 不让她毕业.<br/>
-这时我才知道, 原来学校的 free elective course 是指从几门课当中「选修」一门
-, 而非像我同学理解的那样, 「自由」选择要不要选.  我朋友她还是老美喔!   这
-样的错误连老美都会犯, 更别说是我们了.</p>
-
-<p>除了 free elective course 之外, 还有一种课程叫 option courses. 这种课程就
-相当于我们的课外活动, 如果你想学一些手工艺, 舞蹈或是音乐课程的话, 就可以来
-修 option course, 当然这是要另外交钱的, 而且也不是一定强迫要修的啦!</p>
+<p>Clearance sale 算是固定的用法, 就是所谓的清仓大拍卖, 可惜我在美国还没听过
+ &#8220;跳楼大拍卖&#8221; 的讲法, 不然一定也很有趣.  另外, 我们去店里如果要找这些拍卖
+的商品, 我们可以问店员说, &#8220;Where can I find the clearance items?&#8221; 所谓的
+ clearance item 就是清仓货, 零码货的意思, 或是 odd sizes 也代表零码货的意
+思.</p>
 
 
 <ol>
-<li>He is still up in the air.
-他还没决定呢!</li>
+<li>Can you give me the invoice? 能不能给我一张发票?</li>
 </ol>
 
 
-<p>Up in the air 是一句片语, 指的是悬而未决的, 或是说还没作决定的.   比如说
-你问我「毕业之后想不想留在美国啊?」那我的答案就是, &#8220;I&#8217;m still up in the air.&#8221; 
-(还没决定呢!) 话说在美国学开飞机是很稀松平常, 我就认识有个老美正在飞行学校学开飞机.  有一次我问他, &#8220;Do you want to be a professional pilot someday?&#8221;
- (你想不想有一天能当职业的飞行员啊?) 他用手指指天空, 用这句很妙的双关语回
-答我, &#8220;I&#8217;m still up in the air.&#8221; 一方面可以指, 「我还在学飞行呢!」(up in 
-the air 当成具体的在空中) 但一方面又点出了「我还没决定呢!」 (up in the air 
-当成悬而未决的.)</p>
+<p>常听到有人在问发票这个字的英文怎么讲? 就是 invoice 这个字啦! 只可惜在美国
+买东西一般都只给收据 receipt. 害我们少了很多对发票中大奖的乐趣 (人真的是
+为了希望而活!!) 只有在买大件的东西, 如汽车保险时, 他们才会给你所谓的发票
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本六: 水电 ]]></title>
+    <link href="http://yfu.github.com/note6/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note6</id>
+    <content type="html"><![CDATA[<p>英语笔记本的诞生，是由于我刚到美国时， 每天都可以学到很多新鲜又有趣的单字
+或是对话，我将这些对话归纳整理成今日的规模。这些大多数都是在书上所看不到
+的。即使有些强调「口语化」的英文教材，其内容通常不是过时就是太过艰深，而
+且还喜欢把原本很简单的句子变得很复杂，更糟糕的是人家老美还不这么讲。</p>
+
+<p>其实大家真正需要的英文会话很简单，不过就是要能够正确地表达出自己
+的意思，并且能和老美达到沟通的目的。千万不要咬文嚼字，老爱用一些艰深的单
+字和词汇。所以我一再强调「生活」美语，意思就是在英语笔记里和各位分享的内
+容，一定是取自于日常生活，而且绝对可以让大家运用在日常生活当中。这次的笔
+记就是一个很好的例子，所有的对话都是以两样民生必需品「水」和「电」为主题，
+都是我从每天的生活当中一点一滴地取材，大家可以印证一下是不是真的很生活化
+也很实用。</p>
 
 
 <ol>
-<li>I am over you.
-我跟你完了.</li>
+<li>The power is off. 停电了。</li>
 </ol>
 
 
-<p>如果你要跟你的阿娜答分手, 最简单的讲法就是, &#8220;I am over you.&#8221; (我跟你拜拜
-了) 或是说, &#8220;We are over.&#8221; (我们分手了.) 所以 over 在这里是结束的意思喔. 
- 但是 over 也有「在&#8230; 上面」的意思, 所以如果你骑在别人的背上, 也可以说, 
-&#8220;I&#8217;m over you.&#8221;  所以这个 &#8220;I&#8217;m over you.&#8221; 也是一个双关语喔! 记得有一集 &#8220;Friends&#8221;
- 里正在热恋的 Rachel 和 Ross 两人吵得不可开交, Rachel 就在 Ross 的答录机里
-留言, &#8220;I&#8217;m over you.&#8221; 没想到两人后来又和好了, 但 Ross 的电话留言却还没听
-.   那 Rachel 当然是很后悔留了不该讲的话, 坚持不让 Ross 听留言.   当然两人
-就抢起电话来了, 最后 Ross 抢到电话, 但 Rachel 也不死心, 一跳就跳到 Ross 背
-上紧抓著不放.  Ross 一放留言, 听到 &#8220;I&#8217;m over you.&#8221; 很惊讶地看看 Rachel. 
- Rachel 这时只好赶紧自圆其说, &#8220;Yes, I&#8217;m over you.&#8221;  (对啊, 你看我在你背上
-)   </p>
+<p>&#8220;The power is off.&#8221; 、&#8221;The power is gone.&#8221; 或是 &#8220;There is a power outage.&#8221; 
+这三句都是停电了。其中的分别是前二句为比较口语的说法，例如看到电灯突然熄
+掉了，老美的第一个反应就是 &#8220;Oh! The power is gone.&#8221;，或是 &#8220;The power is 
+off.&#8221; 而第三句的 power outage 则是用在比较正式的场合上，例如社区公告明天
+下午一点到五点要停电，他们会说 &#8220;The will be a power outage from 1pm to 5pm 
+tomorrow.&#8221;</p>
+
+
+<p>注意一下，一般我们想到「电」都会很自然地想到 electricity 这个字，但这个字
+在使用上比较局限于正式的场合。比方说你新搬到一间公寓，电还没接上，你就可
+以提醒房东说，&#8221;There is no electricity in my house.&#8221;。但是在日常生活当中遇
+到的大多数情况都是用 power 而非 electricity。比方说请把电关了，比较常听到
+的是 &#8220;Please turn off the power.&#8221; 而不是 &#8220;Please turn off the electricity.&#8221;。
+再来还有一些常把 electricity 和 power 搞混的地方。比方像发电厂是 power plant
+而非 electricity plant，电线是 power line 而非 electricity line。</p>
+
+<p>另外「电力」有一个比较俚语的讲法，叫 juice。也就是跟「果汁」是同一个字。
+所以下次如果你在电灯开关旁边看到一个 &#8220;Save the juice&#8221; 的牌子，可别误会成
+「帮我留一点果汁」唷！那其实是劝告你节省「电力」的意思。 </p>
+
+
+<ol>
+<li>The power is back on.  电又回来了。</li>
+</ol>
+
+
+<p>知道了停电的说法，那电又来了要怎么说？很简单，就是 &#8220;The power is back.&#8221; 
+或是 &#8220;The power is back on.&#8221; 大家注意一下为什么会说成 back on 呢？因为这
+是指原来开著 (on) 的，后来关掉了，再把它打开的意思。(back on 就是说再回到
+ on 的状态)。这里我再举一个 back on 的例子来加深大家的印象。有一次我跟老
+美去烤肉，有人看大家都吃得差不多了，就把炉子关了。可是后来又有人没吃饱，
+所以我的朋友就说，&#8221;Ok, I will turn it back on.&#8221; (好，我再把炉子打开。)</p>
+
+
+<p>也许大家已经注意到了，老美对于某样电器用品是开著或是关著的，会很简单地用
+ on 跟 off 来形容，比方说 &#8220;The TV is on.&#8221; 意思就是「电视是开著的」。或是&#8221;I
+cannot see anything because the light is off.&#8221; 就是「因为灯是关著的，所以
+我什么都看不到。」 记得在这里 on 跟 off 就完全足以表达你的意思，再讲些其
+它的话都是多余的。</p>
+
+<p>3. Please turn off the power. 请把电源关掉。</p>
+
+
+<p>Turn on 跟 turn off 算是最常见到把电源打开和把电源关上的字眼了。例如你可
+以说 &#8220;Could you help me turn on the microwave?&#8221; (能不能帮我打开微波炉？)
+或是 &#8220;Please turn off the power before you leave.&#8221; (请在离开前把电源关掉。
+) Turn on 和 turn off 是一对很好用的片语，务必熟记。</p>
+
+<p>但是如果今天换成另一种情况，我想说：「不要关掉，让它一直开著。」这句话要
+怎么讲呢？很简单，你可以说 leave the power on 或是再偷懒一点说 leave it on。
+比方你回家前可以交代同事， &#8220;Just leave the printer on when you leave.&#8221; (你们
+走的时候不要关掉印表机，让它一直开著好了。)</p>
+
+
+<ol>
+<li>Throw the power on.  打开电源。</li>
+</ol>
+
+
+<p>这跟 turn on the power 是一样的，但是 throw the power on 是比较口语的说法。
+比如说你进到房间看到电脑没开，你就可以跟别人说，&#8221;Throw the power on.&#8221; 就
+是把电脑打开吧！不过因为受到了中文的影响，有些人可能会把打开电脑说成了 &#8220;Open 
+the computer.&#8221; 但在老美听来，这句话感觉上像是要把电脑拆开，而非你所要表达
+的打开电源的意思。</p>
+
+
+<ol>
+<li>The power is running low. 快要没电了。</li>
+</ol>
+
+
+<p>电快要用完了叫 running low，例如你使用的刮胡刀看它越转越慢，你知道电快没
+了，你就可以说 &#8220;The power is running low.&#8221; 或是 &#8220;The battery is running low.&#8221; 
+要是电已经完全用光了，则可以说，&#8221;It&#8217;s running out of power.&#8221; 或是直接了当
+地说， &#8220;The battery is dead.&#8221; (这个电池挂了。)</p>
+
+
+<p>其实以上的这些讲法不只局限于电，几乎所有的东西快用完了，我们都可以用 be
+running low 或是 be running out of 这两个片语。比方说茶壶里的水快喝完了，
+你就可以说，&#8221;The water is running low.&#8221; 或是 &#8220;We are running out of water.&#8221;</p>
+
+<p>6. I was shocked. 我被电到了。</p>
+
+
+<p>记得第一次听老美说 &#8220;I was shocked.&#8221; 我还以为她在说什么事情让她觉得很震惊
+ (shock)。其实不然，因为美国气候很干燥，所以很多金属物体的表面在冬天常常
+会带静电 (static electricity 或是简称 static)，一碰到就会被电到。我自己就
+常被电的哇哇叫。这个 &#8220;I was shocked.&#8221; 在这里其实指的就是被电到的意思，而
+非很「震惊」的意思。</p>
+
+<p>在气候非常干燥的时候，静电可是无所不在的。害我每次要碰触金属物体之前，都
+要提心吊胆的。更糟的是，不但物品会带电，有的时候连人的身上也会带电，所以
+人跟人之间也会互相电来电去。像有一次一个女生拿东西给我时才轻轻碰到一下，
+一股强烈的电流从对方的指尖传来害我们两个人同时被吓一跳，这时我才明白人家
+形容男女之间 「有触电的感觉」、「来电」，不单是抽象形容，还是一种具体事实
+的描述，只不过这种场面实在是蛮尴尬的就是了。</p>
+
+
+<ol>
+<li>Is this tap water? No. It&#8217;s bottled water. 这是自来水吗？不，这是瓶装的。</li>
+</ol>
+
+
+<p>自来水的英文就是 tap water 或是 running water，而一般瓶装的水就叫 bottled 
+water。在美国自来水号称可以生饮，所以理论上可以拿杯子直接接自来水喝。但一
+般人还是觉得自来水不够干净，所以他们会买一种附有过滤器的水壶来增加自己的
+信心，再不然就买水喝吧！切记，虽然我们中文讲「矿泉水」讲习惯了，所以有时
+候 mineral water 就跑出来了，其实这是不对的，老美不这样讲的。为什么我那么
+肯定呢？因为有一次我跑去加油站想跟老板买一瓶没冰的矿泉水，我说 &#8220;I want to 
+buy a mineral water.&#8221; 那个人说什么也听不懂我要买的 mineral water是什么。
+后来我用指的指给他看，他立刻会过意来，说。&#8221;Oh. You want a bottled water!&#8221; 
+这下子我才明白过来原来老美只说包装水 (bottled water) 而不说矿泉水 (mineral 
+water)。 </p>
+
+
+<p>关于 tap water 和 bottled water 我还有一点提醒大家。通常如果我们去餐厅或
+是酒吧要点水来喝，通常只说要 water，一般人也不会误会，自然会送上 tap water，
+而 tap water 想当然尔是免费的。但有些酒保或是侍者比较狡猾，你跟他说要 water，
+他却给你送上一瓶 bottled water 然后收你两块钱。所以看情况，如果势头不对，
+还是指明我要 tap water，比较保险一点。</p>
+
+<p>8. I am running the bath water. 我正在放洗澡水。</p>
+
+
+<p>中文里的「放洗澡水」在英文里却成了 run the bath water 或是 fill the tub。
+的确差蛮多的吧！这句话如果你妄想照字面直接把中文翻成英文肯定是要失败的，
+我就作过这种事。记得刚到美国时，有一次刚好要跟老美说我正在放洗澡水，结果
+绞尽脑汁才想出了一句比较接近的，&#8221;I put water in the tub.&#8221; 事后外加比手划脚
+半天别人才弄懂我在说什么。其实很简单对吧！就是 run the bath water 或是 fill
+the tub 就可以了。而这个 tub 就是指洗澡用的大浴缸。</p>
+
+<p>9. I need to take some water. 我需要喝点水。</p>
+
+
+<p>喝水要怎么讲？我是会很直觉地想到 &#8220;I need to drink some water.&#8221; 所以像饮用
+水就叫 drinking water。但据我听老美之间的对话，他们也常用 &#8220;I want to take
+some water.&#8221; 所以喝水不一定要用 drink water，用 take water 也可以。</p>
+
+<p>另外我觉得有一个字跟喝水有关也值得一学，fountain machine，也就是饮水机的
+意思，如果出去玩又不想花钱买水喝，那就请务必熟记这句，&#8221;Is there any fountain 
+machines around here?&#8221; (这附近有没有饮水机啊？) 但是记得，有时候 fountain 
+machine 也可以指速食店里的那种汽水机，使用上多加小心。</p>
+
+
+<ol>
+<li>How much do you pay for the utilities every month? 你每个月水电费付多
+少钱？</li>
+</ol>
+
+
+<p>通常我们说 utilities 就是包括了水、电、瓦斯这些生活上的必须品，当然以现代
+人而言，可能还要再加上上网的拨接费用这一项。通常你若要去租房子千万不要忘
+了先问好，&#8221;What kinds of utilities are included?&#8221; (房租里包含了那些水电和
+其它的费用？)因为每家出租公司的规定不尽相同。但是大多数的情况水是包的，而
+电肯定是不包的。至于其它的像暖气和垃圾清洁等则不一定。但是如果来美国念书
+选择住学校的宿舍的话，则所有的 utilities 多半是由学校包办的，好处就是不用
+每个月去缴 utility bill (水电费帐单)，坏处是羊毛出在羊身上，学校的房租通
+常不比外面便宜，而且每个人能使用的空间很小。</p>
 
 
 <p>生活小故事</p>
 
-<p>这个星期我去看了李安所导演的「卧虎藏龙」, 英文翻成 &#8220;Crouching Tiger, Hidden 
-Dragon&#8221; , 这部电影在美国上映后就一直颇受好评, 而且最近还刚拿下金球奖的最佳
-外语片.   它特别之处在于整部电影都是用中文发音, 老美呢? 就只能看英文字幕.  这部电影里面有一段字幕是这样写的:   &#8220;When it comes to emotion, even 
-a great hero can become a idiot.&#8221; (当讲到爱情这个东西时, 连英雄也会变成低
-能儿).  结果全场的观众都哄堂大笑, 大概是他们觉得中国人的哲学很有意思吧!</p>
+<p>英文的发音是很重要的, 有时失之毫厘, 差以千里.  有一次有人来敲门, 由于门并
+没上锁, 所以我就说了一声 come in.  结果等了约莫十秒钟, 敲门声再度响起, 我
+以为他之前没听到, 所以我又提高嗓门大声地说, come in.. 没想到这位老兄他还
+是不进来, 再等了十秒钟, 他又敲了一次门, 这下我也不耐烦了, 走去给他开门, 
+结果门一开, 我没好气地跟他说, why don&#8217;t you just come in?  结果他说 You 
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本五十: 汽车 ]]></title>
+    <link href="http://yfu.github.com/note50/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note50</id>
+    <content type="html"><![CDATA[<p>而开车也几乎成了每个人每天的例行公事.   大家不要小看这些对话, 我就曾经因
+为听不懂老美说, &#8220;麻烦把行李箱打开&#8221; 而落人笑柄.  不过这样也好, 那群老外现
+在看到我都还记得我, 全是拜那句 pop the trunk 之赐.</p>
+
+<p>1.Can you pop the trunk?
+你能不能打开行李箱.</p>
+
+
+<p>就是这么简单的一句英文让小笨霖出了名.   因为一般打开行李箱都是说 open the
+trunk 但是老美也喜欢说成 pop the trunk.  Pop 是指某样东西突然跳起来的动作
+, 因为开行李箱时行李箱通常都是 &#8220;碰&#8221; 一下跳起来, 所以打开行李箱才会说成 pop
+the trunk.</p>
+
+<p>2. Do you need a ride?  We can car pool.
+你需不需要我载你啊? 我们可以共乘一辆车啊.</p>
+
+
+<p>你要开车去载某人, 就是 give someone a ride.  这是很常用的说法. 另外关于
+car pool, 指的就是二人以上共乘一辆车.   由于美国的交通阻塞问题也是十分严
+重, 所以有很多鼓励共乘的措施.  所以 Highway 上有所谓的 car pool lane, 就
+是共乘车辆才可以走的专用道,   而我们学校共乘车辆的停车费也可以减免.</p>
+
+<p>注意一下 car pool 在这里可以当成动词或是名词, 如你说 We can car pool, 这
+是动词的用法, 或是你也可以说 I am in car pool with someone, 这是名词的用
+法.  二者都很常见.</p>
+
+
+<ol>
+<li>I&#8217;ll pick you up tomorrow.
+我明天会去接你.</li>
+</ol>
+
+
+<p>Pick up 这个字实在是很好用.  从以前介绍过的, 去拿作业叫 pick up the homework,
+ 去摘水果也叫 pick up the fruit.  开车去接某人, 也叫 pick up. </p>
+
+
+<p>接人叫 pick up, 那放某人放下来要怎么说呢? 就是 drop someone off.   例如你
+可以跟被你载的人说, Where do you like me to drop you off.   或是光说 drop
+也成, 例如, You can drop me around the corner.</p>
+
+<p>4. Come on, jump in. (hop in)
+快点上车.</p>
+
+
+<p>一般我们认为上车叫 get on, 但是其实 get on 只用在大的巴士, 例如坐公车是
+get on the bus 或是骑马你可以说 get on the horse. 但一般小汽车是不能用 get
+on the car.   只有在有往上爬的动作时才能用 get on.  那要用什么才对呢? <br/>
+jump in 就是一个不错的字眼.  或是 hop in 也很常用. 有一次我同学开车来接我
+, 他就是说, Come on, jump in the car.</p>
+
+<p>同样的, 下车也分二种, 如果是从大车上下来, 如巴士, 就像我们以前所学的用 get 
+off.  但是从小轿车中出来就不叫 get off, 要讲 get out. 例如, Everybody gets 
+out. 就是大家都下车吧.</p>
+
+
+<ol>
+<li>There&#8217;s something wrong with my car, I think we have a flat tire here.
+我的车是怎么呢? 我想我的车爆胎了.</li>
+</ol>
+
+
+<p>出了什么状况, 在口语中最常讲的就是, What&#8217;s wrong? 或是 What&#8217;s going on? 
+我在美国就有一次爆胎的经验, 害我这个新任的同学会会长蹲在马路旁边换轮
+胎搞得满身大汗还被学弟看到, 实在是丢脸啊. 爆胎就叫 flat tire, 算是固定用
+法.</p>
+
+
+<ol>
+<li>Can we take it to the workshop and ask them to fix it?
+我们能不能拿去汽车保养场叫他把它补一补?</li>
+</ol>
+
+
+<p>那次轮胎破了怀著惶恐的心情去汽车保养场补胎.   我真的是非常惶恐因为我不知
+道 &#8220;补胎&#8221; 这个英文要怎么说.  结果我当然就把它说成了 I have a hole on my tire,
+ can you patch it? 嘿&#8230; 没想到那个老黑居然还听得懂. 不过后来我才知道原来
+补胎就是 fix the tire 就好了.</p>
+
+
+<p>经验之谈, 十个人去补胎其中大概会有八个人他会告诉你这个胎不能补.   试想,
+补一个胎 $8 换一个新的 $120, 我实在不相信这么小小的一个小洞会花去我 $120,
+所以我还是坚持要补.  结果呢? 这个轮胎不是又跑了 5000 mi 了? 所以不要当冤
+大头啊! 当然啦~ 真的要换时还是得换的.</p>
+
+<p>7. We have a dead battery now. I&#8217;d better put this car in service.
+电池也没电了, 我想我该把我的车拿去保养了.</p>
+
+
+<p>通常车子会发不动都是由于电池的关系.  而电池没电就叫 Dead battery. 通常遇
+到这种情况就只能推车或是从别台车接电过来.   只要车子能发动, 车子的发电机
+会自行把电池充电, 所以就没问题了.</p>
+
+<p>Put something in service 也是个不错的用法, 指的是把某样东西送去保养或是修
+理.   像是有一次我坐一个同学的车, 他的车是十几年的老爷车, 但是冷气还很好
+. 我说, Why is it still working so well? 他就说 I put it in service.</p>
+
+
+<ol>
+<li>I have a dead battery, can you jump my car?
+我的车子电池没电了, 能不能接电给我?</li>
+</ol>
+
+
+<p>Jump my car 跟 jump in the car 是完全不同的意思.  所谓 Jump my car 就是指
+你车子的电池没电了, 你可以拿一条接电线 (jumper) 从别人的车子接电过来.  相
+信会开车的人或多或少都有这种 jump my car 的经验吧! 尤其在军中, 能够自己发
+动的车子实在是没几台, 所以 jumper 就成了每台车必备的工具了.</p>
+
+
+<ol>
+<li>My car won&#8217;t start, I don&#8217;t know why, it just won&#8217;t crank up.
+我的车就是发不动, 我不知道为什么, 它就是发不起来.</li>
+</ol>
+
+
+<p>发动车子一般用 start 这个字眼, 但是有一个口语的讲法值得一学就是 crank up. 
+也是发动车子的意思.   为什么叫 crank up 呢? 因为很早以前的车子或飞机它们
+的引擎是没有起动装置的, 所以要发动引擎都要先用一个马达连接一个曲柄 (crank) 
+去发动引擎, 所以久而久之, 发动车子就变成了 crank up.</p>
+
+
+<ol>
+<li>You can back your car now, my side is clear.
+你现在可以倒车了, 我这边己净空了.</li>
+</ol>
+
+
+<p>别人在倒车时, 我都习惯帮别人看看后面有没有车子.   以前我都会说, There is 
+no car now. 听来是不是不太顺. 后来有一次听老美在指挥, 我才知到原来他们说
+成, My side is clear. 或是 you are safe now. 或是 all clear 都可以.</p>
+
+
+<ol>
+<li>There is one auto part store around the spaghetti junction.
+我知道在交流道那里有一家汽车修理店.</li>
+</ol>
+
+
+<p>来美国自己开车才知道, 原来汽车修理店还分很多种. 卖汽车零件兼修理的叫 auto 
+part store, 作钣金的叫 body shop. 还有专门换轮胎和换机油的店. 有时我就自
+己把它们总称 workshop.   </p>
+
+
+<p>另外 Spaghetti junction 也是个很有意思的字.  Spaghetti 的原意是意大利面,
+而 spaghetti junction 则是指二条高速公路交会的地方那些错综复杂的立体交流
+道.   我想是那些交流道看起来就像是面条一样看起来乱乱的, 故因而得名吧.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本五: How Come？ ]]></title>
+    <link href="http://yfu.github.com/note5/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note5</id>
+    <content type="html"><![CDATA[<p>我从网路上找来的(原作者不要打我!), 提供大家很好的题材..</p>
+
+<p>How Come<br>
+A man will pay $2 for a $1 item he wants. A woman will pay $1 for a $2 item 
+that she doesn&#8217;t want. </p>
+
+
+<p>How Come<br>
+A woman worries about the future until she gets a husband. A man never worries
+about the future until he gets a wife.</p>
+
+<p>How Come<br>
+A successful man is one who makes more money than his wife can spend. A 
+successful woman is one who can find such a man. </p>
+
+
+
+
+<p>How Come<br>
+To be happy with a woman you must love her a lot. And not try to understand 
+her at all.</p>
+
+
+
+
+<p>How Come<br>
+Married men live longer than single men. But married men are a lot more 
+willing to die. </p>
+
+
+
+
+<p>How Come<br>
+Any married man should forget his mistakes. There&#8217;s no use in two people 
+remembering the same thing.</p>
+
+
+
+
+<p>How Come<br>
+Men wake up as good-looking as they went to bed. Women somehow deteriorate 
+during the night. </p>
+
+
+
+
+<p>How Come<br>
+A woman marries a man expecting he will change, but he doesn&#8217;t. A man marries 
+a woman expecting that she won&#8217;t change and she does. </p>
+
+
+
+
+<p>How Come<br>
+A woman has the last word in any argument. Anything a man says after that 
+is the beginning of a new argument.</p>
+
+
+
+
+<p>How Come<br>
+There are two times when a man doesn&#8217;t understand a woman, before marriage 
+and after marriage. </p>
+
+
+
+
+<p>How Come<br>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十九: 作客 ]]></title>
+    <link href="http://yfu.github.com/note49/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note49</id>
+    <content type="html"><![CDATA[<p>want to do that.  I have a pool table too.   大家知不知道那个 pool table
+是什么意思? 当时我一直以为是指游泳池边的桌子, 结果到底是什么呢? 小笨霖先
+卖个关子, 看完本集的内容后你就知道了.</p>
+
+<p>1. If you can&#8217;t do better than that, go back to your room.
+如果你不能表现的好一点的话, 你就回房去.</p>
+
+
+<p>我同学有一个小女儿, 约二岁左右的年纪.   这个年龄的小孩可真是皮的很.  她妈
+妈每次都是这样教训她, If you can&#8217;t do bettr than that, you &#8230;.  这样的句
+子可以用在许多场合, 例如她吃饭时食物掉的满地都是, 或是她跟其他小朋友玩的时候吵起来的, 都可以这么跟她说.</p>
+
+<p>2. Behave.
+规矩点.</p>
+
+
+<p>这句话日常生活中常用到. 比如说有人吃完饭就拿袖子擦嘴, 你就可以这么跟他说
+, Hey!  behave. 那天我同学的小女儿居然把屁股跷的半天高, 对著大夥作出要放一
+个响屁的动作, 她妈妈就对她说, Behave. honey.</p>
+
+<p>大家不知道有没有去看 Austin Power II, 剧中男主角的口头禅就是 &#8220;Oh, &#8230;behave,.
+.. babe&#8221;</p>
+
+
+<ol>
+<li>You won&#8217;t hurt my feelings if you don&#8217;t like it.
+如果你不喜欢的话, 我也不会觉的太难过.</li>
+</ol>
+
+
+<p>跟老外相处, 饮食习惯的不同是个很大的挑战. 有时你煮了某样很棒的中国菜请老
+美吃, 可是也许人家就不喜欢. 这种情况要怎么说呢? 那天他老婆就说得很漂亮.  
+You won&#8217;t hurt my feelings if you don&#8217;t like it.  这样的场面话实在是非常地
+得体.</p>
+
+
+<ol>
+<li>The house gives me the warm nest feeling.
+这个房子给了我一个像家一样温暖感觉.</li>
+</ol>
+
+
+<p>我觉得这个 warm nest feeling 用的很棒, 中文讲像&#8221;家的感觉&#8221;, 英文中却是用 
+nest feeling. 我想这里如果用 warm home feeling 可能不太对, 各位觉得如何呢</p>
+
+
+<ol>
+<li>Head up.
+小心.</li>
+</ol>
+
+
+<p>Head up 跟 Watch out 是很类似的, 都是提醒人当心的意思. 但是 Head up 多半
+用在要人家抬头注意时, 例如有东西从天花板上掉下来了, 你就可以说 Head up. 或
+是打球时高飞球往你头上砸下来, 你也可以说,   Head up.</p>
+
+
+<ol>
+<li>Do you want to shoot in the pool?
+要不要玩撞球啊?</li>
+</ol>
+
+
+<p>谜底揭晓了! 原来 pool table 指的是撞球桌啦.   而你问别人要不要打撞球就是
+说, Do you want to shoot in the table? 用的是 shoot 这个动词. 或是你也可以
+这样说, Let&#8217;s go to the pool all (pool room)!   (这里不是指有游泳池的房间
+喔!)</p>
+
+
+<ol>
+<li>You can&#8217;t find a person who doesn&#8217;t know &#8216;fig&#8217; in the United States.
+你找不到任何一个在美国的人不知道无花果的.</li>
+</ol>
+
+
+<p>那天在他们家看一本图鉴看到 fig 这个字, 它是一种水果. 我问我同学这个 fig 
+是什么东西? 他说他也没看过新鲜的 fig 长得如何, 但是 You can&#8217;t find a person 
+who doesn&#8217;t know fig in the United State. 所以我很好奇到底是什么水果是大
+家都知道, 但却不知道它长的如何的? 回家一查字典我才恍然大悟, 原来是 &#8220;无花果
+&#8221; 的意思.</p>
+
+
+<ol>
+<li>I got an A in the bag.
+我已经确定可以拿一个 A 了.</li>
+</ol>
+
+
+<p>In the bag 就是说某样东西已经是你的囊中物了, 也就是你非常有把握到手的事情
+. 例如你很有信心可以得到一份工作, 你就可以说, I got a job in the bag.</p>
+
+
+<ol>
+<li>Don&#8217;t let the door hit you on your way out.
+小心你出门时不要让门撞到你.</li>
+</ol>
+
+
+<p>这句话是我同学开玩笑跟我说的.   不要以为这是一句关心别人的话, 这其实是二
+个人在吵架时才会说的. 因为这句话暗示了你一出门, 我就会把门 &#8220;砰&#8221;一声地关上
+, 所以我才故意提醒你不要被我的门给夹到了.</p>
+
+
+<ol>
+<li>You can stick a fork in me.
+我已经好了.</li>
+</ol>
+
+
+<p>这句话是个双关语. 当我们在煮肉类食物时, 习惯上都会用叉子 (fork) 去试试肉
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十八: Butt 这个字 ]]></title>
+    <link href="http://yfu.github.com/note48/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note48</id>
+    <content type="html"><![CDATA[<pre><code>    这集要来跟大家介绍一下 butt 这个字的用法.  Butt 这个字除了当作 "屁
+</code></pre>
+
+<p>股&#8221; 来解释外, 还有许多非常有趣的口语和俚语用法, 这些可是一般书上学不到的喔
+~</p>
+
+<p>1. Can you get your butt down here?
+能不能麻烦你下来一下?</p>
+
+
+<p>Butt 表现出一种尖酸刻薄的语气, 有点那么不耐烦, 不高兴.   比如你找一个住五
+楼的朋友,  结果到了楼下, 他却跟你说, Come up here.  这时你心里一定会想, &#8220;那
+你你自己不会下来啊?&#8221;   像这样的语气, 你就可以说, Can you get your butt down
+here?</p>
+
+<p>在电影 Outside Providence 里, 有一个女生去找她男朋友, 那个男的就叫她自己
+上去, 她也是很不高兴地说了一句, Can you get your butt down here? 能不能请
+你移动一下你的屁股, 下来一下吧!</p>
+
+
+<ol>
+<li>Can you get your butt back here?
+能不能请你转过头来.</li>
+</ol>
+
+
+<p>大家有没有这样的经验? 跟一个人讲话, 他却一边回答你的话, 一边看着他的萤幕
+玩他的 ICQ? (我就是这种人啦!) 这时你可能也会不太高兴, 你就可以说, Can you 
+get your butt back here? 能不能请你转过头来看着我.  这句话如果不用 butt 是
+很难表达出那样刻薄的语气的.</p>
+
+
+<ol>
+<li>Get your butt out of the way?
+你能不能别挡路啊?</li>
+</ol>
+
+
+<p>要是一般场合别人挡住你的路, 也许你只会说, Excuse me! 别人就会让开了. 但是
+如果是很熟的朋友挡住你的路, 你可能说话的语气就不会那么客气.  这时就可以说
+, Get your butt out of the way!  </p>
+
+
+<p>这句话也可以简单地说成, Hey! move your butt. 喂, 老兄, 移动一下你的小屁屁
+吧!</p>
+
+<p>4. He came out butt-naked.
+他全裸地跑了出来. </p>
+
+
+<p>Butt-naked 看字面上是说屁股裸露在外, 但事实上 butt-naked 是指全裸的意思.
+ 虽说 naked 就是裸体的意思, 但 butt-naked 有加强语气的味道在里面.  所以善
+用 butt 这个字, 可收画龙点睛之效.</p>
+
+<p>5. She is butt-ugly.
+她长的很丑 (跟屁股一样丑 :D)</p>
+
+
+<p>要是你跟一个女生说, You are butt-ugly, 那么她很可能有一种活不下去的冲动.
+ 同上, 单讲 ugly 的语气不强, 但是一旦加上 butt 这个字, 语气就完全不一样了
+~</p>
+
+<p>6. Butt out.
+走开</p>
+
+
+<p>Butt out 应该是 Get your butt out of here 的意思, 但一般只会说成 butt out.
+  这句话跟 get out 或是 go away 是一样的意思.</p>
+
+<p>7. Your momma is so fat, your momma got a big butt.
+你妈妈那么胖, 屁股又那么大.</p>
+
+
+<p>这句话是有一次我听二个黑人在互相亏来亏去时讲的.   看来中外皆然, 开起玩笑
+来, 对方的妈妈就会成为首先糟殃的对象.  Big butt 就是说屁股很大的意思.</p>
+
+<p>还有一次听一个黑人说, I will kick your butt so high, you look like a hunchback.
+ 他意思是说, 我要把你的屁股踢的半天高, 让你看来像 hunchback 一样.  (注: hunchback 
+是一种野猪, 也是 U. Arkansas 的校队名称)</p>
+
+
+<ol>
+<li>It&#8217;s a big pain in the butt.
+那真是痛苦啊!</li>
+</ol>
+
+
+<p>It&#8217;s a big pain in the butt 看来是固定用法, 因为有一次我自创一句, That&#8217;s 
+a pain in the butt 老美就纠正我说没人这样用. 凡是很另人感到痛苦的事都可以
+这么说. It&#8217;s a big pain in the butt! 另外也有老美把这里的 butt 说成 ass. 
+所以你可以说 You are a pain in the ass. 或是当形容词用, That&#8217;s my pain-in-the-
+ass nephew.</p>
+
+
+<ol>
+<li>Get your butt into gear. <br/>
+Get your butt geared.
+开始工作吧!!</li>
+</ol>
+
+
+<p>Gear 就是指车子上的排档. 把你的 butt 放入档位, 意谓著你该开始动工了, 不要
+再混下去了.    还有一个用法也是老美跟我说过的, You should get cracking. 意
+思也是, 你该开始工作了. 或是你也可以说, Don&#8217;t be procrastinating, 就是不要
+再拖下去了!</p>
+
+
+<ol>
+<li>I don&#8217;t want to freeze my butt off.
+我不想把屁股给冻坏了.</li>
+</ol>
+
+
+<p>大概因为屁股是很脆弱的地方, 所以他们才说把屁股给冻坏. 学到这句话是有一次
+去美国家庭寄宿.  女主人很讨厌男主人抽烟.   所以男主人每次要抽烟都被女主人
+给赶到户外.   结果那天下大雪, 他又被赶到户外抽烟.   结果他就很不情愿地说了
+一句.  I don&#8217;t want to freeze my butt off!</p>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十七: Come 这个字 ]]></title>
+    <link href="http://yfu.github.com/note47/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note47</id>
+    <content type="html"><![CDATA[<pre><code>    最近又发现一个跟我一样闲的人, 黛西, 她的生活美语风格跟我的笔记本
+</code></pre>
+
+<p>蛮类似的, 不过特别的是, 她的美国食物介绍都是有附图片的,  让我自叹不如. <br/>
+所以我要特别跟各位推荐一下这位笑起来像樱桃小丸子的黛西和她可爱的网页. 黛西
+的窝   (http://free.prohosting.com/~daisy/)</p>
+
+<p>这周跟各位介绍一下在口语中很常用到的一个动词: Come. 分别是 come down, come 
+up with, come out, come in, come on, come off, come by, come to, come into 
+play.</p>
+
+
+<ol>
+<li>The rain is coming down.
+雨开始下了.</li>
+</ol>
+
+
+<p>在美国的口语中, 美国人很喜欢用动词片语, 尤其是以 get 或是 come 开头的片语
+.  因为这类的动词除了表示出动作之外, 还说出了方向. 像这句话同样也可以说成
+, It&#8217;s raining, 或是 It&#8217;s starting to rain. 但所表达的意思就不如 come down 
+来的丰富. 这句话是有一次去看 Football 时学的, 打到一半就下起雨来, 播报员
+就说, Tha rain is coming down.</p>
+
+
+<p>Come down 还有另一个重要的意思, 就是&#8221;下来楼下&#8221; 的意思. 比如说你去找一个住
+在五楼的朋友, 你在楼下的对讲机就可以问他, Do you want to come down? 你想不
+想下来啊?</p>
+
+<p>2. I came up with a good idea to that question.
+对于那个问题我有一个好主意.</p>
+
+
+<p>Come up with something 就是说突然想到一个主意或是其它事情,   光用 come 表
+达不出那种跑出一个想法的意念, 所以要用 come up.   常见的有  come up with
+a solution, 或是 come up with a new idea (见笔记四)</p>
+
+<p>3. Don&#8217;t let the stuff come out.
+不要让里头的东西跑出来.</p>
+
+
+<p>记得有一次请老美来家里包水饺 (What a lovely idea!!) 我一直想跟他们说不要
+让水饺里面的馅跑出来, 可是这个&#8221;跑出来&#8221; 要怎么讲就是一直想不出来, 总不会是
+ run out 吧 ~~ 后来也是听他们说我才知道是用 come out.</p>
+
+<p>Come out 也可以用在叫大家不要待在家里, 出来走走的意思, 例如我们宿舍每次都
+会贴出这样的布告, Come out for some foods.  或是 Come out and have a good 
+time with us! 所以你要打电话约人家出来, 也可以这样问, Do you wanna come out 
+with me?</p>
+
+
+<p>Come out 也常用于新书的出版, 比如 The new magazine just came out. 就是说
+新的杂志刚刚出版了. 另外若是讲到数学计算时, 老美也常用 come out 来表示结果
+是多少, 例如你可以说, The total comes out to be forty-five.</p>
+
+<p>在同性恋的用语中, come out 有一个很特别的意思, 就是&#8221;出柜&#8221; 意思, 这个出柜
+指的是什么呢? 就是说同性恋公开自己是同性恋的身份啦. 例如, I am so surprised 
+finally he came out! 他终于表明他是同性恋了.</p>
+
+
+<ol>
+<li>This is where the arguement comes in.
+这是争议的所在.</li>
+</ol>
+
+
+<p>有时在跟老美对话都突然会有那种, 咦, 这个字用的真好, 可是我就是用不出来. 
+ Come in 就是一个很好的例子. 有一次在跟一个老美谈学校的停车政策, 我们各有
+不同的观点, 我说, We need to build more parking decks. 他就说, Ok, this is 
+where the arguement comes in, 然后才 blah blah blah. 又讲了他的观点. 他的
+观点是什么不重要, 重要的是他在这里用了一个我觉的很棒的 comes in 片语.</p>
+
+
+<p>Comes in 也常指新官上任喔! 例如我们学校最新来了一个新的校长, 你就可以这么
+说, A new president comes in.</p>
+
+<p>5. Come on!
+拜托喔~</p>
+
+
+<p>Come on 是个几乎每天都会听到个片语啦~ 但是不同的语气跟不同的场合有不同的
+意思. 例如在大热天你看到人家穿了一件毛衣, 你就可以说 come on, dude~ 就是说
+大哥, 拜托你喔. (有点受不了人家的意思)   或是跟同学约好了五点出门, 结果他
+四点五十九分了, 你也可以催他, Come on, it&#8217;s five already.</p>
+
+<p>Come on 也可以当作叫人家过来的意思, 例如你开车在路上看到同学迎面走来, 你
+就可以说, Come on, I&#8217;ll give you a ride. </p>
+
+
+<ol>
+<li>The ball doesn&#8217;t come off the net.
+这个球挂在网上掉不下来.</li>
+</ol>
+
+
+<p>以前在国内打排球都是在水泥地上打, 可是来到美国, 我发现他们更喜爱沙滩排球
+或是草地排球 (拿一个活动的网子, 在草地上一挂就玩起来了) 玩的很随兴很自在, 
+ 这通常也是 party 的一个重要部分.  Come off 简而言之就是二个原来在一起的东
+西分开的意思, 如油漆剥落, 如 The paint comes off gradually. 或是球被球棒击
+中, The ball comes off the bat.</p>
+
+
+<ol>
+<li>I hope someone comes by and picks us up.
+我希望有人经过然后让我们搭便车.</li>
+</ol>
+
+
+<p>有一次大热天跟一个美国的朋友走在柏油路上, 他大概是被晒昏了吧. 居然开始作
+起白日梦起来, I hope someone come by and pick us up. 结果呢? 当然是没有人
+会理我们的啦, 还是要自己走回家. Come by 算是常见的片语, 就是从旁边经过的意
+思.</p>
+
+
+<ol>
+<li>We haven&#8217;t come to a conclusion yet.
+我们还没有得到结论.</li>
+</ol>
+
+
+<p>Come to 常可以见到在这样的句子中, 如得出解答 (come to a solution) 或是得
+到结论 (conclusion) 和 come up with 不同的是, come to 指的通常是最终的结果
+, 而 come up with 只是想到某个想法而已.</p>
+
+
+<p>Come to 也常用于来到某个地方, 例如 You will come to a stop sign if you keep
+straight. 如果你直走的话, 你就会到一个 stop sign.</p>
+
+<p>9. This factor doesn&#8217;t come into play in this case.
+这个因素在这里不起任何作用.</p>
+
+
+<p>Come into 后面可以加一个名词来表达不同的意思. 如例句中所讲的 come into play
+就老师上课时喜欢用的片语之一. Come into effect 跟 come into play 很类似,
+所以这句话也可以说成, This factor doesn&#8217;t come into effect in this case.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十六: 问路 ]]></title>
+    <link href="http://yfu.github.com/note46/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note46</id>
+    <content type="html"><![CDATA[<pre><code>       初到美国, 最害有人上前问路了.  有些地方明明自己知道, 可是用英
+</code></pre>
+
+<p>文都会给人家报错.   有一次不知哪个倒霉鬼要去听音乐会, 结果给我指到体育场
+去了.   结果还是可怜的小笨霖跑步带杀声去把他的车给追回来.</p>
+
+<pre><code>    &lt;p&gt;本集的主要目的就是要教大家如何报路给人家. 大家可以试著先翻译看看
+</code></pre>
+
+<p>: 走这条单行道, 在第一个红绿灯时左转, 那里就是 Hemphill Ave. 是一条双线道
+. 往下走, 你会在你的左边看到一个加油站, 继续走50 码, 直到看到一个三叉路口
+, 右转, 经过二个 stop sign. 你就会碰到 Wal Mart. 邮局就在 Wal Mart 的对面
+. 而杨先生的家呢? 邮局后面就是啦.  怎么样? 够生活化了吧 ^.^ 想必你一定会
+用的到. </p></p>
+
+<ol>
+<li>Take the one-way street.
+走这条单行道.</li>
+</ol>
+
+
+<p>One-way street 就是单行道.  美国的单行道感觉上不比国内少, 尤其在 Downtown 
+地区, 以亚特兰大和纽奥良为例, 其复杂的程度可以用进的去, 出不来来形容, 实
+在不是个愉快的开车经验.</p>
+
+
+<ol>
+<li>You will stay on the street for a while until you hit the first traffic
+light.
+你会走一会儿, 直到你遇到第一个红绿灯.</li>
+</ol>
+
+
+<p>有一次我开车老美坐我旁边, 他帮我指路就是这么说的.  Stay for a while 通常
+指五到十分钟的时间, 不会太久. 遇见某样东西, 可以用 hit 这个字, 如 hit the 
+traffic light, hit the stop sign 等等. 而 traffic light 也有人说成 light, 
+或 stop light.</p>
+
+
+<ol>
+<li>Then take a left.
+向左转.</li>
+</ol>
+
+
+<p>向左转可以说成 turn left,  take a left 或是 Make a left. 有时光讲 take a 
+left 不明确, 你可以加上路名, 明确地告诉人家要转哪一条路, 例如 Take a left 
+into Hemphill Ave. 或是 Take a left onto Hemphill Ave. </p>
+
+
+<ol>
+<li>It will be Hemphill Ave.  It&#8217;s two-lane traffic.
+那就会是 Hemphill Ave, 它是一条双线道.</li>
+</ol>
+
+
+<p>指路的时候如果能够说出街道名称是最n, 所以通常我会把转到哪一条路的路名也指
+出来. 至于是几线道一般指路的时候则比较不会提及. 双线道是指来去各一个车道
+共二线道而言, 四线道就是 four-lane traffic. 像亚特兰大的 Interstate Highway 
+有些地方都是十二线道, 那就是 twelve-lane traffice 够惊人吧.</p>
+
+
+<ol>
+<li>Come down Hemphill Ave about five blocks.<br/>
+由 Hemphill 街往下走约五个 blocks.</li>
+</ol>
+
+
+<p>英文这个部分跟中文有异曲同工之妙喔.  我们会习惯地说, 往 &#8220;下&#8221; 走, 英文也会
+说 come &#8220;down&#8221; 或是 get &#8220;down&#8221;, 这里如果只说 Come Hemphill Ave. 听来是不
+是怪怪的? 至于 block 指的是一块一块的建筑, 外国人在指路时很喜欢用 block 
+作为计量的单位.</p>
+
+
+<ol>
+<li>You will see a BP gas station on your left.
+在你的左手边你会看到一座 BP 加油站.</li>
+</ol>
+
+
+<p>指路的时候除了路名之外, 明显的地标也是□有帮助的.  通常你可以指出一些明显
+的建筑物或是加油站来帮助对方. 加油站的英文是 gas station, 有时会简称  station.</p>
+
+
+<ol>
+<li>Keep going 50 yards before you come to a fork road.
+继续走 50 码, 直到你走到一个三叉路口.</li>
+</ol>
+
+
+<p>继续往下走可以用 keep going 这个字, 或是 continue straight 或是 keep straight 
+也很常用.  Fork road 就是我们说的三叉路口.   那如果是丁字路口要怎么说? 你
+可以说, This road will dead end into 10th Street. 就可以表达出丁字路口的
+意思了.</p>
+
+
+<ol>
+<li>Make a right, pass two stop signs and you will run into a Wal Mart.
+向右转, 经过二个 Stop sign, 你就会遇到 Wal Mart.</li>
+</ol>
+
+
+<p>有一次我去 Ohio, 由于事先的准备不够, 以致于从头迷路到最后.   有一次有一个
+老黑跟我报路用的就是 You&#8217;ll run into it! 意思就是, 我会遇到的. 他们也喜欢
+这么说, You can&#8217;t miss it! 就是说, 你绝不会错过的.</p>
+
+
+<ol>
+<li>The post office is just right across the street of it.
+邮局就在 Wal Mart 的正对面.</li>
+</ol>
+
+
+<p>个人觉的 Right across the street of it 是个很重要的片语, 加上 &#8220;right&#8221; across 
+表示出 &#8220;正&#8221; 对面的意思. 还有一个很常用的就是在什么什么的旁边, 这个要用 The 
+office is next to it.  It 代表之前已经提过的 Wal Mart, 如果之前没有提及, 
+这里也可以直接说成, across the street of Wal Mart.</p>
+
+
+<ol>
+<li>Mr. Yang&#8217;s house is behind the post office.
+杨先生的房子就在邮局后面.</li>
+</ol>
+
+
+<p>有一次也是有一个老美路我问路, 由于那个地方不是很远, 我就用手指这那里说, 
+It&#8217;s over there. 可是事实上那里是被一栋建筑物给挡住了, 所以老美就反问我, 
+Behind this building? 所以我就知道我应该说成 It&#8217;s behind this building 会
+好些.</p>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十五: 地震 ]]></title>
+    <link href="http://yfu.github.com/note45/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note45</id>
+    <content type="html"><![CDATA[<p>死伤.  虽然人在国外, 但我也无时无刻不挂念那些仍旧受困的民众. 想想人的生命
+是如此地渺小, 禁不起大自然无情的玩笑.   这篇笔记主要是讲一些跟地震有关的
+英文, 都是我从国外的报章媒体上所收集而来.   想必这将会成为大家在未来日子
+里的话题焦点吧! 作文时或许可以派的上用场.</p>
+
+<p>1. The strongest earthquake of the century struck Taiwan on Sep. 21
+本世纪来最强的地震在九月二十一日袭击台湾.</p>
+
+
+<p>地震这个单字 earthquake 经过此次大地震, 没听过这个字的人可能没几个. 它也
+可以简写成 quake. 另外, 袭击的动词用的是 strike, 由于是过去发生的事, 所以
+必须用它的过去式 struck.  另外一个可以当作袭击的是 hit 这个单字, 例如, The
+quake hit Taiwan on Sep. 21.</p>
+
+<p>2. The earthquake measuring 7.3 on the Richter scale shook Taiwan, causing 
+severe damage to infrastructure in several cities.
+这个芮氏规模 7.3 的地震不但震撼了台湾, 还在许多城市对基础建设造成严重的破
+坏.</p>
+
+
+<p>表示地震强度的方法有二种, 第一种是以其释放出的总能量来计算, 就是所谓的规
+模 (magitude) 最常用的就是芮式规模 (Richter scale).   另外一种是强度(intensity)
+, 是以各地实际上摇晃的强度而定, 例如台北四级, 台中六级. (详细资料参见附录
+) 这次的大地震规模在 7.3-7.6 之间, 释放出相当于去年瑞里大地震 40 倍的能量
+,   也相当于广岛原子弹四百倍的威力, 不可谓不惊人.</p>
+
+<p>3. The epicenter of the quake was situated at Chi-Chi in central Taiwan.
+这次的震央位于台湾中心集集</p>
+
+
+<p>震央的英文就是 epicenter. 另外如上所提, quake 也可以用来表示地震的意思.
+ 集集也由于此次的大地震, 由一个铁路观光小镇摇身一变成为举世注目的焦点. 如
+要提到其它地名, 可至 http://yes.net.tw   它有提供罗马拼音查询的功能.</p>
+
+<p>4. It cut off the power and the water supply in broad areas.
+在很广泛的地区内, 它切继了电源和水的供应</p>
+
+
+<p>一般想到电这个单字很容易就联想到 electricity, 但在英文中一般家中所用的&#8221;电
+&#8221; 称之为 power. 至于停电, 英文中可简单地说,  The power is gone.  参见笔记
+六</p>
+
+<p>5. More than 2, 000 are killed and 8000 injured in this disaster.
+有超过二千人在这次的灾难中死亡, 另外还有八千人受伤.</p>
+
+
+<p>讲到在什么样的意外灾害中死亡, be killed 是最常用的字眼了, 例如 Two people
+are killed in the car accident.  如果要用  dead 这个字眼, 则可以写成 The
+quake has left 2000 dead, 或是 More than 2000 died in the quake.</p>
+
+<p>6. There are still hundreds of people buried alive under the rubble.
+还有好几百人在瓦砾堆下被活埋.</p>
+
+
+<p>Buried alive 中文翻成活埋, 实在是我所能想到最悲惨的事了, 一栋大楼倒塌就造
+成了七八十人活生生被埋在瓦砾堆中.  而 rubble 指的是瓦砾, 和另一个字残骸
+(debris) 时常一起出现在地震的相关报导中. 如果要说他被困在瓦砾堆中, 则是
+He is trapped under the rubble.</p>
+
+<p>7. The rescue team combed through the rubble to save surviors.
+搜救队在瓦砾堆中搜寻生还者.</p>
+
+
+<p>Comb through 指的有点像是中文里所说的, &#8220;地毯式的搜查&#8221;, 大概这跟 comb 的原
+意: &#8220;梳子&#8221;脱离不了关系.   记得上次小甘乃迪坠机时, 新闻报导用的也是这个字
+,  They combed through the sea ground.. 此外, 我们要说搜救队争取时间救人
+, 可以说 They race agaist the clock to find survivors, 或是 They battle
+clock to find survivors.</p>
+
+<p>8. Surprisingly, the walls of the collapsed building were filled with empty 
+plastic bottles and metal buckets instead of bricks.
+很令人惊讶地是, 倒塌的建筑物的墙壁居然不是砖块做的, 而是由空的塑胶筒和金
+属筒所砌成的.</p>
+
+
+<p>看到这样的消息实在是很令人心痛.  除了天灾之外, 人祸也是造成此此大地震伤亡
+惨重的原因之一.   此外, 如单讲建筑物时可以说 building, 但是如果要强调是高
+楼, 则可以用 high-rise 这个字.</p>
+
+<p>9. Powerful aftershocks still continue shacking Taiwan after Sep.21
+强烈的余震在九月二十一日后仍旧持续震撼著台湾</p>
+
+
+<p>余震的英文就是 aftershock. 例如, 昨日又再次发生发生规模 6.8 的强烈余震,
+翻成英文就是, A magnitude 6.8 aftershock shaked Taiwan again yesterday.</p>
+
+<p>10. I hope everyone can pray for the hapless victims in the diaster.
+我希望每一个人都能为不幸的受害者祈祷.</p>
+
+
+<p>这次集集大震死伤如此惨重, 身在国外的我们, 除了捐献一点金钱外, 我们所能作
+的也就是为这些不幸的受害者祈祷了, 当然我们最希望的也就是能有更多的生还者</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十四]]></title>
+    <link href="http://yfu.github.com/note44/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note44</id>
+    <content type="html"><![CDATA[<pre><code>    今天听老师讲了一个热力学三大定律的比喻, 我觉的很有意思.  他说, 第
+</code></pre>
+
+<p>一定律是: Life sucks (因为能量守恒, 所以不可能无中生有, 不劳而获) 第二定律
+是: It&#8217;s getting worse. (宇宙的乱度不断增加, 功不断地被转换成乱度), 第三定
+律是 You are gonna die (由于绝对温度大于零, 宇间间的总乱度不度增加, 终究
+有一天会朝向死亡)   有学过热力学的人仔细想想这三句话, 是不是很有道理?. 没
+学过的人也可以大概了解热力学的三大定律是什么吧..</p>
+
+<p>1. I am sorry to turn you down.
+我很抱歉必须拒绝你. </p>
+
+
+<p>Turn you down 就是拒绝别人的要求, 或是像男生要追女生, 女生要拒绝也可以说
+ Turn you down. 有一次我要请老美去参加一个 party, 他说他很抱歉无法参加, 就
+是用的这句: I am sorry to turn you down. Turn down 还有一个意思就是把音量
+或是冷气关小, 见笔记十一</p>
+
+<p>2. Don&#8217;t let your father down.
+不要让你的父亲失望.</p>
+
+
+<p>Let down 和 turn down 是不一样的意思. Let down 是让人家失望的意思, 而 turn
+down 则是拒绝别人的邀请. 记得有一首英文歌里面就有这么一句, &#8220;Please don&#8217;t
+let me down&#8221; 就是不要让我失望.</p>
+
+<p>3. You are grounded.
+你被禁足了.</p>
+
+
+<p>常看美国电视剧的人都会发现, 美国的小孩子如果作错事, 最常遭受到的处罚就是
+禁足 (美国好像不流行体罚) 所以常可以听到父母对小孩子说, &#8220;You are grounded&#8221;
+也有的小孩子自己知道做错事了, 还会主动跟父母说 , &#8220;Ground me!&#8221;</p>
+
+<ol>
+<li>We&#8217;ll see.
+再看看吧.</li>
+</ol>
+
+
+<p>比如说小孩子跟父母要求耶诞节要去 Disney Land 玩, 父母不想立刻拒绝或答应, 
+就可以说, ok, we&#8217;ll see. 再看看吧, 到时再说了. 又比方说我毕业后还没决定要
+留在美国或回国, 我就可以这么说,  I haven&#8217;t decided yet, we&#8217;ll see. 我还
+没决定, 到时候再看看吧.</p>
+
+
+<ol>
+<li>But you told me the opposite.
+但是你上次说的正好相反.</li>
+</ol>
+
+
+<p>有人上次跟你说他喜欢小孩, 过没几天又跟你说他最讨厌小孩了, 这时你能想到的
+第一句话就是, &#8220;You told me the opposite!&#8221; 世界上总是有人反反覆覆, 这句话拿
+来伺候他是最好不过了. 附带一点, opposite 原来也是可以当名词用的.</p>
+
+
+<ol>
+<li>Today is a sucky day.
+今天是很糟的一天.</li>
+</ol>
+
+
+<p>有人写信问过我, 这部电影很烂要怎么说, 是 The movie is sucks 还是 The movie 
+is sucky. 其实很简单,  suck 是动词, 所以不需要再加 Be 动词, 所以要说  The 
+movie sucks. 所以像这句话你也可以说成 Today sucks.   关于 suck 到底算不脏话， 我想这也许不是那么严重, 可是也不要随便跟不熟的人或是长辈说 sucks.</p>
+
+
+<ol>
+<li>We study for the finals around the clock.
+我们日以继夜地为期末考作准备.</li>
+</ol>
+
+
+<p>Around the clock 是个蛮有用的片语, 就是日以继夜的意思.   以前看电视也记了
+一句很棒的句子, &#8220;I said once around the clock hoping I didn&#8217;t let you down&#8221; 
+, 意思是不论在何时, 我希望我都不会让你失望.</p>
+
+
+<ol>
+<li>I am not into Chinese food.
+我对中国食物并不是很在行.</li>
+</ol>
+
+
+<p>Be not into something 说的就是你对这样东西也许接触不多, 也许不是很了解. 
+ 像有一次我问一个老美有没有在玩 IRC? (一种网路上的聊天室) 她就回答, I&#8217;ve 
+heard it but I am not into chat rooms.   类似这种口语的说法听老美用都很自
+然, 而且单字我也都懂, 但是我就是不知道可以这么说.</p>
+
+
+<ol>
+<li>What&#8217;s another word for &#8220;dingleberry&#8217;?
+Dingleberry 的同义字是什么?</li>
+</ol>
+
+
+<p>大家不需去背一些奇奇怪怪的单字, 像是 &#8220;同义字&#8221; 这个字英文要怎么说? 我想会
+的人没几个, 就算你说了, 老美可能也听不懂. 由於小笨霖有时去问老美一些怪单字
+, (像是 dingleberry 这个字就很怪) 有时连老美自己也搞不懂, 所以他还要再去问
+别人, 他们就是这么说的喔.. What&#8217;s another word for dingleberry?</p>
+
+
+<p>10 You are dingleberry.
+你实在愚蠢.</p>
+
+<p>Dingleberry 是一句骂人的话, 我在电影 Outside providence 中学到这一句.   
+Dingleberry 的语气并不是很强烈, 大概就相当于 doofus 或是 goofy. 就是笨笨的
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十三: 连字]]></title>
+    <link href="http://yfu.github.com/note43/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note43</id>
+    <content type="html"><![CDATA[<pre><code>    中国人和外国人有一点很像, 就是许愿, 在美国不论在何处看到大大小小
+</code></pre>
+
+<p>的池子, 里面多半有许愿人所丢的铜板.   不过老美许愿的方式和我们不太一样.
+(但是小气是一样的, 都是面额最小的 1cent 居多), 正确的许愿方式是: Throw coin
+over your shoulder. 也就是说, 你要背对池子, 把铜板从你的肩膀上丢到池子里
+, 下次再去许愿时不要忘了喔.  在这一集笔记中, 我特别挑出一些念起来有押韵而
+且在日常生活中常常会用到的一些词汇, 希望各位会喜欢.</p>
+
+<p>1. I just had a super-duper meal in the resturant.
+我刚刚在餐厅吃了一顿超级大餐.</p>
+
+
+<p>Super-duper 是一种加强语法的说法, 程度上比 Super 还要再高一级. 比方说我要
+跟老美说我的网页有多棒, 我就可以说, Welcome to my super-duper website! 所
+以建议一下综艺节目 Super Suday 改名成 Super-duper sunday 可能会有助于收视
+率的提升.</p>
+
+<p>2. I can&#8217;t believe you said this is a tiny-little mistake.
+我不敢相信你说这是微不足道的错误. </p>
+
+
+<p>跟 Super-duper 正好对等, 当你要特别强调某件东西很小很小时, 就可以用 tiny-little
+来形容.  比方说蚂蚁好了, 你就可以用 tiny-little 来形容, 例如: Hey! Look at
+those tiny-little creatures.   不过我最常听到的 tiny-little 多半是跟 mistake
+连用. 一个人为了强调自己犯的错其实没什么大不了的, 就可以说 It is just a
+tiny-little mistake.</p>
+
+<p>3. Stick and stone.
+我不认为你的话会伤了我.</p>
+
+
+<p>这是一句很长的英文句子的开头, 原文是这样的. Stick and stone can break my
+bones, but words can never hurt me. 意思是, 石头和棍子能够打断我的骨头,
+可是你的话一点也伤不到我.   这跟中文的意思是不是正好相反? 在中文里我们认
+为一个人的话比真实的武器还会伤人的, 但是在英文中却说, 只有棍子和石头才能
+伤的了我, 你的话却不能.   所以你跟别人说  stick and stone 就是告诉别人,
+我对你的话是完全免疫的.</p>
+
+<p>4. I will never ever do it again.
+我绝不会再犯同样的错误了.</p>
+
+
+<p>这句话其实光说 I will never do it again 也就可以了, 但是为了强调这个 never,
+他们老美喜欢说成, I will never ever do it again. 表示从今以后绝不会再犯.
+ 有次跟几个老美相约出去玩, 结果有人迟到, 他就拼命地说, Sorry, I will never
+ever do it again.</p>
+
+<p>5. Okey-Dokey /&#8217;oki&#8217;doki/
+好, 没问题.</p>
+
+
+<p>okey-dokey 跟我们平常口语上常用的 OK 是一模一样的, 但不知为什么理由, 或许
+是为了强调吧, 有些人就喜欢说成 okey-dokey. 另外有一点值得一提, 有些人觉的
+ OK 还不够省略, 它们就只说 K.   有一次在网路上跟一个老美聊天, 他一直跟我
+说 K 我觉的很奇怪, 后来我问别人才知道 K 就是 OK. 的意思.</p>
+
+<p>6. She is willy-nilly.
+她非常地犹豫不决.</p>
+
+
+<p>Willy-nilly 就是 will or not 的另一种说法, 所以当形容词用就是形容一个人一
+下子要 (will=willy) 一下子不要 (not=nilly) 但是这种说法其实蛮少用的, 还不
+见的每一个老美都会知道哩.</p>
+
+<p>7. Drive on the parkway, Park on the driveway. 
+开在马路上, 停在停车道上.</p>
+
+
+<p>这句话用中文感受不出它有意思的地方.   美国有很多公路都叫什么 parkway, 如
+ Atlanta 就有一条 Cobb parkway, 而自家院子都会有一条小路通往马路, 这条小
+路就叫 driveway, 如果没有车库, 老美就会把车停在 driveway 上. 有趣的是, park
+原本是停车的意思, 所以 parkway 应该是停车的地方, 但实际上它却是行车的大马
+路, driveway 应该是开车的地方, 但却成了停车的小路.   有空的人可以去考考老
+美为什么他们这样命名.</p>
+
+<p>8. Do you have the walkie-talkie?
+你有没有手提式无线电机啊?</p>
+
+
+<p>Walkie-talkie 依照我们之前的经验, wakie-talkie 就是 walk and talk 的意思
+, 在大哥大还没有发现的年代里, 那种手提式的无线话机相信是很酷的吧, 但现在大
+家人手一只大哥大, walkie-talkie 似乎就没什么了.</p>
+
+<p>9. See you later, alligator.
+再见.</p>
+
+
+<p>有一首歌就叫 See you later, alligator.  Alligator 是指产在美国东南部一种
+很像鳄鱼但嘴巴较短的动物, 在这句话里 allegator 完全没有意思, 只是为了让整
+句话听起来较押韵而已. 所以这句话就只有 see you later 的意思.</p>
+
+<p>10. In a while, crocodile.
+再见了.</p>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十二: 人模人样]]></title>
+    <link href="http://yfu.github.com/note42/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note42</id>
+    <content type="html"><![CDATA[<pre><code>    这集的主题为什么叫作人模人样呢? 因为这一集要介绍的都是一些关于人
+</code></pre>
+
+<p>的讲法.   这些用法可以用来介绍自己, 当然也可以用来形容他人.   其中有些蛮
+有趣的, 因为你不能直接把中文翻成了英文, 例如在英文里你就不能说一个人是 radio
+station (广播电台), 当然同样的有些字眼英文也很难翻成中文, 例如  &#8220;I am straight.
+&#8221; (我是直的?) 大家不妨先猜猜看这是什么意思之后再接著往下看.</p>
+
+<p>1 He is gay.
+他是(男)同性恋</p>
+
+
+<p>根据 CNN 最新的统计资料, 同性恋占美国的人口总数已经达到 5%, 再加上在美国
+这个多元化的社会里, 同性恋是非常公开的, 他们甚至有自己特别的旗帜: 六色旗
+. 所以他们的影响力实在是不容忽视.  同性恋的说法最普遍的就是 gay, 这可以兼
+指男同性恋和女同性恋而言.   如果要特地区分男同性恋和女同性恋的话, 则男同
+性恋用 gay, 而女同性恋则是 lesbian. (中文有人翻 &#8220;蕾斯边&#8221;, 有人翻成&#8221;拉子&#8221;).
+ 另外还有双性恋, bisexual, 变性人: transsexual. 反串(作异性打扮者) transvestite
+或 cross-dresser 都可以算在广义的同性恋团体在内吧!   在美国同性恋多的城市
+例如纽约, 亚特兰大, 旧金山每年都有所谓的同性恋大游行, 非常热闹。</p>
+
+<p>另外 He is a faggot. (fag) 也是指男同性恋的意思, 但是这是非常轻视侮蔑的讲
+法, 多半用在骂人跟吵架的时候. 请不要随便对同性恋的朋友说, You faggot. 不
+然到时被人家毒打一顿我可不负责喔!  </p>
+
+
+<ol>
+<li>I am straight.
+我是异性恋.</li>
+</ol>
+
+
+<p>听到人家说 &#8220;I am straight.&#8221; 不要觉得莫名其妙, 其实 &#8220;I am straight.&#8221; 就是
+ &#8220;I am NOT a gay.&#8221; 的意思.  但是如果人家是说 &#8220;He is straight- acting.&#8221; 是
+表示他其实是同性恋, 但是他的行为却跟异性恋无异. 比方说他也照样结婚生子, 
+这种人可视之为隐性的同性恋.  另外至于同性恋能不能叫 &#8220;He is curved?&#8221; 我想
+是不行吧.. ^__^ 正确的说法应该是 &#8220;He is homosexual.&#8221; 或是比较俚语的说法, 
+&#8220;He is queer.&#8221; 这些用语就比较没有轻视的味道在里面, 算是比较中性的讲法.</p>
+
+
+<ol>
+<li>She is a forward girl.
+她是一个很前卫的女孩.</li>
+</ol>
+
+
+<p>Forward girl 就是中文里说的很前卫很开放的女孩子, 例如有人主张未婚生子, 你
+很佩服他的勇气, 你就可以说, &#8220;She is a forward girl.&#8221; 另外, forward 也可以
+形容很积极很有野心的人.   例如有人一心一意想要当上总经理, 你就可以说, &#8220;He 
+is a forward person.&#8221; </p>
+
+
+<p>4.He is a vet.
+他是个兽医.</p>
+
+<p>兽医的英文原来是 veterinarian 但是由于这个单字太长了, 以致于很少有人说 veterinarian 
+他们都直接简称 vet 或是更白话的说法, animal doctor/pet doctor. 在美国养狗
+是很风行的, 但美国对于养狗的规定蛮严格的, 出去溜狗都一定要用炼子绑著(leashed)
+, 而且如果狗狗有上大号的话, 还要帮它清理干净, 实在有点人不如狗的感觉.  </p>
+
+
+<p>有时候 vet 还可以代表老兵 veteran 的意思, 但是当 vet 作老兵解释时, 通常会
+在前面加上军种, 例如, &#8220;He is an Army vet.&#8221; 就是说他是一位自陆军退伍的老兵
+. Veteran 也常解释成老手的意思, 例如, &#8220;He is a veteran basketball player.&#8221;
+(他是篮球场上的老鸟.)</p>
+
+<p>5. He is a night owl/an all nighter
+他是一个夜猫子</p>
+
+
+<p>二种语言在直接翻译上有其一定的困难.  像是我们说夜猫子, 老美就偏偏要说成夜
+猫头鹰 night owl. 所以上次老美跟我提到我一个昼伏夜出的同学时就说, &#8220;He is
+a night owl.&#8221; 或是你也可以用另一个相近的讲法, &#8220;He is an all nighter.&#8221;</p>
+
+<p>记得以前刚从学校毕业要入伍服役时, 由于以前当夜猫子惯了, 所以对于每天要早
+上 5:30 起床很不适应.   我有一个同袍说得就蛮好的, &#8220;以前在学校的时候只有早
+上五点半睡觉, 哪有早上五点半起床的?&#8221; 说得众人连连点头称是.</p>
+
+
+<ol>
+<li>She is an encyclopedia.
+她就是一套百科全书.</li>
+</ol>
+
+
+<p>通常果你要说一个人知识真的很渊博, 你可以说, &#8220;He is an encyclopedia.&#8221; 像有
+一次我去参观纽约大都会博物馆, 我趁乱混在别人的旅行团里听解说, 我发现那个
+解说员真的是对每一件的作品其典故背景了若指掌, 而这点不只我发现了, 有一个
+老美也称赞她, &#8220;You are an encyclopedia.&#8221; 还有许多口语一点的讲法来形容见闻
+丰富的人, 例如:&#8221;He is a brain.&#8221; (他是个才子.) He is a walking library. (他
+是一座活图书馆.)</p>
+
+
+<ol>
+<li>He&#8217;s so anal.
+他是个吹毛求过度的人.</li>
+</ol>
+
+
+<p>Anal 这个字原指肛门的, 但它的意思基本上跟 asshole (脏话!) 相去不远, 所以
+这算是一句骂人的话. Anal 多半是形容一个人非常吹毛求 (picky), 到了会影响
+他人的程度. 如洁癖 (neat freak) 就是 anal 的一种, 因为他自己太爱干净, 却
+造成别人生活的不便.  当然 anal 主要是用来骂人的, 不过这句话算是骂人的脏话
+, 没事不要乱用. 有时候老美会在背后拿这句话来骂教授, 但是大家不要有样学样
+就是了.</p>
+
+
+<ol>
+<li>He is a brown-nose.
+他是个马屁精.</li>
+</ol>
+
+
+<p>马屁精这种用法在办公室应该很常见吧! 凡是喜欢拍别人的人都可以说是 brown-nose. 
+Brown-nose 这个字也可以当动词拍马屁来用, 例如, &#8220;He likes to brown-nose his 
+supervisor.&#8221; (他喜欢拍老板的马屁.) 或是另一个也很口语的讲法,   kiss up to 
+somebody. 例如, &#8220;I don&#8217;t like to kiss up to my boss.&#8221; (我不喜欢拍我老板的
+马屁.)</p>
+
+
+<ol>
+<li>He is a yes-man.
+他是只应声虫.</li>
+</ol>
+
+
+<p>形容人唯唯诺诺, 对于上级所交代的命令一律服从, 凡事都说 YES 的人，就是 yes-man!
+ 我想这句话不难理解, 我第一次听到时我就能立刻了解. 故事是这样的, 有一次有
+两个女生在谈论她们的男朋友, 其中有一个女生就说了这一句, &#8220;My boyfriend is 
+a yes-man.&#8221;, 我说什么他就作什么, 完全不敢违抗. 对于这种人, 我们还有一种说
+法, &#8220;He is a puppy.&#8221; 因为我想大家都知道, puppy (小狗) 就是乖乖的, 你要他
+干么他就得干么, 你叫它趴下, 它就不敢站起来. 拿 puppy 或 yes man 来形容唯
+唯是诺的人, 真是太好不过了.</p>
+
+
+<ol>
+<li>He is narrow-minded.
+他很小心眼.</li>
+</ol>
+
+
+<p>对于心眼很小, 看不开的人你就可以说他是 narrow-minded 例如有人总是见不得别
+人好, 你就可以说, &#8220;You are  narrow-minded.&#8221;   相对于 narrow-minded 就是 open-
+minded, 形容心胸宽大, 凡事都很看的开, 但也能指一个人没有先入为主的观念, 
+能够接受别人的意见.   记得有一次考试时, 教授就对我们说, :&#8221;You have to be 
+open-minded.&#8221; 就是说你们不要有先入为主的观念, 不要太去钻牛角尖 (hair-splitting)
+, 保持心胸的开阔, 这样才能考得好.</p>
+
+
+<p>生活小故事</p>
+
+<p>有次去参加了一对新人的婚礼, 真是让我觉的好感动好感动. 但我并不是感动于婚
+礼本身庄严而又隆重, 也不是感动于的男女双方的海誓山盟, 互许终身.  而是&#8230;.. 
+会后的茶点中居然有小笨霖最爱的炒米粉和炸春卷.   不小心一口气就吃了三盘炒
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十一]]></title>
+    <link href="http://yfu.github.com/note41/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note41</id>
+    <content type="html"><![CDATA[<p>  有趣的是这些人当中女生远多过男生, (大约十个人当中有八个是女孩子),    还
+有一个很奇怪的现象让我一直很不解.   他们跑步的时候很喜欢听随身听, 随时随
+地就戴个小耳机, 把随身听挂在腰际.  这种现象在健身房也不例外, 很多人就是一
+边使用跑步机一边听音乐的. 奇怪, 要听音乐什么时候不好听, 非得要在跑步的时
+候听. 这就是美国人的怪癖.</p>
+
+<p>1. Check it out!
+来看看吧.</p>
+
+
+<p>听说这句话是大 S 和小 S 的口头禅,其实 check
+it out 的意思就是 Take a look 的意思. 比方说你看到一幅画蛮不错的, 你就可
+以说, Hey, Laura, you should check this out! 就是请人家过来看看. 另外这句
+话在 Georcery store 的宣传语上也常见 Check it out!,  在这里 Check it out!
+说的是, 嘿. 把我结帐带回家吧.   另外如果说你在结帐时忽然发现你有些东西不
+想要了, 你就可以说 Check this off.</p>
+
+<p>2. I don&#8217;t want to ride the bitch!
+我不想坐在汽车后座中间.</p>
+
+
+<p>第一次听到这样的说法是出自一个美女(美国的女人) 口中, 让我十分惊讶, 因为
+ride the bitch 直译的话是指骑母狗的意思, 想在必定有什么不好的暗示在里面.
+ 后来有位热心的老美告诉我, 这句话其实是指坐车时坐在后座中间的那个位置, 因
+为那个位置坐起来不舒服, 所以如果你不幸坐在那个位置上, 就可以说 I ride the
+bitch.</p>
+
+<p>3. Pass me the clicker.
+把遥控器拿给我.</p>
+
+
+<p>一般人说遥控器会说 remote, 但是另外有些人会用 clicker 这个字, 算是口语 &#8220;遥
+控器&#8221; 的说法.</p>
+
+<p>4. She just got a sugar dad.
+她找到一个有钱的老男人.</p>
+
+
+<p>有些年轻貌美的女性会去认一些有钱, 但是生活无趣的人当干爸, 甚至是跟人家拍
+拖, 为的就是看看能不能得到什么好处.   这种有钱的老男人就被戏称为 Sugar dad.
+ 同样的, 有钱的老女人呢? 就叫 Sugar mom.</p>
+
+<p>5. If you have a boat in summer, you are the man.
+如果你夏天时能有艘船的话, 你就真正的男人!</p>
+
+
+<p>这句话是我听一个美女跟一个美男(美国的男人)讲的, 这也多多少少反映出一些美
+国的真实情况, 这句话如果搬到国内的话, 我想说成 If you have a car, you are
+the man 会更适合一点. 在美国大家都有车, 谁也不稀罕谁, 这时有船的人才是真
+正的老大.</p>
+
+<p>6. Stop beating around the bush!
+不要再拐弯抹角了!</p>
+
+
+<p>从前的人打猎拿东西敲击树丛, 把一些躲在其中的猎物吓出来, 这就是 beat the
+bush. 衍生为一个人说话不直接, 拐弯抹角, 这时你就可以跟他说, Stop beating
+around the bush! 我个人也很害怕有种人, 他跟你说一件事, 一定会从这件事的三
+天前说起, 把整件事的前因后果都说了, 唯恐你有任何细节听不懂.   通常我遇到
+这种人我也是无可耐何.</p>
+
+<p>7. I just turn away!
+我转头过去就好了.</p>
+
+
+<p>有一次看到一个老美正要脱鞋子, 他就问隔壁的人 Would you mind? 隔壁的人就回
+答, I just turn away. 说毕就掉头到一边, 看到这个动作, 我才知道 turn away
+就是转头过去的意思.</p>
+
+<p>8. You should get your butt into gear.
+你不要再混了.</p>
+
+
+<p>Gear 就是指车子上的排档. 把你的 butt 放入档位, 意谓著你该开始动工了, 不要
+再混下去了.   还有一个用法也是老美跟我说过的, You should get cracking. 意
+思上跟 get your butt into gear 是一样的.</p>
+
+<p>9. It is just a matter of time.
+那只不过是时间问题而已.</p>
+
+
+<p>这样的说法在中文也常用, 那只不过是时间早晚的问题而已. 该注意的是, 什么样
+的问题, 在这里是用 It is a matter of something, 而不是 It is a question
+of something. 这句话在电影 Eyes wide shut 里出现过一次,  说一个有毒瘾的人
+会出事, It is just a matter of time.</p>
+
+<p>10.  I don&#8217;t know how my weekend is going to shape up yet.
+我还不知道我的周末要作什么.</p>
+
+
+<p>Shape up 就是成形, 也就是说还没有什么具体的方案. 这句也可以简单地说, I still</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小笨霖英语笔记本四十: 生日派对]]></title>
+    <link href="http://yfu.github.com/note40/"/>
+    <updated>2012-12-21T01:33:00-05:00</updated>
+    <id>http://yfu.github.com/note40</id>
+    <content type="html"><![CDATA[<p>止所参加过最热闹的生日 party 了! 他们把家里布置得如同童话世界一般, 而有些
+点子实在非常有趣, 例如他们把寿星的照片放大影印贴满整个屋子, 而且由于这个寿
+□
+P是女生, 所以她们还把这些影印的照片涂上口红, 并且在胸前装上二个红色的小汽
+球.   大家可以想见这样子的景象是多么地有趣了吧!!</p>
+
+<p>1. It&#8217;s a surprise party.
+这是一个惊喜派对</p>
+
+
+<p>由于大家的保密工夫到家, 所以生日的人事先并不知道有这么一个 party, 而是到
+了那里, 灯一开发现居然有那么多人在等她, 感动的只差没当场哭出来. 像这种的
+party 就称为 surprise party (注意不是 surprising party!)</p>
+
+<p>我自已当时也蛮感动的, 自己从没见过那么热闹的生日 Party. 有时一个人在美国
+的生活也是蛮孤单的, 要是能有人能记得你的生日就已经不错了, 哪里还敢奢求这样
+一个 Party?</p>
+
+
+<ol>
+<li>That&#8217;s a real eye-opening experience.
+那真是一个另人大开眼界的经验.</li>
+</ol>
+
+
+<p>Eye-opening 指的就是另人大开眼界, 像是这么样一个别出心裁的宴会, 就可以算
+是 an eye-opening experince 或是你可以用 open my eye. 比方说人家带你去一个
+很豪华的别墅, 你就可以这么说, That building really opened my eye. </p>
+
+
+<ol>
+<li>Who is going to organize the birthday party next time?
+下次轮到谁办生日派对了呢?</li>
+</ol>
+
+
+<p>我们说办什么活动, 英文可以用 organize 这个动词, 比如说办个 party, 就可以
+说 organize a party.  另外值的一提的是有些人很喜欢办活动, 这种人有一种特别
+的称呼, 叫 social coordinator. 就像是中文里的 &#8220;公关&#8221; 的意思. </p>
+
+
+<ol>
+<li>Got to get me one of these!
+我也要一个像这样的东西.</li>
+</ol>
+
+
+<p>当你看到一个很酷或很棒的东西, 你就可以这么说 &#8220;Got to get me one of these!&#8221; 
+意思是: 我也想要一个.  记得当天我露出一副很羡慕的表情时, 有个老美就对我说
+, &#8220;You wanna get one of those on your birthday?&#8221; 答案不用说当然是, &#8220;Yes.&#8221; </p>
+
+
+<p>的.</p>
+
+<p>电影中用到 Got to get me one of these 的句法也是屡见不鲜, 像是电影 ID4 里
+面的男主角 Will Smith 第一次驾著外星人的飞碟一飞冲天时, 他就是兴奋地大叫,
+&#8220;Got to get me one of these!&#8221; (我也要一部像这样的飞机) 还有一部电影 Big Daddy,
+ 有一个乞丐在法庭上听到男主角说他的律师女朋友赚很多钱, 是他的摇钱树等等,
+他就叫了一声, Got to get me one of these! (我也要一个这样的女朋友)</p>
+
+<p>5. I bought a cake about this big!
+我买了一个蛋糕大约有这么大.</p>
+
+
+<p>讲这句话的时候记得要跟手势一起用, 所以如果不会形容一个东西有多大, 就把这
+句拿来变化一下就可以了! 因为在中文里要形容一个蛋糕有多大, 你可以说我买了一
+个几寸的蛋糕别人立刻就懂了, 但是美国的蛋糕都是长方形的, 再加上他们都是用英
+, 所以你要一边想英文还要一边作单位换算!  这简直就是 mission impossible
+说.  所以有时老美自己也用比的比较快! 像那天他们买了一个蛋糕一个黑人就说,
+&#8220;I bought a cake about this big!&#8221; 或是可以说 &#8220;I bought a cake like this big.&#8221;</p>
 
 <p>　</p>
+
+<p>除了 big 之外你也可以换成其它形容词, 例如, I have a brother about this tall. 
+这样不也就蒙混过关了吗? 不过这句话有一个缺点, 就是讲电话时不能用, 因为讲电
+话时不能比动作, 比了对方也看不到.   
+6. Pass me the clicker.
+把遥控器拿给我.</p>
+
+
+<p>一般人说遥控器会说 remote, 但是另外有些人会用 clicker 这个字, 算是口语 &#8220;遥
+控器&#8221; 的说法. 这也是那天随手记下来的一个口语用法.</p>
+
+<p>7. Knock yourself out.
+把这里当作自己的家一样.</p>
+
+
+<p>如果你去别人家里作客, 或是去参加各种的宴会, 别人说, &#8220;Knock yourself out.&#8221;
+他的意思可不是要你自己打自己一拳喔! 他的意思其实是你可以尽情地玩, 作任何
+你想作的事情, 把这里当成自己的家一样, 不必客气.  这句话我在电影 The house
+on the haunted hill 里也有听过一次, 就是当所有的人都进到鬼屋之后, 主人就
+说了, &#8220;Knock yourself out.&#8221;</p>
+
+<p>8. I am turning 23 tomorrow.
+我明天就二十三岁了. </p>
+
+
+<p>英文里讲到明年几岁了有一个固定的用法, 就是要用 turn 这个动词, 而且多半是
+用现在进行式 be turning, (因为有将要, 即将, 未来式的含意在内)  所以同样这
+句话如果你说, &#8220;I will become 23 tomorrow.&#8221; 虽然文法上没错, 但听起来就是怪
+怪的.</p>
+
+<p>9. She is in her birthday suit.
+她什么也没穿.</p>
+
+
+<p>大家看到这个 birthday suit 可别以为只是单纯的特别为生日准备的服装喔! 其实
+一般人讲到 birthday suit 时, 他们指的是什么也没穿.   原因是当人出生时不也
+是一丝不挂吗? 所以 birthday suit 指的就是你出生时所穿的那套服装, 也就是裸
+体的意思.</p>
+
+<p>10. You are a party pooper.
+你真是扫兴.</p>
+
+
+<p>那天虽然玩得很高兴, 可是我有事必须要先走, 我的朋友就跟我说, &#8220;You are a party
+pooper.&#8221; 什么是 party pooper 呢? 有二种解释, 第一种就是指那些很扫兴的人,
+比如说人家要玩游戏你也不玩, 别人说笑话你也不笑, 这种人就是 party pooper.
+另一种解释就是指那些 party 开到一半就中途开溜的人. 像我那天先走, 就被人说
+成是 party pooper.</p>
 ]]></content>
   </entry>
   

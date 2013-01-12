@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>小笨霖英语笔记本十二: up & down - Yu Fu</title>
+  <title>Running Emacs Daeomon on Boot - Yu Fu</title>
   <meta name="author" content="Yu Fu">
 
   
-  <meta name="description" content="小笨霖英语笔记本十二: Up & Down Dec 21st, 2012 | Comments 这集要来跟各位介绍一下 up 跟 down 这两个字的妙用. 诸位也许不知道,
-这两个字除了代表上下之外, 也有北上和南下的意思, 当然也有大声小声的用法,
-还有尊敬跟瞧不起的意思. 真是妙用无穷. &hellip;">
+  <meta name="description" content="Running Emacs Daeomon on Boot Jan 12th, 2013 | Comments Since I knew that emacs 23.1 introduces a new feature: running emacs like a daemon, I have &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yfu.github.com/note12/">
+  <link rel="canonical" href="http://yfu.github.com/running-emacs-daeomon-on-boot/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -91,7 +89,7 @@
   <header>
     
       
-        <h1 class="entry-title">小笨霖英语笔记本十二: Up & Down</h1>
+        <h1 class="entry-title">Running Emacs Daeomon on Boot</h1>
       
     
     
@@ -108,7 +106,7 @@
   
 
 
-<time datetime="2012-12-21T01:33:00-05:00" pubdate data-updated="true">Dec 21<span>st</span>, 2012</time>
+<time datetime="2013-01-12T16:48:00-05:00" pubdate data-updated="true">Jan 12<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -117,105 +115,45 @@
   </header>
 
 
-<div class="entry-content"><p>这集要来跟各位介绍一下 up 跟 down 这两个字的妙用.  诸位也许不知道,
-这两个字除了代表上下之外, 也有北上和南下的意思, 当然也有大声小声的用法,
-还有尊敬跟瞧不起的意思.  真是妙用无穷.   我们快点来看看在口语中要如何活用
- up 跟 down 这两个字.</p>
+<div class="entry-content"><p>Since I knew that emacs 23.1 introduces a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several method found on line, but it seems that they only care about running it under the condition of booting machine.</p>
 
-<p>1. Did you get down to Florida last summer? 你上个暑假有去佛罗里达吗?</p>
+<p>If, for some reason, like logging out and then logging in, this Apple Script will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:</p>
 
+<p><img src="/images/posts/emacs-daemon-complaining.jpg"></p>
 
-<p>英文中有一点很好玩而且跟中文很像的地方就是, 在中文里通常我们会说, 我南下
-高雄, 或是北上台北, 而不单纯说我去高雄或我去台北.   英文中也是这么用的喔
-! 像是你南下 Florida , 就会说成 get down Florida 或是 go down Florida.</p>
+<p>So I tweaked a little and added this apple script to the login items and everything looks super now:</p>
 
-<p>Get down 还有很多其它的意思, 不要搞混了. 例如记下某一句话你就可以说 I&#8217;ll 
-get down what you said today. </p>
-
-
-<ol>
-<li>Have you heard of  Buffalo, New York? My parents live up there. 你知道水牛城吗? 我的父母住在那边.</li>
-</ol>
-
-
-<p>南边的地方通常会加 down, 那北边就是加 up 了. 你说 live up there 那一定是
-指在北方. 像水牛城地理在美国的北方, 我在亚特兰大就可以跟别人说 My parents 
-live up there. 但要是你人在加拿大, 那这句话就要说成 Live down there. 因为
-水牛城是在加拿大的南方. 所以用 up 或 down 全视南方或北方而定. </p>
-
-
-<ol>
-<li>I went to Europe last month because my friends live over there. 我上个月去欧洲, 因为我的朋友住那里.</li>
-</ol>
+<figure class='code'><figcaption><span>lang: AppleScript </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tell application "Terminal"
+</span><span class='line'>     try
+</span><span class='line'>  -- we look for &lt;= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn't
+</span><span class='line'>     set frameVisible to do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
+</span><span class='line'>     on error
+</span><span class='line'>            -- daemon is not running, start the daemon and open a frame       
+</span><span class='line'>           do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+</span><span class='line'>           end try
+</span><span class='line'>end tell</span></code></pre></td></tr></table></div></figure>
 
 
-<p>我想大家一定会很好奇, 那东边又怎么说? 西边又怎么说? 通常他们不分东边或是
-西边,一律用 over there 或是 out there. 比如说你在美国, 你的朋友住欧洲. 而
-美国和欧洲并没有很明显的东西之分.  这时你就可以说 live out there 或是 live 
-over there.   </p>
+<p>So now, even if I log out and then in, emacs daemon will no longer complain.</p>
+
+<p>I have also added the following alias in .bash.profile so I can call it with less typing:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">ec</span><span class="o">=</span><span class="s1">&#39;/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw -c&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<ol>
-<li>How have you been up there? 你在那里过得如何?</li>
-</ol>
-
-
-<p>How have you been 是一句日常的问候语, 就相当于你最近过得怎么样了.   加上
- up there, 则表示那个人可能是从北方来的. 或是可能刚从北方回来.  我刚来美
-国时有一次到波士顿去玩, 回来之后有一个老美就问我 What did you do up there? 
-那时就是因为不知道 up there 代表什么意思害我楞在那里半天.</p>
-
-
-<ol>
-<li>I drove all the way up to Boston. 我一路开车到波士顿.</li>
-</ol>
-
-
-<p>All the way 翻成中文就是&#8221;一路到底&#8221; 的意思.   这个片语常跟 up 或 down 合用
-, 例如你说 I drove all the way up there. 或是比方说去溜滑梯, 你就可以说 
-You can slide all the way down to the the bottom. </p>
-
-
-<p>6 . Hey, look at the girl up there. 嘿. 看看在上面的那个女孩.</p>
-
-<p>要注意一下 up 和 down 不完全当北边和南边解释. 要看上下文而定. 像在这个句
-子里, up there 代表的是在上面的意思. 因为在日常的对话中我们不太可能说, &#8220;看
-看北边的那个女孩&#8221; 我们只会说, 看看上面的那个女孩.   所以英文中的道理也是
-一样的.  同理, Look the girl down there 就是看看在下面的那个女孩. </p>
-
-
-<ol>
-<li>Never look down on people less superior than you. 不要轻视不如你的人.</li>
-</ol>
-
-
-<p>Look down on someone 就是说你看不起人家, 有点像是中文里狗眼看人低的意思. 
- 所以才会说 Look down. 要是很看得起某人, 则是说 Look up on someone.</p>
-
-
-<ol>
-<li>Can you keep it down? 你能不能保持安静.</li>
-</ol>
-
-
-<p>Up 和 Down 也常常用来表示声音的大小喔.  Keep it down 就是保持音量不要太大
-. 像是有一次我们在考试, 结果走道上还有一些人在喧哗.   我是很想叫他们小声
-一点但是苦于不知要如何开口. 还好我同学这时挺身而出, 跑去跟他们说 Can you 
-keep it down?</p>
-
-
-<ol>
-<li>Could you turn it up? 能不能把它开大一点.</li>
-</ol>
-
-
-<p>凡是电器类的产品, 开大一点就叫 turn up, 关小一点就是 turn down. 例如你希
-望冷气开强一点, 就是 Could you turn it up?  关小一点 Could you turn it down? 
-其它像是电视的音量开大也叫 turn up, 关小叫 turn down. 附带一提如果是打开
-则是 turn on, 关掉叫 turn off. </p>
-
-
-
+<p>Have fun with Emacs!</p>
 </div>
 
 
@@ -242,7 +180,7 @@ keep it down?</p>
   
 
 
-<time datetime="2012-12-21T01:33:00-05:00" pubdate data-updated="true">Dec 21<span>st</span>, 2012</time>
+<time datetime="2013-01-12T16:48:00-05:00" pubdate data-updated="true">Jan 12<span>th</span>, 2013</time>
       
 
 
@@ -250,7 +188,7 @@ keep it down?</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yfu.github.com/note12/" data-via="" data-counturl="http://yfu.github.com/note12/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yfu.github.com/running-emacs-daeomon-on-boot/" data-via="" data-counturl="http://yfu.github.com/running-emacs-daeomon-on-boot/" >Tweet</a>
   
   
   
@@ -261,10 +199,8 @@ keep it down?</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/note11/" title="Previous Post: 小笨霖英语笔记本十一: 南方">&laquo; 小笨霖英语笔记本十一: 南方</a>
+        <a class="basic-alignment left articlenav" href="/ido-mode/" title="Previous Post: IDO-mode in Emacs">&laquo; IDO-mode in Emacs</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/note13/" title="Next Post: 小笨霖英语笔记本十三: Taco Bell">小笨霖英语笔记本十三: Taco Bell &raquo;</a>
       
     </p>
   </footer>
@@ -342,8 +278,8 @@ keep it down?</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yfu.github.com/note12/';
-        var disqus_url = 'http://yfu.github.com/note12/';
+        var disqus_identifier = 'http://yfu.github.com/running-emacs-daeomon-on-boot/';
+        var disqus_url = 'http://yfu.github.com/running-emacs-daeomon-on-boot/';
         var disqus_script = 'embed.js';
       
     (function () {
