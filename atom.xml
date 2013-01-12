@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.github.com/atom.xml" rel="self"/>
   <link href="http://yfu.github.com/"/>
-  <updated>2013-01-12T17:30:38-05:00</updated>
+  <updated>2013-01-12T17:33:15-05:00</updated>
   <id>http://yfu.github.com/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -42,15 +42,15 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>tell application "Terminal"
 </span><span class='line'>     try
 </span><span class='line'>  -- we look for &lt;= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn't
-</span><span class='line'>     do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
+</span><span class='line'>  do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
 </span><span class='line'>     on error
-</span><span class='line'>            -- daemon is not running, start the daemon and open a frame       
-</span><span class='line'>           do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
-</span><span class='line'>           end try
+</span><span class='line'>      -- daemon is not running, start the daemon and open a frame     
+</span><span class='line'>  do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+</span><span class='line'>     end try
 </span><span class='line'>end tell</span></code></pre></td></tr></table></div></figure>
 
 
-<p>So now, even if I log out and then in, emacs daemon will no longer complain.</p>
+<p>So now, even if I log out and then back in, emacs daemon will no longer complain.</p>
 
 <p>I have also added the following alias in .bash.profile so I can call it with less typing:</p>
 
