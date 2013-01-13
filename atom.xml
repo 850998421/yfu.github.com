@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Yu Fu]]></title>
-  <link href="http://yfu.github.com/atom.xml" rel="self"/>
-  <link href="http://yfu.github.com/"/>
-  <updated>2013-01-12T22:54:03-05:00</updated>
-  <id>http://yfu.github.com/</id>
+  <link href="http://yfu.me/atom.xml" rel="self"/>
+  <link href="http://yfu.me/"/>
+  <updated>2013-01-13T14:44:13-05:00</updated>
+  <id>http://yfu.me/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[转载：我最近买钻戒的经验]]></title>
-    <link href="http://yfu.github.com/diamonds/"/>
+    <link href="http://yfu.me/diamonds/"/>
     <updated>2013-01-12T17:51:00-05:00</updated>
-    <id>http://yfu.github.com/diamonds</id>
+    <id>http://yfu.me/diamonds</id>
     <content type="html"><![CDATA[<p>按照传统(其实是西方的传统)，求婚或订婚时男方要送女方一枚钻戒(称为engagement
 ring)，女方是不送男方钻戒的(看来只有男方向女方求婚了)。结婚时双方互赠素圈
 戒指(称为wedding bands)，这才是以后生活中经常戴的戒指。wedding bands因为
@@ -132,14 +132,14 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   
   <entry>
     <title type="html"><![CDATA[Running Emacs Daemon on Boot]]></title>
-    <link href="http://yfu.github.com/running-emacs-daeomon-on-boot/"/>
+    <link href="http://yfu.me/running-emacs-daeomon-on-boot/"/>
     <updated>2013-01-12T16:48:00-05:00</updated>
-    <id>http://yfu.github.com/running-emacs-daeomon-on-boot</id>
+    <id>http://yfu.me/running-emacs-daeomon-on-boot</id>
     <content type="html"><![CDATA[<p>Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several methods found online, but it seems that they only care about running it under the condition of booting machine (not loging out and in). Maybe the script itself should be able to determine if emacs daemon is already running.</p>
 
 <p>If, for some reason, like logging out and then logging in, this Apple Script (as a login item) will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:</p>
 
-<p><img src="http://yfu.github.com/images/posts/emacs-daemon-complaining.jpg"></p>
+<p><img src="http://yfu.me/images/posts/emacs-daemon-complaining.jpg"></p>
 
 <!-- more -->
 
@@ -181,9 +181,9 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   
   <entry>
     <title type="html"><![CDATA[IDO-mode in Emacs]]></title>
-    <link href="http://yfu.github.com/ido-mode/"/>
+    <link href="http://yfu.me/ido-mode/"/>
     <updated>2013-01-08T03:03:00-05:00</updated>
-    <id>http://yfu.github.com/ido-mode</id>
+    <id>http://yfu.me/ido-mode</id>
     <content type="html"><![CDATA[<p>IDO is short for &#8220;Interactively Do Things&#8221;, which is a nice minor mode helping you find the files/directories you want. I just checked the <a href="http://emacswiki.org/emacs/InteractivelyDoThings">emacswiki</a> and pasted the main key bindings here:</p>
 
 <p>To switch between buffers, press “C-x b”, then:</p>
@@ -246,9 +246,9 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   
   <entry>
     <title type="html"><![CDATA[Perldoc Complains about groff]]></title>
-    <link href="http://yfu.github.com/perldoc-old-groff/"/>
+    <link href="http://yfu.me/perldoc-old-groff/"/>
     <updated>2013-01-01T20:06:00-05:00</updated>
-    <id>http://yfu.github.com/perldoc-old-groff</id>
+    <id>http://yfu.me/perldoc-old-groff</id>
     <content type="html"><![CDATA[<p>Everytime I ran perldoc, I got the following error message:</p>
 
 <figure class='code'><figcaption><span>perldoc Complains  </span></figcaption>
@@ -358,9 +358,9 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   
   <entry>
     <title type="html"><![CDATA[笑话两则]]></title>
-    <link href="http://yfu.github.com/two-jokes/"/>
+    <link href="http://yfu.me/two-jokes/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/two-jokes</id>
+    <id>http://yfu.me/two-jokes</id>
     <content type="html"><![CDATA[<p>今天看到了两则笑话很好笑，来源不详。</p>
 
 <p>（一）</p>
@@ -377,9 +377,9 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本九: 考试 ]]></title>
-    <link href="http://yfu.github.com/note9/"/>
+    <link href="http://yfu.me/note9/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note9</id>
+    <id>http://yfu.me/note9</id>
     <content type="html"><![CDATA[<p>的考试呢? 我想考试似乎对每个人的前途都有或多或少的影响, 当然这在号称没有
 大学联考压力的美国也不例外, 所以, 这一集就让我们来看看关于考试的一些讲法
 , 从考试的范围, 考古题的说法, 到考试卷的说法.</p>
@@ -500,9 +500,9 @@ gonna score high in the test next time 也可以, 但是就不够口语化.  另
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本八: 谈女孩 ]]></title>
-    <link href="http://yfu.github.com/note8/"/>
+    <link href="http://yfu.me/note8/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note8</id>
+    <id>http://yfu.me/note8</id>
     <content type="html"><![CDATA[<p>女人啊女人啊, 你永远都是男人的最爱, 但为何上帝把你造得如此的美丽
 , 却又如此地难以了解. 在中文里我们有太多太多的成语来形容美女, 如沉鱼落雁
 , 倾国倾城, 闭月羞花等等. (你能想像如何教一个不懂中文的老外这些成语吗? )
@@ -629,9 +629,9 @@ blond. (事实上没有人是天生的 bleach blond,  一般 bleach blond 的头
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本七: 购物 ]]></title>
-    <link href="http://yfu.github.com/note7/"/>
+    <link href="http://yfu.me/note7/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note7</id>
+    <id>http://yfu.me/note7</id>
     <content type="html"><![CDATA[<p>日常的口语给我, 大家看到的许多资料我都是找她求证的,   其实老美很多人也是
 很热心的, 不是吗?</p>
 
@@ -776,9 +776,9 @@ service 柜台. 有任何的问题去找他们, 他们多半会给你满意的�
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本六: 水电 ]]></title>
-    <link href="http://yfu.github.com/note6/"/>
+    <link href="http://yfu.me/note6/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note6</id>
+    <id>http://yfu.me/note6</id>
     <content type="html"><![CDATA[<p>英语笔记本的诞生，是由于我刚到美国时， 每天都可以学到很多新鲜又有趣的单字
 或是对话，我将这些对话归纳整理成今日的规模。这些大多数都是在书上所看不到
 的。即使有些强调「口语化」的英文教材，其内容通常不是过时就是太过艰深，而
@@ -971,9 +971,9 @@ machine 也可以指速食店里的那种汽水机，使用上多加小心。</p
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本五十: 汽车 ]]></title>
-    <link href="http://yfu.github.com/note50/"/>
+    <link href="http://yfu.me/note50/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note50</id>
+    <id>http://yfu.me/note50</id>
     <content type="html"><![CDATA[<p>而开车也几乎成了每个人每天的例行公事.   大家不要小看这些对话, 我就曾经因
 为听不懂老美说, &#8220;麻烦把行李箱打开&#8221; 而落人笑柄.  不过这样也好, 那群老外现
 在看到我都还记得我, 全是拜那句 pop the trunk 之赐.</p>
@@ -1126,9 +1126,9 @@ part store, 作钣金的叫 body shop. 还有专门换轮胎和换机油的店. 
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本五: How Come？ ]]></title>
-    <link href="http://yfu.github.com/note5/"/>
+    <link href="http://yfu.me/note5/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note5</id>
+    <id>http://yfu.me/note5</id>
     <content type="html"><![CDATA[<p>我从网路上找来的(原作者不要打我!), 提供大家很好的题材..</p>
 
 <p>How Come<br>
@@ -1203,9 +1203,9 @@ and after marriage. </p>
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十九: 作客 ]]></title>
-    <link href="http://yfu.github.com/note49/"/>
+    <link href="http://yfu.me/note49/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note49</id>
+    <id>http://yfu.me/note49</id>
     <content type="html"><![CDATA[<p>want to do that.  I have a pool table too.   大家知不知道那个 pool table
 是什么意思? 当时我一直以为是指游泳池边的桌子, 结果到底是什么呢? 小笨霖先
 卖个关子, 看完本集的内容后你就知道了.</p>
@@ -1322,9 +1322,9 @@ who doesn&#8217;t know fig in the United State. 所以我很好奇到底是什�
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十八: Butt 这个字 ]]></title>
-    <link href="http://yfu.github.com/note48/"/>
+    <link href="http://yfu.me/note48/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note48</id>
+    <id>http://yfu.me/note48</id>
     <content type="html"><![CDATA[<pre><code>    这集要来跟大家介绍一下 butt 这个字的用法.  Butt 这个字除了当作 "屁
 </code></pre>
 
@@ -1450,9 +1450,9 @@ Get your butt geared.
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十七: Come 这个字 ]]></title>
-    <link href="http://yfu.github.com/note47/"/>
+    <link href="http://yfu.me/note47/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note47</id>
+    <id>http://yfu.me/note47</id>
     <content type="html"><![CDATA[<pre><code>    最近又发现一个跟我一样闲的人, 黛西, 她的生活美语风格跟我的笔记本
 </code></pre>
 
@@ -1593,9 +1593,9 @@ straight. 如果你直走的话, 你就会到一个 stop sign.</p>
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十六: 问路 ]]></title>
-    <link href="http://yfu.github.com/note46/"/>
+    <link href="http://yfu.me/note46/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note46</id>
+    <id>http://yfu.me/note46</id>
     <content type="html"><![CDATA[<pre><code>       初到美国, 最害有人上前问路了.  有些地方明明自己知道, 可是用英
 </code></pre>
 
@@ -1733,9 +1733,9 @@ Behind this building? 所以我就知道我应该说成 It&#8217;s behind this b
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十五: 地震 ]]></title>
-    <link href="http://yfu.github.com/note45/"/>
+    <link href="http://yfu.me/note45/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note45</id>
+    <id>http://yfu.me/note45</id>
     <content type="html"><![CDATA[<p>死伤.  虽然人在国外, 但我也无时无刻不挂念那些仍旧受困的民众. 想想人的生命
 是如此地渺小, 禁不起大自然无情的玩笑.   这篇笔记主要是讲一些跟地震有关的
 英文, 都是我从国外的报章媒体上所收集而来.   想必这将会成为大家在未来日子
@@ -1833,9 +1833,9 @@ plastic bottles and metal buckets instead of bricks.
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十四]]></title>
-    <link href="http://yfu.github.com/note44/"/>
+    <link href="http://yfu.me/note44/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note44</id>
+    <id>http://yfu.me/note44</id>
     <content type="html"><![CDATA[<pre><code>    今天听老师讲了一个热力学三大定律的比喻, 我觉的很有意思.  他说, 第
 </code></pre>
 
@@ -1950,9 +1950,9 @@ Dingleberry 的语气并不是很强烈, 大概就相当于 doofus 或是 goofy.
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十三: 连字]]></title>
-    <link href="http://yfu.github.com/note43/"/>
+    <link href="http://yfu.me/note43/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note43</id>
+    <id>http://yfu.me/note43</id>
     <content type="html"><![CDATA[<pre><code>    中国人和外国人有一点很像, 就是许愿, 在美国不论在何处看到大大小小
 </code></pre>
 
@@ -2055,9 +2055,9 @@ ever do it again.</p>
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十二: 人模人样]]></title>
-    <link href="http://yfu.github.com/note42/"/>
+    <link href="http://yfu.me/note42/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note42</id>
+    <id>http://yfu.me/note42</id>
     <content type="html"><![CDATA[<pre><code>    这集的主题为什么叫作人模人样呢? 因为这一集要介绍的都是一些关于人
 </code></pre>
 
@@ -2218,9 +2218,9 @@ open-minded.&#8221; 就是说你们不要有先入为主的观念, 不要太去�
   
   <entry>
     <title type="html"><![CDATA[小笨霖英语笔记本四十一]]></title>
-    <link href="http://yfu.github.com/note41/"/>
+    <link href="http://yfu.me/note41/"/>
     <updated>2012-12-21T01:33:00-05:00</updated>
-    <id>http://yfu.github.com/note41</id>
+    <id>http://yfu.me/note41</id>
     <content type="html"><![CDATA[<p>  有趣的是这些人当中女生远多过男生, (大约十个人当中有八个是女孩子),    还
 有一个很奇怪的现象让我一直很不解.   他们跑步的时候很喜欢听随身听, 随时随
 地就戴个小耳机, 把随身听挂在腰际.  这种现象在健身房也不例外, 很多人就是一
