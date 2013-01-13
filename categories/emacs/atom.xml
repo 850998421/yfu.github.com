@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: emacs | Yu Fu]]></title>
+  <link href="http://yfu.github.com/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://yfu.github.com/"/>
+  <updated>2013-01-12T21:48:35-05:00</updated>
+  <id>http://yfu.github.com/</id>
+  <author>
+    <name><![CDATA[Yu Fu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Running Emacs Daemon on Boot]]></title>
+    <link href="http://yfu.github.com/running-emacs-daeomon-on-boot/"/>
+    <updated>2013-01-12T16:48:00-05:00</updated>
+    <id>http://yfu.github.com/running-emacs-daeomon-on-boot</id>
+    <content type="html"><![CDATA[<p>Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several methods found online, but it seems that they only care about running it under the condition of booting machine (not loging out and in). Maybe the script itself should be able to determine if emacs daemon is already running.</p>
+
+<p>If, for some reason, like logging out and then logging in, this Apple Script (as a login item) will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:</p>
+
+<p><img src="/images/posts/emacs-daemon-complaining.jpg"></p>
+
+<!-- more -->
+
+
+<p>So I tweaked a little and added this apple script to the login items and everything looks super now:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>lang: AppleScript </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tell application "Terminal"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code> try
+</span><span class='line'>-- we look for &lt;= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn't
+</span><span class='line'>do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
+</span><span class='line'> on error
+</span><span class='line'>    -- daemon is not running, start the daemon and open a frame     
+</span><span class='line'>do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+</span><span class='line'> end try
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>end tell</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>So now, even if I log out and then back in, emacs daemon will no longer complain.</p>
+
+<p>I have also added the following alias in .bash.profile so I can call it with less typing:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">ec</span><span class="o">=</span><span class="s1">&#39;/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw -c&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Have fun with Emacs!</p>
+]]></content>
+  </entry>
+  
+</feed>
