@@ -2,12 +2,13 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yfu.github.com
+url: http://yfu.me
 title: Yu Fu
-# subtitle: A blogging framework for hackers.
+subtitle: Love Hacking
 author: Yu Fu
 simple_search: http://google.com/search
-description:
+description: yfu's blog
+keywords: python, perl, lisp, elisp, bioinformaitcs, web, tweak, emacs, cancer, disease, biology, molecule, cell, genome, computer science, computation, high-throughput
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
