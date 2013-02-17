@@ -1,0 +1,82 @@
+---
+published: false
+layout: post
+title: "Conneting to MySQL in MATLAB"
+date: 2013-01-28 20:35
+comments: true
+categories: database, matlab, mysql
+---
+
+Recently, I have to pick up MATLAB again, as others in the same lab are using it. Since it had been a long time since I used it last time. I encountered several problems.
+
+1. Installation
+
+I have the lastes OS X running on my computer and the MATLAB I am trying to install is also the lastest version, which came out in August 2012. I thought it would be compatible with the lastest OS X. However, it turned out to be quite wrong. MATLAB could not compile mex files since MATLBA assumes that you have OX X 10.6 running instead of 10.7 or 10.8. In OS X 10.6, the XCode is installed in /Developer/SDKs/MacOSX10.6.sdk. However, this is not longer the location for SDKs in 10.7 and higher. Also, gcc has been depreciated and clang is used instead. You can still find the gcc binary but not gcc-4.2. Also, by default MATLAB ignores the path such as /usr/local/bin, and this is where binaries installed by homebrew lie. So I need to change the nexopts.sh file:
+
+{% codeblock cd to the directory lang:bash %}
+cd /Applications/MATLAB_R2012b.app/bin
+emacs mexopts.sh
+{% endcodeblock %}
+
+And then change it to something like the following:
+
+{% codeblock mexopts.sh lang:bash %}
+#----------------------------------------------------------------------------
+            # StorageVersion: 1.0
+            # CkeyName: GNU C
+            # CkeyManufacturer: GNU
+            # CkeyLanguage: C
+            # CkeyVersion:
+            CC='gcc' # used to be 'gcc-4.2'
+
+            # used to be '/Developer/SDKs/MacOSX10.6.sdk'
+            SDKROOT='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk' 
+            MACOSX_DEPLOYMENT_TARGET='10.8' # used to be '10.5'
+            ARCHS='x86_64'
+            CFLAGS="-fno-common -no-cpp-precomp -arch $ARCHS -isysroot $SDKROOT -mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
+            CFLAGS="$CFLAGS  -fexceptions"
+            CFLAGS="$CFLAGS -I/usr/local/include" # Homebrew include path
+            CLIBS="$MLIBS"
+            COPTIMFLAGS='-O2 -DNDEBUG'
+            CDEBUGFLAGS='-g'
+#
+            CLIBS="$CLIBS -lstdc++"
+            # C++keyName: GNU C++
+            # C++keyManufacturer: GNU
+            # C++keyLanguage: C++
+            # C++keyVersion:
+            CXX=g++ # used to be 'g++-4.2'
+            CXXFLAGS="-fno-common -no-cpp-precomp -fexceptions -arch $ARCHS -isysroot $SDKROOT -mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
+            CXXLIBS="$MLIBS -lstdc++"
+            CXXOPTIMFLAGS='-O2 -DNDEBUG'
+            CXXDEBUGFLAGS='-g'
+#
+            # FortrankeyName: GNU Fortran
+            # FortrankeyManufacturer: GNU
+            # FortrankeyLanguage: Fortran
+            # FortrankeyVersion:
+            FC='gfortran'
+            FFLAGS='-fexceptions -m64 -fbackslash'
+            FC_LIBDIR=`$FC -print-file-name=libgfortran.dylib 2>&1 | sed -n '1s/\/*libgfortran\.dylib//p'`
+            FC_LIBDIR2=`$FC -print-file-name=libgfortranbegin.a 2>&1 | sed -n '1s/\/*libgfortranbegin\.a//p'`
+            FLIBS="$MLIBS -L$FC_LIBDIR -lgfortran -L$FC_LIBDIR2 -lgfortranbegin"
+            FOPTIMFLAGS='-O'
+            FDEBUGFLAGS='-g'
+#
+            LD="$CC"
+            LDEXTENSION='.mexmaci64'
+            LDFLAGS="-Wl,-twolevel_namespace -undefined error -arch $ARCHS -Wl,-syslibroot,$SDKROOT -mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
+            LDFLAGS="$LDFLAGS -bundle -Wl,-exported_symbols_list,$TMW_ROOT/extern/lib/$Arch/$MAPFILE"
+            LDFLAGS="$LDFLAGS -L/usr/local/lib" # Homebrew library path
+            LDOPTIMFLAGS='-O'
+            LDDEBUGFLAGS='-g'
+#
+            POSTLINK_CMDS=':'
+#----------------------------------------------------------------------------
+{% endcodeblock %}
+
+2. Connecting to MySQL
+
+My project in this rotation require me to connect to a MySQL database. However, MATLAB does not seem to be able to accomplish this out of its box. So, following the instructions on the project website, I tried to use the 
+
+(Not finished yet...)

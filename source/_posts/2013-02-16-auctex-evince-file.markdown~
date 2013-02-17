@@ -1,0 +1,39 @@
+---
+layout: post
+title: "Change the default program for viewing PDF files"
+date: 2013-02-16 23:44
+comments: true
+categories: 
+---
+
+It is quite annoying that, on Mac, AUCTex in Emacs will use "evince XXX.pdf" command for viewing PDF files and Mac does not have a built-in evince. Hence, one solution to the problem is installing evince and some people reported that they managed to install it via fink (or maybe MacPorts). My solution is to change the default command for opening PDF files in AUCTex. So, just add the following code to your .emacs file and everything will be OK:
+
+{% codeblock %}
+(load "auctex.el" nil t t) 
+(load "preview-latex.el" nil t t) 
+(add-hook 'LaTeX-mode-hook 
+          (lambda () 
+            (turn-on-reftex) 
+            (setq reftex-plug-into-AUCTeX t))) 
+(setq TeX-PDF-mode t) 
+(setq TeX-view-program-selection 
+      '(((output-dvi style-pstricks) 
+         "dvips and PDF Viewer") 
+        (output-dvi "PDF Viewer") 
+        (output-pdf "PDF Viewer") 
+        (output-html "Safari"))) 
+(setq TeX-view-program-list 
+      '(("dvips and PDF Viewer" "%(o?)dvips %d -o && open %f") 
+        ("PDF Viewer" "open %o") 
+        ("Safari" "open %o"))) 
+{% endcodeblock %}
+
+So here it is:
+
+{% img /images/open-pdf.png %}
+
+For details, you can look into the actual meaning of these two variables in Emacs by:
+
+M-x TeX-view-program-selection
+
+M-x TeX-view-program-list
