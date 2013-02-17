@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.me/atom.xml" rel="self"/>
   <link href="http://yfu.me/"/>
-  <updated>2013-02-04T22:41:47-05:00</updated>
+  <updated>2013-02-17T00:10:23-05:00</updated>
   <id>http://yfu.me/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Change the default program for viewing PDF files]]></title>
+    <link href="http://yfu.me/auctex-evince-file/"/>
+    <updated>2013-02-16T23:44:00-05:00</updated>
+    <id>http://yfu.me/auctex-evince-file</id>
+    <content type="html"><![CDATA[<p>It is quite annoying that, on Mac, AUCTex in Emacs will use &#8220;evince XXX.pdf&#8221; command for viewing PDF files and Mac does not have a built-in evince. Hence, one solution to the problem is installing evince and some people reported that they managed to install it via fink (or maybe MacPorts). My solution is to change the default command for opening PDF files in AUCTex. So, just add the following code to your .emacs file and everything will be OK:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(load "auctex.el" nil t t) 
+</span><span class='line'>(load "preview-latex.el" nil t t) 
+</span><span class='line'>(add-hook 'LaTeX-mode-hook 
+</span><span class='line'>          (lambda () 
+</span><span class='line'>            (turn-on-reftex) 
+</span><span class='line'>            (setq reftex-plug-into-AUCTeX t))) 
+</span><span class='line'>(setq TeX-PDF-mode t) 
+</span><span class='line'>(setq TeX-view-program-selection 
+</span><span class='line'>      '(((output-dvi style-pstricks) 
+</span><span class='line'>         "dvips and PDF Viewer") 
+</span><span class='line'>        (output-dvi "PDF Viewer") 
+</span><span class='line'>        (output-pdf "PDF Viewer") 
+</span><span class='line'>        (output-html "Safari"))) 
+</span><span class='line'>(setq TeX-view-program-list 
+</span><span class='line'>      '(("dvips and PDF Viewer" "%(o?)dvips %d -o && open %f") 
+</span><span class='line'>        ("PDF Viewer" "open %o") 
+</span><span class='line'>        ("Safari" "open %o")))</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://yfu.me/images/open-pdf.png"></p>
+
+<p>For details, you can look into the actual meaning of these two variables in Emacs by:</p>
+
+<p>M-x TeX-view-program-selection</p>
+
+<p>M-x TeX-view-program-list</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Yanking in Emacs Minibuffer?]]></title>

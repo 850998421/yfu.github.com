@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Running Emacs Daemon on Boot - Yu Fu</title>
+  <title>Change the default program for viewing PDF files - Yu Fu</title>
   <meta name="author" content="Yu Fu">
 
   
-  <meta name="description" content="Running Emacs Daemon on Boot Jan 12th, 2013 | Comments Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have &hellip;">
+  <meta name="description" content="Change the Default Program for Viewing PDF Files Feb 16th, 2013 | Comments It is quite annoying that, on Mac, AUCTex in Emacs will use &#8220;evince &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yfu.me/running-emacs-daeomon-on-boot/">
+  <link rel="canonical" href="http://yfu.me/auctex-evince-file/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -91,7 +91,7 @@
   <header>
     
       
-        <h1 class="entry-title">Running Emacs Daemon on Boot</h1>
+        <h1 class="entry-title">Change the Default Program for Viewing PDF Files</h1>
       
     
     
@@ -108,7 +108,7 @@
   
 
 
-<time datetime="2013-01-12T16:48:00-05:00" pubdate data-updated="true">Jan 12<span>th</span>, 2013</time>
+<time datetime="2013-02-16T23:44:00-05:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -117,16 +117,7 @@
   </header>
 
 
-<div class="entry-content"><p>Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several methods found online, but it seems that they only care about running it under the condition of booting machine (not loging out and in). Maybe the script itself should be able to determine if emacs daemon is already running.</p>
-
-<p>If, for some reason, like logging out and then logging in, this Apple Script (as a login item) will run again, trying to bring another emacs daemon to working which will cause some error, like the one in the following screenshot:</p>
-
-<p><img src="/images/posts/emacs-daemon-complaining.jpg"></p>
-
-<!-- more -->
-
-
-<p>So I tweaked a little and added this apple script to the login items and everything looks super now:</p>
+<div class="entry-content"><p>It is quite annoying that, on Mac, AUCTex in Emacs will use &#8220;evince XXX.pdf&#8221; command for viewing PDF files and Mac does not have a built-in evince. Hence, one solution to the problem is installing evince and some people reported that they managed to install it via fink (or maybe MacPorts). My solution is to change the default command for opening PDF files in AUCTex. So, just add the following code to your .emacs file and everything will be OK:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -137,27 +128,40 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>tell application "Terminal"
-</span><span class='line'>     try
-</span><span class='line'>  -- we look for &lt;= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn't
-</span><span class='line'>  do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(&lt;= 2 (length (visible-frame-list)))'"
-</span><span class='line'>     on error
-</span><span class='line'>      -- daemon is not running, start the daemon and open a frame     
-</span><span class='line'>  do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
-</span><span class='line'>     end try
-</span><span class='line'>end tell</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(load "auctex.el" nil t t) 
+</span><span class='line'>(load "preview-latex.el" nil t t) 
+</span><span class='line'>(add-hook 'LaTeX-mode-hook 
+</span><span class='line'>          (lambda () 
+</span><span class='line'>            (turn-on-reftex) 
+</span><span class='line'>            (setq reftex-plug-into-AUCTeX t))) 
+</span><span class='line'>(setq TeX-PDF-mode t) 
+</span><span class='line'>(setq TeX-view-program-selection 
+</span><span class='line'>      '(((output-dvi style-pstricks) 
+</span><span class='line'>         "dvips and PDF Viewer") 
+</span><span class='line'>        (output-dvi "PDF Viewer") 
+</span><span class='line'>        (output-pdf "PDF Viewer") 
+</span><span class='line'>        (output-html "Safari"))) 
+</span><span class='line'>(setq TeX-view-program-list 
+</span><span class='line'>      '(("dvips and PDF Viewer" "%(o?)dvips %d -o && open %f") 
+</span><span class='line'>        ("PDF Viewer" "open %o") 
+</span><span class='line'>        ("Safari" "open %o")))</span></code></pre></td></tr></table></div></figure>
 
 
-<p>So now, even if I log out and then back in, emacs daemon will no longer complain.</p>
+<p><img src="/images/open-pdf.png"></p>
 
-<p>I have also added the following alias in .bash.profile so I can call it with less typing:</p>
+<p>For details, you can look into the actual meaning of these two variables in Emacs by:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">ec</span><span class="o">=</span><span class="s1">&#39;/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw -c&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>M-x TeX-view-program-selection</p>
 
-
-<p>Have fun with Emacs!</p>
+<p>M-x TeX-view-program-list</p>
 </div>
 
 
@@ -195,21 +199,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
   
 
 
-<time datetime="2013-01-12T16:48:00-05:00" pubdate data-updated="true">Jan 12<span>th</span>, 2013</time>
+<time datetime="2013-02-16T23:44:00-05:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/categories/emacs/'>emacs</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yfu.me/running-emacs-daeomon-on-boot/" data-via="" data-counturl="http://yfu.me/running-emacs-daeomon-on-boot/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yfu.me/auctex-evince-file/" data-via="" data-counturl="http://yfu.me/auctex-evince-file/" >Tweet</a>
   
   
   
@@ -220,10 +218,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/ido-mode/" title="Previous Post: IDO-mode in Emacs">&laquo; IDO-mode in Emacs</a>
+        <a class="basic-alignment left articlenav" href="/yanking-in-emacs-minibuffer/" title="Previous Post: How to Yanking in Emacs Minibuffer?">&laquo; How to Yanking in Emacs Minibuffer?</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/diamonds/" title="Next Post: 转载：我最近买钻戒的经验">转载：我最近买钻戒的经验 &raquo;</a>
       
     </p>
   </footer>
@@ -301,8 +297,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yfu.me/running-emacs-daeomon-on-boot/';
-        var disqus_url = 'http://yfu.me/running-emacs-daeomon-on-boot/';
+        var disqus_identifier = 'http://yfu.me/auctex-evince-file/';
+        var disqus_url = 'http://yfu.me/auctex-evince-file/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -9,7 +9,7 @@
   <meta name="author" content="Yu Fu">
 
   
-  <meta name="description" content="This may seem a silly question but I did encounter some difficulties in yanking (pasting) things in the minibuffer in Emacs. C-y does not work and &hellip;">
+  <meta name="description" content="It is quite annoying that, on Mac, AUCTex in Emacs will use &#8220;evince XXX.pdf&#8221; command for viewing PDF files and Mac does not have a built- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,90 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/auctex-evince-file/">Change the Default Program for Viewing PDF Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-16T23:44:00-05:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time>
+        
+         | <a href="/auctex-evince-file/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It is quite annoying that, on Mac, AUCTex in Emacs will use &#8220;evince XXX.pdf&#8221; command for viewing PDF files and Mac does not have a built-in evince. Hence, one solution to the problem is installing evince and some people reported that they managed to install it via fink (or maybe MacPorts). My solution is to change the default command for opening PDF files in AUCTex. So, just add the following code to your .emacs file and everything will be OK:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(load "auctex.el" nil t t) 
+</span><span class='line'>(load "preview-latex.el" nil t t) 
+</span><span class='line'>(add-hook 'LaTeX-mode-hook 
+</span><span class='line'>          (lambda () 
+</span><span class='line'>            (turn-on-reftex) 
+</span><span class='line'>            (setq reftex-plug-into-AUCTeX t))) 
+</span><span class='line'>(setq TeX-PDF-mode t) 
+</span><span class='line'>(setq TeX-view-program-selection 
+</span><span class='line'>      '(((output-dvi style-pstricks) 
+</span><span class='line'>         "dvips and PDF Viewer") 
+</span><span class='line'>        (output-dvi "PDF Viewer") 
+</span><span class='line'>        (output-pdf "PDF Viewer") 
+</span><span class='line'>        (output-html "Safari"))) 
+</span><span class='line'>(setq TeX-view-program-list 
+</span><span class='line'>      '(("dvips and PDF Viewer" "%(o?)dvips %d -o && open %f") 
+</span><span class='line'>        ("PDF Viewer" "open %o") 
+</span><span class='line'>        ("Safari" "open %o")))</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/open-pdf.png"></p>
+
+<p>For details, you can look into the actual meaning of these two variables in Emacs by:</p>
+
+<p>M-x TeX-view-program-selection</p>
+
+<p>M-x TeX-view-program-list</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -594,55 +678,9 @@ ring)，女方是不送男方钻戒的(看来只有男方向女方求婚了)。�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/my-first-post/">第一篇文章</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-13T23:20:00-05:00" pubdate data-updated="true">Dec 13<span>th</span>, 2012</time>
-        
-         | <a href="/my-first-post/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>这是我在新域名yfu.me上搭建的博客，也是我第一次使用github和octopress搭建的博客。</p>
-
-<p>不知道我能不能坚持写下去这个博客，现在开始写会不会太晚？</p>
-
-<p>最近各种reports和presentations，身心俱疲，想休息。在美国的第一个学期就要结束了。</p>
-
-<p>近期在学习R，被各种plot函数折磨。</p>
-
-<p>先写到这儿吧。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -653,6 +691,10 @@ ring)，女方是不送男方钻戒的(看来只有男方向女方求婚了)。�
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/auctex-evince-file/">Change the default program for viewing PDF files</a>
+      </li>
     
       <li class="post">
         <a href="/yanking-in-emacs-minibuffer/">How to Yanking in Emacs Minibuffer?</a>
@@ -668,10 +710,6 @@ ring)，女方是不送男方钻戒的(看来只有男方向女方求婚了)。�
     
       <li class="post">
         <a href="/ido-mode/">IDO-mode in Emacs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/perldoc-old-groff/">Perldoc Complains about groff</a>
       </li>
     
   </ul>
