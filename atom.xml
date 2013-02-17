@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.me/atom.xml" rel="self"/>
   <link href="http://yfu.me/"/>
-  <updated>2013-02-17T00:10:23-05:00</updated>
+  <updated>2013-02-17T00:11:51-05:00</updated>
   <id>http://yfu.me/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -55,6 +55,8 @@
 </span><span class='line'>        ("PDF Viewer" "open %o") 
 </span><span class='line'>        ("Safari" "open %o")))</span></code></pre></td></tr></table></div></figure>
 
+
+<p>So here it is:</p>
 
 <p><img src="http://yfu.me/images/open-pdf.png"></p>
 
