@@ -4,7 +4,7 @@
   <title><![CDATA[Category: emacs | Yu Fu]]></title>
   <link href="http://yfu.me/categories/emacs/atom.xml" rel="self"/>
   <link href="http://yfu.me/"/>
-  <updated>2013-06-01T17:35:18-04:00</updated>
+  <updated>2013-06-25T01:52:49+08:00</updated>
   <id>http://yfu.me/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Running Emacs Daemon on Boot]]></title>
     <link href="http://yfu.me/running-emacs-daeomon-on-boot/"/>
-    <updated>2013-01-12T16:48:00-05:00</updated>
+    <updated>2013-01-12T16:48:00+08:00</updated>
     <id>http://yfu.me/running-emacs-daeomon-on-boot</id>
     <content type="html"><![CDATA[<p>Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several methods found online, but it seems that they only care about running it under the condition of booting machine (not loging out and in). Maybe the script itself should be able to determine if emacs daemon is already running.</p>
 

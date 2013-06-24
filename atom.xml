@@ -4,7 +4,7 @@
   <title><![CDATA[Yu Fu]]></title>
   <link href="http://yfu.me/atom.xml" rel="self"/>
   <link href="http://yfu.me/"/>
-  <updated>2013-06-01T17:35:18-04:00</updated>
+  <updated>2013-06-25T01:52:49+08:00</updated>
   <id>http://yfu.me/</id>
   <author>
     <name><![CDATA[Yu Fu]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Change the default program for viewing PDF files]]></title>
     <link href="http://yfu.me/auctex-evince-file/"/>
-    <updated>2013-02-16T23:44:00-05:00</updated>
+    <updated>2013-02-16T23:44:00+08:00</updated>
     <id>http://yfu.me/auctex-evince-file</id>
     <content type="html"><![CDATA[<p>It is quite annoying that, on Mac, AUCTex in Emacs will use &#8220;evince XXX.pdf&#8221; command for viewing PDF files and Mac does not have a built-in evince. Hence, one solution to the problem is installing evince and some people reported that they managed to install it via fink (or maybe MacPorts). My solution is to change the default command for opening PDF files in AUCTex. So, just add the following code to your .emacs file and everything will be OK:</p>
 
@@ -71,7 +71,7 @@
   <entry>
     <title type="html"><![CDATA[How to Yanking in Emacs Minibuffer?]]></title>
     <link href="http://yfu.me/yanking-in-emacs-minibuffer/"/>
-    <updated>2013-02-04T22:31:00-05:00</updated>
+    <updated>2013-02-04T22:31:00+08:00</updated>
     <id>http://yfu.me/yanking-in-emacs-minibuffer</id>
     <content type="html"><![CDATA[<p>This may seem a silly question but I did encounter some difficulties in yanking (pasting) things in the minibuffer in Emacs. C-y does not work and after googling online, I found that the right way is using M-y instead of C-y. The <a href="http://ignaciopp.wordpress.com/2010/12/02/emacs-how-to-paste-text-in-the-search-minibuffer/">blog</a> here helped me. The author also pointed out that Richard Stallman answered the question in 2005 <a href="http://www.mail-archive.com/emacs-pretest-bug@gnu.org/msg03693.html">here</a>.</p>
 ]]></content>
@@ -80,7 +80,7 @@
   <entry>
     <title type="html"><![CDATA[转载：我最近买钻戒的经验]]></title>
     <link href="http://yfu.me/diamonds/"/>
-    <updated>2013-01-12T17:51:00-05:00</updated>
+    <updated>2013-01-12T17:51:00+08:00</updated>
     <id>http://yfu.me/diamonds</id>
     <content type="html"><![CDATA[<p>按照传统(其实是西方的传统)，求婚或订婚时男方要送女方一枚钻戒(称为engagement
 ring)，女方是不送男方钻戒的(看来只有男方向女方求婚了)。结婚时双方互赠素圈
@@ -197,7 +197,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[Running Emacs Daemon on Boot]]></title>
     <link href="http://yfu.me/running-emacs-daeomon-on-boot/"/>
-    <updated>2013-01-12T16:48:00-05:00</updated>
+    <updated>2013-01-12T16:48:00+08:00</updated>
     <id>http://yfu.me/running-emacs-daeomon-on-boot</id>
     <content type="html"><![CDATA[<p>Since I knew that emacs 23.1 introduced a new feature: running emacs like a daemon, I have always wanted to run the daemon on boot so that I can run emacs in terminal quicker. I have tried several methods found online, but it seems that they only care about running it under the condition of booting machine (not loging out and in). Maybe the script itself should be able to determine if emacs daemon is already running.</p>
 
@@ -246,7 +246,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[IDO-mode in Emacs]]></title>
     <link href="http://yfu.me/ido-mode/"/>
-    <updated>2013-01-08T03:03:00-05:00</updated>
+    <updated>2013-01-08T03:03:00+08:00</updated>
     <id>http://yfu.me/ido-mode</id>
     <content type="html"><![CDATA[<p>IDO is short for &#8220;Interactively Do Things&#8221;, which is a nice minor mode helping you find the files/directories you want. I just checked the <a href="http://emacswiki.org/emacs/InteractivelyDoThings">emacswiki</a> and pasted the main key bindings here:</p>
 
@@ -311,7 +311,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[Perldoc Complains about groff]]></title>
     <link href="http://yfu.me/perldoc-old-groff/"/>
-    <updated>2013-01-01T20:06:00-05:00</updated>
+    <updated>2013-01-01T20:06:00+08:00</updated>
     <id>http://yfu.me/perldoc-old-groff</id>
     <content type="html"><![CDATA[<p>Everytime I ran perldoc, I got the following error message:</p>
 
@@ -423,7 +423,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[笑话两则]]></title>
     <link href="http://yfu.me/two-jokes/"/>
-    <updated>2012-12-21T01:33:00-05:00</updated>
+    <updated>2012-12-21T01:33:00+08:00</updated>
     <id>http://yfu.me/two-jokes</id>
     <content type="html"><![CDATA[<p>今天看到了两则笑话很好笑，来源不详。</p>
 
@@ -442,7 +442,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[HIDPI Mode]]></title>
     <link href="http://yfu.me/hidpi-mode/"/>
-    <updated>2012-12-17T02:17:00-05:00</updated>
+    <updated>2012-12-17T02:17:00+08:00</updated>
     <id>http://yfu.me/hidpi-mode</id>
     <content type="html"><![CDATA[<p>I just managed to enbale HIDPI Mode on my MacBook Pro. Though the built-in display of my MacBook Pro cannot make use of that, the iPad 4 can!</p>
 
@@ -463,7 +463,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[Image Tag]]></title>
     <link href="http://yfu.me/image-tag/"/>
-    <updated>2012-12-14T00:24:00-05:00</updated>
+    <updated>2012-12-14T00:24:00+08:00</updated>
     <id>http://yfu.me/image-tag</id>
     <content type="html"><![CDATA[<p>I really love the simplicity of the Octopress image tag.</p>
 
@@ -476,7 +476,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[Codeblock]]></title>
     <link href="http://yfu.me/codeblock/"/>
-    <updated>2012-12-13T23:44:00-05:00</updated>
+    <updated>2012-12-13T23:44:00+08:00</updated>
     <id>http://yfu.me/codeblock</id>
     <content type="html"><![CDATA[<p>This plugin seems to be very useful for sharing code, so let me test it.</p>
 
@@ -523,7 +523,7 @@ Diamond的要好些？不过BlueNile只对美国销售，而Mondera和Diamond还
   <entry>
     <title type="html"><![CDATA[第一篇文章]]></title>
     <link href="http://yfu.me/my-first-post/"/>
-    <updated>2012-12-13T23:20:00-05:00</updated>
+    <updated>2012-12-13T23:20:00+08:00</updated>
     <id>http://yfu.me/my-first-post</id>
     <content type="html"><![CDATA[<p>这是我在新域名yfu.me上搭建的博客，也是我第一次使用github和octopress搭建的博客。</p>
 
